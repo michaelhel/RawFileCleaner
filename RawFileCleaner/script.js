@@ -1,8 +1,14 @@
-function selectSource() {
-}
+function selectSource() {}
 
-function includeSubfolder() {
-}
+function includeSubfolder() {}
 
-function cleanFiles() {
+function cleanFiles() {}
+
+function deleteFile(path, filename) {
+    const trash = require('trash');
+    var filenames = path + "\\" + filename;
+
+    trash([filenames, null]).then(() => {
+        console.log('deletet ' + filename);
+    });
 }
