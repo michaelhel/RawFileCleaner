@@ -1,0 +1,14 @@
+{
+  "name": "rawfilecleaner",
+  "version": "1.0.0",
+  "description": "A tool which deletes all RAW files without an existing JPEG file. ",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "Hannes Gerstmayr, Michael Helcig, Christian Strassmayr",
+  "license": "ISC",
+  "dependencies": {
+    "electron": "^1.7.10"
+  }
+}
