@@ -9,6 +9,9 @@
   "author": "Hannes Gerstmayr, Michael Helcig, Christian Strassmayr",
   "license": "ISC",
   "dependencies": {
-    "electron": "^1.7.10"
+    "electron": "^1.7.10",
+    "electron-json-storage": "^4.0.2",
+    "local-storage": "^1.4.2",
+    "localstorage": "^0.1.0"
   }
 }

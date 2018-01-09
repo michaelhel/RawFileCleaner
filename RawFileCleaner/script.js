@@ -9,6 +9,6 @@ function deleteFile(path, filename) {
     var filenames = path + "\\" + filename;
 
     trash([filenames, null]).then(() => {
-        console.log('deletet ' + filename);
+        console.log('deleted ' + filename);
     });
 }
