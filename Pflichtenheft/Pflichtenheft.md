@@ -9,7 +9,7 @@
 
 ## Weitere Produktinformationen
 Mitwirkend
-   
+
 * Christian Straßmayr
 * Hannes Gerstmayr
 
@@ -19,6 +19,7 @@ Mitwirkend
 |1 / 18.11.2017 / 0.1 | Alle | Pflichtenheft Erstellung | Christian Straßmayr|
 |2 / 24.11.2017 / 0.2 | Alle | Pflichtenheft Verbesserung + Erweiterung | Hannes Gerstmayr|
 |3 / 01.12.2017 / 0.3 | Alle | Pflichtenheft Verbesserung + Erweiterung | Helcig Michael |
+|4 / 14.01.2018 / 0.4 | 3. (Funktionale Anforderungen) | Update der beiden Diagramme | Hannes Gerstmayr |
 
 ## Inhalt
 
