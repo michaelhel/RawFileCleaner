@@ -5,7 +5,7 @@
 | Projektleiter      | Helcig Michael   |
 | Verantwortlich     | Thomas Stütz     |
 | Erstellt am        | 18.11.2017       |
-| Zuletzt geändert   | 01.12.2017       |
+| Zuletzt geändert   | 14.01.2018       |
 
 ## Weitere Produktinformationen
 Mitwirkend
