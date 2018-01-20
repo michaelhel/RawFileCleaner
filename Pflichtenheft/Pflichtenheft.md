@@ -51,7 +51,7 @@ Es soll im Rahmen des Gegenstandes "Systemplanung und Projektentwicklung" ein Pr
 Es stellt ohne professionelle Software einen großen Aufwand dar, die Raw – Dateien von bereits gelöschten JPEG – Dateien zu entfernen. Das zu entwickelnde Programm soll diesen langwierigen Arbeitsschritt erleichtern.
 
 ### 2.1 Ausgangssituation
-Bei (fast) allen Kameras kann jedes Foto als RAW und JPEG Datei gespeichert.
+Bei (fast) allen Kameras kann jedes Foto als RAW und JPEG Datei gespeichert werden.
 
 ###### Was ist RAW?
 Beim Fotografieren im RAW-Format werden die Fotos unbearbeitet und unkomprimiert komplett „roh“ auf der Speicherkarte abgelegt. Dabei werden die Bilder nicht im JPG-Format gespeichert, sondern in einem spezifischen Rohdatenformat, welches je nach Hersteller ein anderes ist (Canon verwendet z.B. die Dateiendung .CR2). Das RAW-Format beinhaltet sämtliche Bildinformationen in unbearbeiteter Form, so wie sie vom Sensor der Kamera aufgezeichnet worden. Die Dateien lassen sich mithilfe gängiger Programme wie z.B. *Photoshop Elements* oder *Lightroom* bearbeiten.
