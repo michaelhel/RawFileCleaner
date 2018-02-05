@@ -5,7 +5,7 @@
 | Projektleiter      | Helcig Michael   |
 | Verantwortlich     | Thomas Stütz     |
 | Erstellt am        | 18.11.2017       |
-| Zuletzt geändert   | 14.01.2018       |
+| Zuletzt geändert   | 05.02.2018       |
 
 ## Weitere Produktinformationen
 Mitwirkend
@@ -22,6 +22,7 @@ Mitwirkend
 |4 / 03.12.2017 / 0.4 | Alle | Pflichtenheft Verbesserung | Christian Straßmayr |
 |5 / 14.12.2017 / 0.5 | Alle | Pflichtenheft Verbesserung | Christian Straßmayr |
 |6 / 14.01.2018 / 0.6 | 3. (Funktionale Anforderungen) | Update der beiden Diagramme | Hannes Gerstmayr |
+|7 / 14.01.2018 / 0.6 | 3. (Funktionale Anforderungen) | Update der des UserInterfaces | Helcig Michael |
 
 ## Inhalt
 
@@ -39,9 +40,8 @@ Mitwirkend
 * 6 Risikoakzeptanz
 * 7 Lebenszyklusanalyse und Gesamtsystemarchitektur
 * 8 Lieferumfang
-* 9 Abnahmekriterien
-* 10 Literaturverzeichnis
-* 11 Abbildungsverzeichnis
+* 9 Literaturverzeichnis
+* 10 Abbildungsverzeichnis
 
 # 1 Motivation
 Es soll im Rahmen des Gegenstandes "Systemplanung und Projektentwicklung" ein Programm implementiert werden, welches die RAW – Dateien in einem Verzeichnis löscht, zu welchen es keine passenden JPEG – Dateien mehr gibt.
@@ -128,13 +128,11 @@ Eine Stilllegung ist nicht geplant, da der RawFileCleaner ohne zusätzlichen Auf
 Zuerst erfolgt eine Lieferung der Programmfunktionalität ohne GUI.
 Abschließend folgt die GUI und eventuell Verbesserungen am Code.
 
-# 9 Abnahmekriterien
-Das Programm muss möglichst wenig Ressourcen verwenden.
 
-# 10 Literaturverzeichnis
+# 9 Literaturverzeichnis
 Diagramme und Bilder sind (mit Hilfe von Drittanbietertools) von uns erstellt worden.
 
-# 11 Abbildungsverzeichnis
+# 10 Abbildungsverzeichnis
 * Abb. 1:	UseCase.png
 * Abb. 2:	UserInterface.png
 * Abb. 3:	ActivityDiagram.png
