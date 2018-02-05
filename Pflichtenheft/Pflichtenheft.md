@@ -22,7 +22,7 @@ Mitwirkend
 |4 / 03.12.2017 / 0.4 | Alle | Pflichtenheft Verbesserung | Christian Straßmayr |
 |5 / 14.12.2017 / 0.5 | Alle | Pflichtenheft Verbesserung | Christian Straßmayr |
 |6 / 14.01.2018 / 0.6 | 3. (Funktionale Anforderungen) | Update der beiden Diagramme | Hannes Gerstmayr |
-|7 / 14.01.2018 / 0.6 | 3. (Funktionale Anforderungen) | Update der des UserInterface | Helcig Michael |
+|7 / 14.01.2018 / 0.6 | 3. (Funktionale Anforderungen) | Update des UserInterface | Helcig Michael |
 
 ## Inhalt
 
