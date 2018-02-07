@@ -97,11 +97,6 @@ Fehlerfälle treten auf wenn:
 <img src="images/ActivityDiagram.png">
 
 # 4 Nicht-funktionale Anforderungen
-| Name |Benutzbarkeitsanforderung  |
-|------|---------------------------|
-| Typ |  USE |
-| Beschreibung  | Die Software soll sehr einfach bedienbar sein.  |
-
 | Name |Effizienzanforderung  |
 |------|----------------------|
 | Typ |  EFFIZIENZ |
