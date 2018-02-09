@@ -5,7 +5,15 @@ storage = require('electron-json-storage');
 var includeSubfolders = false;
 
 function includeSubfolder() {
-    includeSubfolders = true;
+    if (includeSubfolders) {
+        document.getElementById("imgIncludeSubfolders").src = "img/notIncludeSubfolders.svg";
+        includeSubfolders = false;
+    }
+    else {
+        document.getElementById("imgIncludeSubfolders").src = "img/includeSubfolders.svg";
+        includeSubfolders = true;
+    }
+
 }
 
 function cleanFiles() {
