@@ -10,7 +10,7 @@ let mainWindow;
 app.on('ready', function(){
   mainWindow = new BrowserWindow({
     width: 800,
-    height: 400,
+    height: 420,
     resizable: false,
     fullscreen: false,
     titleBarStyle: 'hiddenInset',
