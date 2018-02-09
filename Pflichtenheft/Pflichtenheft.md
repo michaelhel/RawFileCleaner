@@ -23,7 +23,7 @@ Mitwirkend
 |5 / 14.12.2017 / 0.5 | Alle | Pflichtenheft Verbesserung | Christian Straßmayr |
 |6 / 14.01.2018 / 0.6 | 3. (Funktionale Anforderungen) | Update der beiden Diagramme | Hannes Gerstmayr |
 |7 / 14.01.2018 / 0.6 | 3. (Funktionale Anforderungen) | Update des UserInterface | Helcig Michael |
-|8 / 09.02.2018 / 0.6 | 3. (Funktionale Anforderungen) | Update der Tabelle | Helcig Michael |
+|8 / 09.02.2018 / 0.6 | 4. (Nicht-funktionale Anforderungen) | Update der Tabelle | Helcig Michael |
 
 ## Inhalt
 
@@ -101,6 +101,7 @@ Fehlerfälle treten auf wenn:
 <p align="center">
   <img width="200" src="images/ActivityDiagram.png" >
 </p>
+
 # 4 Nicht-funktionale Anforderungen
 
 | Name |Effizienzanforderung  |
