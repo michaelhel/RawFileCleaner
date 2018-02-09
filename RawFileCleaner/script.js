@@ -29,11 +29,8 @@ function cleanFiles() {
         electronFs.readdir(path, (err, dir) => {
             for (var i = 0; i < dir.length; i++) {
                 fileName = dir[i];
-
-                if (fileName.endsWith(".raw") && !JpgExists(path + "\\" + fileName)) {
-                    console.log(path);
-                    console.log(fileName);
-
+                var rawFormatOrFalse = endsWithRawFormat(fileName);
+                if (rawFormatOrFalse && !JpgExists(path + "\\" + fileName, rawFormatOrFalse)) {
                     deleteFile(path, fileName);
                 }
             }
@@ -41,12 +38,26 @@ function cleanFiles() {
     });
 }
 
-function JpgExists(fileName) {
+function JpgExists(fileName, rawFormat) {
     var alljpgFormats = ["JPG", "JPEG"];
-    for (var j = 0; j < alljpgFormats.length; j++) {
-        if (electronFs.existsSync(fileName.replace(".raw", "." + alljpgFormats[j].toLocaleLowerCase()))
-            || electronFs.existsSync(fileName.replace(".raw", "." + alljpgFormats[j]))) {
+    for (var i = 0; i < alljpgFormats.length; i++) {
+        if (electronFs.existsSync(fileName.replace(rawFormat, alljpgFormats[i].toLocaleLowerCase()))
+            || electronFs.existsSync(fileName.replace(rawFormat, alljpgFormats[i]))) {
             return true;
+        }
+    }
+    return false;
+}
+
+function endsWithRawFormat(fileName) {
+    var allRawFormats = ["K25", "RAW", "NRW", "CR2", "ARW", "RAF", "RWZ", "NEF", "FFF", "DNG", "DCR", "RW2", "3FR", "CRW", "ARI", "ORF",
+        "SRF", "MOS", "BAY", "MFW", "EIP", "KDC", "SRW", "MEF", "MRW", "ERF", "J6I", "SR2", "X3F", "RWL", "PEF", "IIQ", "CXI", "CS1"];
+    for (var i = 0; i < allRawFormats.length; i++) {
+        if (fileName.endsWith(allRawFormats[i])) {
+            return allRawFormats[i];
+        }
+        else if (fileName.endsWith(allRawFormats[i].toLocaleLowerCase())) {
+            return allRawFormats[i].toLocaleLowerCase();
         }
     }
     return false;
