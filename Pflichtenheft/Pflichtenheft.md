@@ -23,6 +23,7 @@ Mitwirkend
 |5 / 14.12.2017 / 0.5 | Alle | Pflichtenheft Verbesserung | Christian Straßmayr |
 |6 / 14.01.2018 / 0.6 | 3. (Funktionale Anforderungen) | Update der beiden Diagramme | Hannes Gerstmayr |
 |7 / 14.01.2018 / 0.6 | 3. (Funktionale Anforderungen) | Update des UserInterface | Helcig Michael |
+|8 / 09.02.2018 / 0.6 | 4. (Nicht-funktionale Anforderungen) | Update der Tabelle | Helcig Michael |
 
 ## Inhalt
 
@@ -73,11 +74,14 @@ Ziel ist es ein Programm zu verwirklichen das Hobby und semiprofessionellen Foto
 # 3 Funktionale Anforderungen
 Der Nutzer gibt den Ordner an in dem sich die RAW und die JPEG Dateien befinden und das Programm löscht automatisch alle RAW Dateien zu denen es keine passende JPEG Datei mehr gibt. Es gibt also nur einen Use Case.
 
-###### Use Case Diagramm:
-<img src="images/UseCase.png" width="750">
-
+##### Use Case Diagramm:
+<p align="center">
+  <img width="500" src="images/UseCase.png" >
+</p>
 ### GUI für den Aufruf des Use Cases
-<img src="images/UserInterface.png" width="900">
+<p align="center">
+  <img src="images/UserInterface.png" width="900">
+</p>
 
 |Eingabefeld| Erlaubte Eingabewerte|
 |-----------|----------------------|
@@ -94,13 +98,11 @@ Fehlerfälle treten auf wenn:
 * der User den Löschvorgang abbricht (zB: durch schließen des Programms)
 
 ### Beschreibung des allgemeinen Ablaufes
-<img src="images/ActivityDiagram.png">
+<p align="center">
+  <img width="200" src="images/ActivityDiagram.png" >
+</p>
 
 # 4 Nicht-funktionale Anforderungen
-| Name |Benutzbarkeitsanforderung  |
-|------|---------------------------|
-| Typ |  USE |
-| Beschreibung  | Die Software soll sehr einfach bedienbar sein.  |
 
 | Name |Effizienzanforderung  |
 |------|----------------------|
@@ -127,7 +129,6 @@ Eine Stilllegung ist nicht geplant, da der RawFileCleaner ohne zusätzlichen Auf
 # 8 Lieferumfang
 Zuerst erfolgt eine Lieferung der Programmfunktionalität ohne GUI.
 Abschließend folgt die GUI und eventuell Verbesserungen am Code.
-
 
 # 9 Literaturverzeichnis
 Diagramme und Bilder sind (mit Hilfe von Drittanbietertools) von uns erstellt worden.
