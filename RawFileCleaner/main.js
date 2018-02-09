@@ -12,6 +12,7 @@ app.on('ready', function(){
     width: 800,
     height: 400,
     resizable: false,
+    fullscreen: false,
     titleBarStyle: 'hiddenInset',
     title:'RawFileCleaner'
   });

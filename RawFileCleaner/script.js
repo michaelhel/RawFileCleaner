@@ -6,20 +6,6 @@ var includeSubfolders = false;
 
 function includeSubfolder() {
     includeSubfolders = true;
-    cleanFiles();
-    /*
-    window.onbeforeunload = function cleanFiles() {
-        var message = "Your confirmation message goes here.",
-        e = e || window.event;
-        // For IE and Firefox
-        if (e) {
-            e.returnValue = message;
-        }
-        // For Safari
-        return message;
-    };
-    window.location = "loading.html";
-    */
 }
 
 function cleanFiles() {
@@ -65,7 +51,17 @@ function endsWithRawFormat(fileName) {
 
 function deleteFile(path, fileName) {
     var fileNames = path + "\\" + fileName;
-    trash([fileNames, null]).then(() => {
-        console.log('deleted ' + fileName);
+    alert(path + " " + fileName);
+    if (electronFs.existsSync(fileNames)) {
+        electronFs.unlink(fileNames, (err) => {
+            if (err) {
+                alert("An error ocurred updating the file" + err.message);
+                console.log(err);
+                return;
+            }
+            console.log("File succesfully deleted");
     });
+    } else {
+        alert("This file doesn't exist, cannot delete");
+    }
 }
