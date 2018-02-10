@@ -3,7 +3,7 @@
 | Projektbezeichnung | Raw/Jpeg         |
 |--------------------|------------------|
 | Projektleiter      | Helcig Michael   |
-| Verantwortlich     | Thomas Stütz     |
+| Verantwortlich     | Helcig Michael   |
 | Erstellt am        | 18.11.2017       |
 | Zuletzt geändert   | 05.02.2018       |
 
@@ -24,6 +24,7 @@ Mitwirkend
 |6 / 14.01.2018 / 0.6 | 3. (Funktionale Anforderungen) | Update der beiden Diagramme | Hannes Gerstmayr |
 |7 / 14.01.2018 / 0.6 | 3. (Funktionale Anforderungen) | Update des UserInterface | Helcig Michael |
 |8 / 09.02.2018 / 0.6 | 4. (Nicht-funktionale Anforderungen) | Update der Tabelle | Helcig Michael |
+|9 / 10.02.2018 / 0.6 | Pflichtenheft | Projektverantwortlicher geändert | Helcig Michael |
 
 ## Inhalt
 
