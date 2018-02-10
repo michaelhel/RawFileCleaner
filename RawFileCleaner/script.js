@@ -4,7 +4,8 @@ storage = require('electron-json-storage');
 
 
 var allRawFormats = ["K25", "RAW", "NRW", "CR2", "ARW", "RAF", "RWZ", "NEF", "FFF", "DNG", "DCR", "RW2", "3FR", "CRW", "ARI", "ORF",
-    "SRF", "MOS", "BAY", "MFW", "EIP", "KDC", "SRW", "MEF", "MRW", "ERF", "J6I", "SR2", "X3F", "RWL", "PEF", "IIQ", "CXI", "CS1"];
+    "SRF", "MOS", "BAY", "MFW", "EIP", "KDC", "SRW", "MEF", "MRW", "ERF", "J6I", "SR2", "X3F", "RWL", "PEF", "IIQ", "CXI", "CS1"
+];
 var allCompressedFormats = ["JPG", "JPEG", "TIFF"];
 var filePath = "";
 var includeSubfolders = false;
@@ -12,13 +13,12 @@ var includeSubfolders = false;
 /** 
  * Changes boolean on click.
  * Also changes the picture whether subfolders are included or not.
-*/
+ */
 function includeSubfolder() {
     if (includeSubfolders) {
         document.getElementById("imgIncludeSubfolders").src = "img/notIncludeSubfolders.svg";
         includeSubfolders = false;
-    }
-    else {
+    } else {
         document.getElementById("imgIncludeSubfolders").src = "img/includeSubfolders.svg";
         includeSubfolders = true;
     }
@@ -83,13 +83,13 @@ function hasSameName(filename1, filename2) {
  */
 function readFileNamesInFolder() {
     var foundMatch = false;
-    storage.get('path', function (error, path) {
+    storage.get('path', function(error, path) {
         if (error) throw error;
         electronFs.readdir(path, (err, dir) => {
             for (var i = 0; i < dir.length; i++) {
                 foundMatch = false;
                 if (endsWithRawFormat(dir[i])) {
-                    for (var j = 0; j < dir.length && ! foundMatch; j++) {
+                    for (var j = 0; j < dir.length && !foundMatch; j++) {
                         if (endsWithCompressedFormat(dir[j]) && hasSameName(dir[i], dir[j])) {
                             foundMatch = true;
                         }
@@ -103,12 +103,20 @@ function readFileNamesInFolder() {
     });
 }
 
-
 /**
  * Deletes file.
  * @param path
  * @param fileName
  */
-function deleteFile(path, fileName) {
-    console.log(path + "    " + fileName);
+function deleteFile(path, filename) {
+    var file;
+    if (platform = 'darwin') {
+        file = path + "/" + filename;
+    } else {
+        file = path + "\\" + filename;
+    }
+    const trash = require('trash');
+    trash([file, null]).then(() => {
+        console.log('deleted ' + filename);
+    });
 }
