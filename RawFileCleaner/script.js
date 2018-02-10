@@ -10,6 +10,7 @@ var allCompressedFormats = ["JPG", "JPEG", "TIFF"];
 
 var allRawFiles = [];
 var allCompressedFiles = [];
+var allRawFilesToDelete = [];
 
 function includeSubfolder() {
     if (includeSubfolders) {
@@ -25,33 +26,39 @@ function includeSubfolder() {
 function cleanFiles() {
     getAllFileNames();
     printAllFileNames();
-    while (allCompressedFiles.length != 0) {
-        deleteExistingNames();
-    }
+    filterFilesWithoutMatch();
 }
 
-function deleteExistingNames() {
-    for (var i = 0; i < allCompressedFiles.length; i++) {
-        for (var j = 0; i < allRawFiles.length; j++)  {
-            if (allRawFiles[j] === allCompressedFiles[i]) {
-                allRawFiles.splice(j, 1);
-                allCompressedFiles.splice(i, 1);
-                return;
+function filterFilesWithoutMatch() {
+    var foundMatch;
+    for (var i = 0; i < allRawFiles.length; i++) {
+        fountMatch = false;
+        for (var j = 0; i < allCompressedFiles.length && !fountMatch; j++)  {
+            if (allRawFiles[i].startsWith(allCompressedFiles[j])) {
+                foundMatch = true;
             }
+        }
+        if (!foundMatch) {
+            allRawFilesToDelete.push(allRawFiles[i]);
         }
     }
 }
 
 function printAllFileNames() {
-    console.log("All " + allRawFiles.length + ": ");
+    console.log("All Raw" + allRawFiles.length + ": ");
     for (var i = 0; i < allRawFiles.length; i++) {
         console.log(allRawFiles[i]);
     }
-    console.log("All " + allCompressedFiles.length + ": ");
+    console.log("All Compressed" + allCompressedFiles.length + ": ");
     for (var i = 0; i < allCompressedFiles.length; i++) {
         console.log(allCompressedFiles[i]);
     }
+    console.log("All Raw Files to delete" + allRawFilesToDelete.length + ": ");
+    for (var i = 0; i < allRawFilesToDelete.length; i++) {
+        console.log(allRawFilesToDelete[i]);
+    }
 }
+
 function getAllFileNames () {
     storage.get('path', function (error, path) {
         if (error) throw error;
@@ -59,16 +66,17 @@ function getAllFileNames () {
             for (var i = 0; i < dir.length; i++) {
                 fileName = dir[i];
                 if (endsWithRawFormat(fileName)) {
+                    console.log("push raw")
                     allRawFiles.push(fileName);
                 }
                 else if (endsWithCompressedFormat(fileName)) {
+                    console.log("push compressed")
                     allCompressedFiles.push(fileName);
                 }
             }
         });
     });
 }
-
 
 function endsWithRawFormat(fileName) {
     for (var i = 0; i < allRawFormats.length; i++) {
