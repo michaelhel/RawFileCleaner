@@ -11,6 +11,7 @@ var allCompressedFormats = ["JPG", "JPEG", "TIFF"];
 
 var allRawFiles = [];
 var allCompressedFiles = [];
+var allRawFilesToDelete = [];
 
 function includeSubfolder() {
     if (includeSubfolders) {
@@ -25,6 +26,7 @@ function includeSubfolder() {
 function cleanFiles() {
     console.log(allCompressedFiles.length);
     getAllFileNames();
+<<<<<<< HEAD
     console.log(allCompressedFiles.length);
     while (allCompressedFiles.length != 0) {
         deleteExistingNames();
@@ -39,14 +41,50 @@ function deleteExistingNames() {
                 allRawFiles.splice(j, 1);
                 allCompressedFiles.splice(i, 1);
                 return;
+=======
+    printAllFileNames();
+    filterFilesWithoutMatch();
+}
+
+function filterFilesWithoutMatch() {
+    var foundMatch;
+    for (var i = 0; i < allRawFiles.length; i++) {
+        fountMatch = false;
+        for (var j = 0; i < allCompressedFiles.length && !fountMatch; j++)  {
+            if (allRawFiles[i].startsWith(allCompressedFiles[j])) {
+                foundMatch = true;
+>>>>>>> 6c54e7b3417ed64998f3ca3d33af0cd6a508e567
             }
+        }
+        if (!foundMatch) {
+            allRawFilesToDelete.push(allRawFiles[i]);
         }
     }
 }
 
+<<<<<<< HEAD
 function getAllFileNames() {
     console.log("getAll");
     storage.get('path', function(error, path) {
+=======
+function printAllFileNames() {
+    console.log("All Raw" + allRawFiles.length + ": ");
+    for (var i = 0; i < allRawFiles.length; i++) {
+        console.log(allRawFiles[i]);
+    }
+    console.log("All Compressed" + allCompressedFiles.length + ": ");
+    for (var i = 0; i < allCompressedFiles.length; i++) {
+        console.log(allCompressedFiles[i]);
+    }
+    console.log("All Raw Files to delete" + allRawFilesToDelete.length + ": ");
+    for (var i = 0; i < allRawFilesToDelete.length; i++) {
+        console.log(allRawFilesToDelete[i]);
+    }
+}
+
+function getAllFileNames () {
+    storage.get('path', function (error, path) {
+>>>>>>> 6c54e7b3417ed64998f3ca3d33af0cd6a508e567
         if (error) throw error;
         console.log("storage get");
         electronFs.readdir(path, (err, dir) => {
@@ -54,10 +92,18 @@ function getAllFileNames() {
             for (var i = 0; i < dir.length; i++) {
                 fileName = dir[i];
                 if (endsWithRawFormat(fileName)) {
+<<<<<<< HEAD
                     console.log("push Raw");
                     allRawFiles.push(fileName);
                 } else if (endsWithCompressedFormat(fileName)) {
                     console.log("push Compressed");
+=======
+                    console.log("push raw")
+                    allRawFiles.push(fileName);
+                }
+                else if (endsWithCompressedFormat(fileName)) {
+                    console.log("push compressed")
+>>>>>>> 6c54e7b3417ed64998f3ca3d33af0cd6a508e567
                     allCompressedFiles.push(fileName);
                 }
             }
@@ -66,6 +112,7 @@ function getAllFileNames() {
     printAllFileNames();
 }
 
+<<<<<<< HEAD
 function printAllFileNames() {
     console.log("printAll");
     console.log("All " + allRawFiles.length + ": ");
@@ -78,6 +125,8 @@ function printAllFileNames() {
     }
 }
 
+=======
+>>>>>>> 6c54e7b3417ed64998f3ca3d33af0cd6a508e567
 function endsWithRawFormat(fileName) {
     for (var i = 0; i < allRawFormats.length; i++) {
         if (fileName.endsWith(allRawFormats[i])) {
