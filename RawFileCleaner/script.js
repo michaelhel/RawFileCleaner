@@ -7,7 +7,6 @@ var allRawFormats = ["K25", "RAW", "NRW", "CR2", "ARW", "RAF", "RWZ", "NEF", "FF
     "SRF", "MOS", "BAY", "MFW", "EIP", "KDC", "SRW", "MEF", "MRW", "ERF", "J6I", "SR2", "X3F", "RWL", "PEF", "IIQ", "CXI", "CS1"
 ];
 var allCompressedFormats = ["JPG", "JPEG", "TIFF"];
-var filePath = "";
 var includeSubfolders = false;
 
 /** 
