@@ -80,6 +80,7 @@ Der Nutzer gibt den Ordner an in dem sich die RAW und die JPEG Dateien befinden 
   <img width="500" src="images/UseCase.png" >
 </p>
 ### GUI für den Aufruf des Use Cases
+
 <p align="center">
   <img src="images/UserInterface.png" width="900">
 </p>
