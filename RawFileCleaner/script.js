@@ -28,8 +28,8 @@ function includeSubfolder() {
  * Starts the cleaning process.
  */
 function cleanFiles() {
-    var b = hasSameName("file1.jpg", "file1.raw");
-    console.log(b);
+    readFileNamesInFolder();
+    return;
 }
 
 /**
@@ -61,7 +61,7 @@ function endsWithCompressedFormat(fileName) {
 }
 
 /**
- *
+ * Returns true if the two names are equal. (without the ending)
  * @param firstFileName
  * @param secondFileName
  */
@@ -77,8 +77,40 @@ function hasSameName(filename1, filename2) {
     return filename1 === filename2;
 }
 
-
 /**
  * Reads all filenames from the folder.
  */
-function readFileNamesInFolder() {}
+function readFileNamesInFolder() {
+    var foundMatch = false;
+    storage.get('path', function(error, path) {
+        if (error) throw error;
+        electronFs.readdir(path, (err, dir) => {
+            for (var i = 0; i < dir.length; i++) {
+                foundMatch = false;
+                if (endsWithRawFormat(dir[i])) {
+                    for (var j = 0; j < dir.length && !foundMatch; j++) {
+                        if (endsWithCompressedFormat(dir[j]) && hasSameName(dir[i], dir[j])) {
+                            foundMatch = true;
+                        }
+                    }
+                    if (!foundMatch) {
+                        deleteFile(path, dir[i]);
+                    }
+                }
+            }
+        });
+    });
+}
+
+/**
+ * Deletes file.
+ * @param path
+ * @param fileName
+ */
+function deleteFile(path, fileName) {
+    const trash = require('trash');
+    var filenames = path + "\\" + filename;
+    trash([filenames, null]).then(() => {
+        console.log('deleted ' + filename);
+    });
+}
