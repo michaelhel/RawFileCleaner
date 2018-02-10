@@ -9,8 +9,10 @@ let mainWindow;
 //Starting App
 app.on('ready', function(){
   mainWindow = new BrowserWindow({
-    width: 800,
-    height: 400,
+    /*width: 800,
+    height: 400,*/
+      width: 2000,
+      height: 800,
     resizable: false,
     fullscreen: false,
     titleBarStyle: 'hiddenInset',
