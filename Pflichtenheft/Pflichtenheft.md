@@ -25,6 +25,7 @@ Mitwirkend
 |7 / 14.01.2018 / 0.6 | 3. (Funktionale Anforderungen) | Update des UserInterface | Helcig Michael |
 |8 / 09.02.2018 / 0.6 | 4. (Nicht-funktionale Anforderungen) | Update der Tabelle | Helcig Michael |
 |9 / 10.02.2018 / 0.6 | Pflichtenheft | Projektverantwortlicher geändert | Helcig Michael |
+|10 / 10.02.2018 / 0.6 | Lebenszyklusanalyse und Gesamtsystemarchitektur, Lieferumfang | Verbesserungen | Helcig Michael |
 
 ## Inhalt
 
@@ -49,7 +50,8 @@ Mitwirkend
 Es soll im Rahmen des Gegenstandes "Systemplanung und Projektentwicklung" ein Programm implementiert werden, welches die RAW – Dateien in einem Verzeichnis löscht, zu welchen es keine passenden JPEG – Dateien mehr gibt.
 
 # 2 Ausgangssituation und Zielsetzung
-Es stellt ohne Software einen großen Aufwand dar, die Raw – Dateien von bereits gelöschten JPEG – Dateien zu entfernen. Das zu entwickelnde Programm soll diesen langwierigen Arbeitsschritt automatisieren.
+Es stellt ohne Software einen großen Aufwand dar, die Raw – Dateien von bereits gelöschten JPEG – Dateien zu entfernen. 
+Das zu entwickelnde Programm automatisiert diesen langwierigen Arbeitsschritt.
 
 ### 2.1 Ausgangssituation
 Bei (fast) allen Kameras kann jedes Foto als RAW und JPEG Datei gespeichert werden.
@@ -79,6 +81,8 @@ Der Nutzer gibt den Ordner an in dem sich die RAW und die JPEG Dateien befinden 
 <p align="center">
   <img width="500" src="images/UseCase.png" >
 </p>
+
+
 ### GUI für den Aufruf des Use Cases
 <p align="center">
   <img src="images/UserInterface.png" width="900">
@@ -122,14 +126,13 @@ Wird der ausgewählte Ordner während dem Löschvorgang gelöscht wird eine Fehl
 Zuerst wird die Funktion zum Auswählen des gewünschten Verzeichnisses, sowie zum Finden und Löschen der RAW Dateien implementiert. Wenn dies funktioniert wird das Programm um eine schlichte, benutzerfreundliche GUI erweitert.
 
 ### Wartung
-Wenn das Programm voll funktionsfähig ist, ist keine besondere Wartung mehr nötig.
+Wenn neue Raw - Formate entwickelt wurden, werden diese umgehend hinzugefügt.
 
 ### Stilllegung
 Eine Stilllegung ist nicht geplant, da der RawFileCleaner ohne zusätzlichen Aufwand für lange Zeit genutzt werden kann.
 
 # 8 Lieferumfang
-Zuerst erfolgt eine Lieferung der Programmfunktionalität ohne GUI.
-Abschließend folgt die GUI und eventuell Verbesserungen am Code.
+Das Programm wird mit dem ersten Release in seiner Grundfunktionalität voll funtkionsfähig sein.
 
 # 9 Literaturverzeichnis
 Diagramme und Bilder sind (mit Hilfe von Drittanbietertools) von uns erstellt worden.
