@@ -1,19 +1,19 @@
 var remote = require('electron').remote;
 var electronFs = remote.require('fs');
-const trash = require('trash');
 storage = require('electron-json-storage');
-var includeSubfolders = false;
-var filePath;
+
 
 var allRawFormats = ["K25", "RAW", "NRW", "CR2", "ARW", "RAF", "RWZ", "NEF", "FFF", "DNG", "DCR", "RW2", "3FR", "CRW", "ARI", "ORF",
     "SRF", "MOS", "BAY", "MFW", "EIP", "KDC", "SRW", "MEF", "MRW", "ERF", "J6I", "SR2", "X3F", "RWL", "PEF", "IIQ", "CXI", "CS1"
 ];
 var allCompressedFormats = ["JPG", "JPEG", "TIFF"];
+var filePath = "";
+var includeSubfolders = false;
 
-var allRawFiles = [];
-var allCompressedFiles = [];
-var allRawFilesToDelete = [];
-
+/** 
+ * Changes boolean on click.
+ * Also changes the picture whether subfolders are included or not.
+ */
 function includeSubfolder() {
     if (includeSubfolders) {
         document.getElementById("imgIncludeSubfolders").src = "img/notIncludeSubfolders.svg";
@@ -24,65 +24,19 @@ function includeSubfolder() {
     }
 }
 
+/**
+ * Starts the cleaning process.
+ */
 function cleanFiles() {
-    storage.get('path', function(error, path) {
-        if (error) throw error;
-        filePath = path;
-        console.log(path);
-    });
-    getAllFileNames();
-    printAllFileNames();
-    filterFilesWithoutMatch();
+    var b = hasSameName("file1.jpg", "file1.raw");
+    console.log(b);
 }
 
-function filterFilesWithoutMatch() {
-    var foundMatch;
-    for (var i = 0; i < allRawFiles.length; i++) {
-        fountMatch = false;
-        for (var j = 0; i < allCompressedFiles.length && !fountMatch; j++) {
-            if (allRawFiles[i].startsWith(allCompressedFiles[j])) {
-                foundMatch = true;
-            }
-        }
-        if (!foundMatch) {
-            allRawFilesToDelete.push(allRawFiles[i]);
-        }
-    }
-}
-
-function printAllFileNames() {
-    console.log("All Raw" + allRawFiles.length + ": ");
-    for (var i = 0; i < allRawFiles.length; i++) {
-        console.log(allRawFiles[i]);
-    }
-    console.log("All Compressed" + allCompressedFiles.length + ": ");
-    for (var i = 0; i < allCompressedFiles.length; i++) {
-        console.log(allCompressedFiles[i]);
-    }
-    console.log("All Raw Files to delete" + allRawFilesToDelete.length + ": ");
-    for (var i = 0; i < allRawFilesToDelete.length; i++) {
-        console.log(allRawFilesToDelete[i]);
-    }
-}
-
-function getAllFileNames() {
-    storage.get('path', function(error, path) {
-        if (error) throw error;
-        electronFs.readdir(path, (err, dir) => {
-            for (var i = 0; i < dir.length; i++) {
-                fileName = dir[i];
-                if (endsWithRawFormat(fileName)) {
-                    console.log("push raw")
-                    allRawFiles.push(fileName);
-                } else if (endsWithCompressedFormat(fileName)) {
-                    console.log("push compressed")
-                    allCompressedFiles.push(fileName);
-                }
-            }
-        });
-    });
-}
-
+/**
+ * Returns true if the fileName ends with existing raw format.
+ * @param fileName
+ * @returns {boolean}
+ */
 function endsWithRawFormat(fileName) {
     for (var i = 0; i < allRawFormats.length; i++) {
         if (fileName.endsWith(allRawFormats[i])) {
@@ -92,7 +46,11 @@ function endsWithRawFormat(fileName) {
     return false;
 }
 
-
+/**
+ * Returns true if the fileName ends with existing compressed format.
+ * @param fileName
+ * @returns {boolean}
+ */
 function endsWithCompressedFormat(fileName) {
     for (var i = 0; i < allCompressedFormats.length; i++) {
         if (fileName.endsWith(allCompressedFormats[i])) {
@@ -102,19 +60,25 @@ function endsWithCompressedFormat(fileName) {
     return false;
 }
 
-function deleteFile(path, fileName) {
-    var fileNames = path + "\\" + fileName;
-    alert(path + " " + fileName);
-    if (electronFs.existsSync(fileNames)) {
-        electronFs.unlink(fileNames, (err) => {
-            if (err) {
-                alert("An error ocurred updating the file" + err.message);
-                console.log(err);
-                return;
-            }
-            console.log("File succesfully deleted");
-        });
-    } else {
-        alert("This file doesn't exist, cannot delete");
-    }
+/**
+ *
+ * @param firstFileName
+ * @param secondFileName
+ */
+function hasSameName(filename1, filename2) {
+    do {
+        filename1 = filename1.slice(0, -1);
+    } while (filename1.charAt(filename1.length - 1) != '.');
+    filename1 = filename1.slice(0, -1);
+    do {
+        filename2 = filename2.slice(0, -1);
+    } while (filename2.charAt(filename2.length - 1) != '.');
+    filename2 = filename2.slice(0, -1);
+    return filename1 === filename2;
 }
+
+
+/**
+ * Reads all filenames from the folder.
+ */
+function readFileNamesInFolder() {}
