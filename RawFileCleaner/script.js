@@ -2,33 +2,61 @@ var remote = require('electron').remote;
 var electronFs = remote.require('fs');
 const trash = require('trash');
 storage = require('electron-json-storage');
-var includeSubfolders = false;
 
 function includeSubfolder() {
-    includeSubfolders = true;
-}
-
-function cleanFiles() {
-    storage.get('path', function (error, path) {
+    storage.get('includeSubfolders', function (error, includeSubfolders) {
         if (error) throw error;
-
-        electronFs.readdir(path, (err, dir) => {
-            for (var i = 0; i < dir.length; i++) {
-                fileName = dir[i];
-                var rawFormatOrFalse = endsWithRawFormat(fileName);
-                if (rawFormatOrFalse && !JpgExists(path + "\\" + fileName, rawFormatOrFalse)) {
-                    deleteFile(path, fileName);
+        if(!includeSubfolders){
+            storage.set('includeSubfolders', true, (err) => {
+                if (err) {
+                    console.log(err);
                 }
-            }
-        })
+            });
+            document.getElementById("imgIncludeSubfolders").src = "img/includeSubfolders.svg";
+        }
+        else{
+            storage.set('includeSubfolders', false, (err) => {
+                if (err) {
+                    console.log(err);
+                }
+            });
+            document.getElementById("imgIncludeSubfolders").src = "img/notIncludeSubfolders.svg";
+        }
     });
 }
 
-function JpgExists(fileName, rawFormat) {
-    var alljpgFormats = ["JPG", "JPEG"];
-    for (var i = 0; i < alljpgFormats.length; i++) {
-        if (electronFs.existsSync(fileName.replace(rawFormat, alljpgFormats[i].toLocaleLowerCase()))
-            || electronFs.existsSync(fileName.replace(rawFormat, alljpgFormats[i]))) {
+function cleanFilesButtonHandler() {
+    storage.get('path', function (error, path) {
+        if (error) throw error;
+        storage.get('includeSubfolders', function (error, includeSubfolders) {
+            if (error) throw error;
+            cleanFiles(path, includeSubfolders);
+        });
+    });
+}
+
+function cleanFiles(path, includeSubfolders) {
+    electronFs.readdir(path, (err, dir) => {
+        for (var i = 0; i < dir.length; i++) {
+            fileName = dir[i];
+            if (includeSubfolders) {
+                if (electronFs.lstatSync(path + "/" + fileName).isDirectory()) {
+                    cleanFiles(path + "/" + fileName, includeSubfolders);
+                }
+            }
+            var rawFormatOrFalse = endsWithRawFormat(fileName);
+            if (rawFormatOrFalse && !compressedFormatExists(path + "/" + fileName, rawFormatOrFalse)) {
+                deleteFile(path + "/" + fileName);
+            }
+        }
+    })
+}
+
+function compressedFormatExists(fileName, rawFormat) {
+    var allCompressedFormats = ["JPG", "JPEG", "TIFF"];
+    for (var i = 0; i < allCompressedFormats.length; i++) {
+        if (electronFs.existsSync(fileName.replace(rawFormat, allCompressedFormats[i].toLocaleLowerCase()))
+            || electronFs.existsSync(fileName.replace(rawFormat, allCompressedFormats[i]))) {
             return true;
         }
     }
@@ -49,19 +77,15 @@ function endsWithRawFormat(fileName) {
     return false;
 }
 
-function deleteFile(path, fileName) {
-    var fileNames = path + "\\" + fileName;
-    alert(path + " " + fileName);
-    if (electronFs.existsSync(fileNames)) {
-        electronFs.unlink(fileNames, (err) => {
-            if (err) {
-                alert("An error ocurred updating the file" + err.message);
-                console.log(err);
-                return;
-            }
-            console.log("File succesfully deleted");
+function deleteFile(fileLocation) {
+    electronFs.unlinkSync(fileLocation, (err) => {
+        if (err) {
+            console.log(err);
+        }
     });
-    } else {
-        alert("This file doesn't exist, cannot delete");
-    }
+    /*
+    trash([file, null]).then(() => {
+        console.log('deleted ' + filename);
+    });
+    */
 }

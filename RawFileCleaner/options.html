@@ -38,6 +38,7 @@
     </div>
     <script type="text/javascript">
         var remote = require('electron').remote;
+        storage = require('electron-json-storage');
         document.addEventListener('keydown', function(e) {
             if (e.which === 123) {
                 remote.getCurrentWindow().webContents.openDevTools();
@@ -45,6 +46,11 @@
                 location.reload();
             }
         });
+        storage.set('includeSubfolders', false, (err) => {
+        if (err) {
+            console.log(err);
+        }
+    });
     </script>
 </body>
 

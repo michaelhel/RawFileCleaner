@@ -2,29 +2,34 @@ const electron = require('electron');
 const path = require('path');
 const url = require('url');
 
-const {app, BrowserWindow, Menu} = electron;
+const { app, BrowserWindow, Menu } = electron;
 
 let mainWindow;
 
 //Starting App
-app.on('ready', function(){
+app.on('ready', function () {
   mainWindow = new BrowserWindow({
     width: 900,
     height: 450,
     resizable: false,
     fullscreen: false,
     titleBarStyle: 'hiddenInset',
-    title:'RawFileCleaner'
+    title: 'RawFileCleaner',
+    show: false
   });
+
+  mainWindow.once('ready-to-show', () => {
+    mainWindow.show()
+  })
 
   mainWindow.loadURL(url.format({
     pathname: path.join(__dirname, 'index.html'),
     protocol: 'file:',
-    slashes:true
+    slashes: true
   }));
 
   //Closing app
-  mainWindow.on('closed', function(){
+  mainWindow.on('closed', function () {
     app.quit();
   });
 
