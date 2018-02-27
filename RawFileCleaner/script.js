@@ -33,6 +33,7 @@ function includeSubfolder() {
  */
 function cleanFiles() {
     readFileNamesInFolder();
+    window.location.href = 'conclusion.html';
     return;
 }
 
