@@ -23,7 +23,7 @@
                         <a>
                             <img id="imgIncludeSubfolders" src="img/notIncludeSubfolders.svg" onclick="includeSubfolder()" />
                         </a>
-                        <p>Include subfolders</p>
+                        <p id="textIncludeSubfolders">Subfolders not included</p>
                     </th>
                 </tr>
                 <tr>
@@ -31,9 +31,12 @@
                         <button type="button" onclick="window.location.href = 'cleanFiles.html'">Next</button>
                     </td>
                 </tr>
+                <tr>
+                    <td>
+                        <p id="showPath"></p>
+                    </td>
+                </tr>
             </table>
-
-
         </div>
     </div>
     <script type="text/javascript">
@@ -45,6 +48,13 @@
                 location.reload();
             }
         });
+
+        window.onload = function() {
+            storage.get('path', function(error, path) {
+                if (error) throw error;
+                document.getElementById("showPath").innerHTML = "Your current path is " + path;
+            });
+        }
     </script>
 </body>
 
