@@ -1,3 +1,5 @@
+
+
 body {
     background-color: #282C34;
     font-family: 'Open Sans', sans-serif;
@@ -25,6 +27,7 @@ h2 {
 #options {
     text-align: center;
 }
+
 #title {
     padding-top: 10px;
     text-align: center;
@@ -40,11 +43,11 @@ h2 {
 }
 
 #options {
-    padding-top: 50px;
+    padding-top: 20px;
 }
 
 #cleanFiles {
-    margin-bottom: 100px;
+    margin-top: 50px;
 }
 
 #info {
@@ -69,6 +72,18 @@ h2 {
 #information {
     margin-left: 100px;
     margin-right: 100px;
+}
+
+#showPath {
+    margin-top: 20px;
+    font-size: 10px;
+    color: grey;
+}
+
+#warning {
+    margin-top: 20px;
+    font-size: 13px;
+    color: #FF1744;
 }
 
 img {

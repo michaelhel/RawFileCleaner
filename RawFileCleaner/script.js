@@ -7,7 +7,6 @@ var allRawFormats = ["K25", "RAW", "NRW", "CR2", "ARW", "RAF", "RWZ", "NEF", "FF
     "SRF", "MOS", "BAY", "MFW", "EIP", "KDC", "SRW", "MEF", "MRW", "ERF", "J6I", "SR2", "X3F", "RWL", "PEF", "IIQ", "CXI", "CS1"
 ];
 var allCompressedFormats = ["JPG", "JPEG", "TIFF"];
-var filePath = "";
 var includeSubfolders = false;
 
 /** 
@@ -17,12 +16,17 @@ var includeSubfolders = false;
 function includeSubfolder() {
     if (includeSubfolders) {
         document.getElementById("imgIncludeSubfolders").src = "img/notIncludeSubfolders.svg";
+        document.getElementById("textIncludeSubfolders").innerHTML = "Subfolders not included";
         includeSubfolders = false;
-    } else {
+    }
+    else {
         document.getElementById("imgIncludeSubfolders").src = "img/includeSubfolders.svg";
+        document.getElementById("textIncludeSubfolders").innerHTML = "Subfolders included";
         includeSubfolders = true;
     }
+
 }
+
 
 /**
  * Starts the cleaning process.
