@@ -18,9 +18,10 @@
         </div>
         <div id="cleanFiles">
             <a>
-                <img id="imgCleanFiles" src="img/cleanFiles.svg" onclick="cleanFiles()" />
+                <img id="imgCleanFiles" src="img/cleanFiles.svg" onmouseover="showWarning()" onmouseout="hideWarning()" onclick="cleanFiles()"/>
             </a>
             <p>Clean files</p>
+            <p id="warning"></p>
         </div>
     </div>
     <script type="text/javascript">
@@ -32,6 +33,14 @@
                 location.reload();
             }
         });
+
+        function showWarning() {
+            document.getElementById("warning").innerHTML = "Warning: Files without matching partner will be moved to trash";
+        }
+
+        function hideWarning() {
+            document.getElementById("warning").innerHTML = "";
+        }
     </script>
 </body>
 

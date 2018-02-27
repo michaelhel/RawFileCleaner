@@ -16,12 +16,17 @@ var includeSubfolders = false;
 function includeSubfolder() {
     if (includeSubfolders) {
         document.getElementById("imgIncludeSubfolders").src = "img/notIncludeSubfolders.svg";
+        document.getElementById("textIncludeSubfolders").innerHTML = "Subfolders not included";
         includeSubfolders = false;
-    } else {
+    }
+    else {
         document.getElementById("imgIncludeSubfolders").src = "img/includeSubfolders.svg";
+        document.getElementById("textIncludeSubfolders").innerHTML = "Subfolders included";
         includeSubfolders = true;
     }
+
 }
+
 
 /**
  * Starts the cleaning process.
