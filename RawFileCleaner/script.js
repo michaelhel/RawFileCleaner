@@ -108,8 +108,8 @@ function readFileNamesInFolder(path, includeSubfolders) {
         fileName = files[i];
         foundMatch = false;
         if (includeSubfolders) {
-            if (electronFs.lstatSync(path + "\\" + fileName).isDirectory()) {
-                readFileNamesInFolder(path + "\\" + fileName, includeSubfolders);
+            if (electronFs.lstatSync(path + "/" + fileName).isDirectory()) {
+                readFileNamesInFolder(path + "/" + fileName, includeSubfolders);
             }
         }
         if (endsWithRawFormat(fileName)) {
@@ -132,11 +132,7 @@ function readFileNamesInFolder(path, includeSubfolders) {
  */
 function deleteFile(path, filename) {
     var file;
-    if (platform = 'darwin') {
-        file = path + "/" + filename;
-    } else {
-        file = path + "\\" + filename;
-    }
+    file = path + "/" + filename;
     const trash = require('trash');
     trash([file, null]).then(() => {
         console.log('deleted ' + filename);
