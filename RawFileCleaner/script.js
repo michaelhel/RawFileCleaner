@@ -48,7 +48,7 @@ function cleanFiles() {
             readFileNamesInFolder(path, includeSubfolders);
         });
     });
-    window.location.href = 'conclusion.html';
+    //window.location.href = 'conclusion.html';
     return;
 }
 
