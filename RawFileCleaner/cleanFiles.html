@@ -18,7 +18,8 @@
         </div>
         <div id="cleanFiles">
             <a>
-                <img id="imgCleanFiles" src="img/cleanFiles.svg" onmouseover="showWarning()" onmouseout="hideWarning()" onclick="cleanFiles()"/>
+                <img id="imgCleanFiles" src="img/cleanFiles.svg" onmouseover="showWarning()" onmouseout="hideWarning()" onclick="cleanFiles()"
+                />
             </a>
             <p>Clean files</p>
             <p id="warning"></p>
@@ -26,21 +27,22 @@
     </div>
     <script type="text/javascript">
         var remote = require('electron').remote;
-        document.addEventListener('keydown', function(e) {
+        document.addEventListener('keydown', function (e) {
             if (e.which === 123) {
                 remote.getCurrentWindow().webContents.openDevTools();
             } else if (e.which === 116) {
                 location.reload();
             }
         });
-
         function showWarning() {
             document.getElementById("warning").innerHTML = "Warning: Files without matching partner will be moved to trash";
         }
-
         function hideWarning() {
             document.getElementById("warning").innerHTML = "";
         }
+        document.addEventListener('dragover', event => event.preventDefault())
+        document.addEventListener('drop', event => event.preventDefault())
     </script>
 </body>
+
 </html>

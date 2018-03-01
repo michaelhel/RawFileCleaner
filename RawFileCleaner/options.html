@@ -59,6 +59,8 @@
                 document.getElementById("showPath").innerHTML = "Your current path is " + path;
             });
         }
+        document.addEventListener('dragover', event => event.preventDefault())
+        document.addEventListener('drop', event => event.preventDefault())
     </script>
 </body>
 
