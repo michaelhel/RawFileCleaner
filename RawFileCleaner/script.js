@@ -7,24 +7,33 @@ var allRawFormats = ["K25", "RAW", "NRW", "CR2", "ARW", "RAF", "RWZ", "NEF", "FF
     "SRF", "MOS", "BAY", "MFW", "EIP", "KDC", "SRW", "MEF", "MRW", "ERF", "J6I", "SR2", "X3F", "RWL", "PEF", "IIQ", "CXI", "CS1"
 ];
 var allCompressedFormats = ["JPG", "JPEG", "TIFF"];
-var includeSubfolders = false;
 
 /** 
  * Changes boolean on click.
  * Also changes the picture whether subfolders are included or not.
  */
 function includeSubfolder() {
-    if (includeSubfolders) {
-        document.getElementById("imgIncludeSubfolders").src = "img/notIncludeSubfolders.svg";
-        document.getElementById("textIncludeSubfolders").innerHTML = "Subfolders not included";
-        includeSubfolders = false;
-    }
-    else {
-        document.getElementById("imgIncludeSubfolders").src = "img/includeSubfolders.svg";
-        document.getElementById("textIncludeSubfolders").innerHTML = "Subfolders included";
-        includeSubfolders = true;
-    }
-
+    storage.get('includeSubfolders', function (error, includeSubfolders) {
+        if (error) throw error;
+        if (!includeSubfolders) {
+            storage.set('includeSubfolders', true, (err) => {
+                if (err) {
+                    console.log(err);
+                }
+            });
+            document.getElementById("imgIncludeSubfolders").src = "img/includeSubfolders.svg";
+            document.getElementById("textIncludeSubfolders").innerHTML = "Subfolders included";
+        }
+        else {
+            storage.set('includeSubfolders', false, (err) => {
+                if (err) {
+                    console.log(err);
+                }
+            });
+            document.getElementById("imgIncludeSubfolders").src = "img/notIncludeSubfolders.svg";
+            document.getElementById("textIncludeSubfolders").innerHTML = "Subfolders not included";
+        }
+    });
 }
 
 
@@ -32,9 +41,19 @@ function includeSubfolder() {
  * Starts the cleaning process.
  */
 function cleanFiles() {
-    readFileNamesInFolder();
-    window.location.href = 'conclusion.html';
-    return;
+    var promise = new Promise(function (resolve, reject) {
+        storage.get('path', function (error, path) {
+            if (error) throw error;
+            storage.get('includeSubfolders', function (error, includeSubfolders) {
+                if (error) throw error;
+                readFileNamesInFolder(path, includeSubfolders);
+            });
+        });
+        resolve();
+    });
+    promise.then(function () {
+        window.location.href = 'conclusion.html';
+    });
 }
 
 /**
@@ -44,7 +63,7 @@ function cleanFiles() {
  */
 function endsWithRawFormat(fileName) {
     for (var i = 0; i < allRawFormats.length; i++) {
-        if (fileName.endsWith(allRawFormats[i])) {
+        if (fileName.endsWith(allRawFormats[i]) || fileName.endsWith(allRawFormats[i].toLocaleLowerCase())) {
             return true;
         }
     }
@@ -58,7 +77,7 @@ function endsWithRawFormat(fileName) {
  */
 function endsWithCompressedFormat(fileName) {
     for (var i = 0; i < allCompressedFormats.length; i++) {
-        if (fileName.endsWith(allCompressedFormats[i])) {
+        if (fileName.endsWith(allCompressedFormats[i]) || fileName.endsWith(allCompressedFormats[i].toLocaleLowerCase())) {
             return true;
         }
     }
@@ -86,26 +105,29 @@ function hasSameName(filename1, filename2) {
 /**
  * Reads all filenames from the folder.
  */
-function readFileNamesInFolder() {
+function readFileNamesInFolder(path, includeSubfolders) {
     var foundMatch = false;
-    storage.get('path', function(error, path) {
-        if (error) throw error;
-        electronFs.readdir(path, (err, dir) => {
-            for (var i = 0; i < dir.length; i++) {
-                foundMatch = false;
-                if (endsWithRawFormat(dir[i])) {
-                    for (var j = 0; j < dir.length && !foundMatch; j++) {
-                        if (endsWithCompressedFormat(dir[j]) && hasSameName(dir[i], dir[j])) {
-                            foundMatch = true;
-                        }
-                    }
-                    if (!foundMatch) {
-                        deleteFile(path, dir[i]);
-                    }
+    const files = electronFs.readdirSync(path);
+    var fileName;
+    for (var i = 0; i < files.length; i++) {
+        fileName = files[i];
+        foundMatch = false;
+        if (includeSubfolders) {
+            if (electronFs.lstatSync(path + "/" + fileName).isDirectory()) {
+                readFileNamesInFolder(path + "/" + fileName, includeSubfolders);
+            }
+        }
+        if (endsWithRawFormat(fileName)) {
+            for (var j = 0; j < files.length && !foundMatch; j++) {
+                if (endsWithCompressedFormat(files[j]) && hasSameName(fileName, files[j])) {
+                    foundMatch = true;
                 }
             }
-        });
-    });
+            if (!foundMatch) {
+                deleteFile(path, fileName);
+            }
+        }
+    }
 }
 
 /**
@@ -115,11 +137,7 @@ function readFileNamesInFolder() {
  */
 function deleteFile(path, filename) {
     var file;
-    if (platform = 'darwin') {
-        file = path + "/" + filename;
-    } else {
-        file = path + "\\" + filename;
-    }
+    file = path + "/" + filename;
     const trash = require('trash');
     trash([file, null]).then(() => {
         console.log('deleted ' + filename);
