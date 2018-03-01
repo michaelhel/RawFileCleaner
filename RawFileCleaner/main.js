@@ -9,8 +9,8 @@ let mainWindow;
 //Starting App
 app.on('ready', function(){
   mainWindow = new BrowserWindow({
-    width: 900,
-    height: 450,
+    width: 800,
+    height: 400,
     resizable: false,
     fullscreen: false,
     titleBarStyle: 'hiddenInset',
@@ -28,5 +28,5 @@ app.on('ready', function(){
     app.quit();
   });
 
-  //mainWindow.setMenu(null);
+  mainWindow.setMenu(null);
 });
