@@ -41,15 +41,19 @@ function includeSubfolder() {
  * Starts the cleaning process.
  */
 function cleanFiles() {
-    storage.get('path', function (error, path) {
-        if (error) throw error;
-        storage.get('includeSubfolders', function (error, includeSubfolders) {
+    var promise = new Promise(function (resolve, reject) {
+        storage.get('path', function (error, path) {
             if (error) throw error;
-            readFileNamesInFolder(path, includeSubfolders);
+            storage.get('includeSubfolders', function (error, includeSubfolders) {
+                if (error) throw error;
+                readFileNamesInFolder(path, includeSubfolders);
+            });
         });
+        resolve();
     });
-    window.location.href = 'conclusion.html';
-    return;
+    promise.then(function () {
+        window.location.href = 'conclusion.html';
+    });
 }
 
 /**
@@ -104,6 +108,7 @@ function hasSameName(filename1, filename2) {
 function readFileNamesInFolder(path, includeSubfolders) {
     var foundMatch = false;
     const files = electronFs.readdirSync(path);
+    var fileName;
     for (var i = 0; i < files.length; i++) {
         fileName = files[i];
         foundMatch = false;
