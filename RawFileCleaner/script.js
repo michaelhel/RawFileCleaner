@@ -42,14 +42,15 @@ function includeSubfolder() {
  */
 function cleanFiles() {
     var promise = new Promise(function (resolve, reject) {
-        storage.get('path', function (error, path) {
-            if (error) throw error;
-            storage.get('includeSubfolders', function (error, includeSubfolders) {
+        resolve(
+            storage.get('path', function (error, path) {
                 if (error) throw error;
-                readFileNamesInFolder(path, includeSubfolders);
-            });
-        });
-        resolve();
+                storage.get('includeSubfolders', function (error, includeSubfolders) {
+                    if (error) throw error;
+                    readFileNamesInFolder(path, includeSubfolders);
+                });
+            })
+        );
     });
     promise.then(function () {
         window.location.href = 'conclusion.html';
