@@ -40,8 +40,10 @@ function includeSubfolder() {
 /**
  * Starts the cleaning process.
  */
-function cleanFiles() {
-    var promise = new Promise(function (resolve, reject) {
+function cleanFiles1() {
+
+
+    return new Promise(((resolve, reject) =>{
         resolve(
             storage.get('path', function (error, path) {
                 if (error) throw error;
@@ -51,10 +53,21 @@ function cleanFiles() {
                 });
             })
         );
-    });
-    promise.then(function () {
+    }));
+   /* promise.then(function () {
         window.location.href = 'conclusion.html';
-    });
+    });*/
+}
+
+function cleanFiles() {
+    cleanFiles1()
+        .then(function (result) {
+            window.location.href = 'conclusion.html';
+            // Do something with the result
+        })
+        .catch(function (error) {
+            alert("an error occured")
+        });
 }
 
 /**
