@@ -38,35 +38,34 @@ function includeSubfolder() {
 
 
 /**
- * Starts the cleaning process.
+ * Gathers the path, checks whether the subfolders should get
+ * included or not and continues with the cleaning process.
  */
-function cleanFiles1() {
-
-
-    return new Promise(((resolve, reject) =>{
-        resolve(
-            storage.get('path', function (error, path) {
-                if (error) throw error;
-                storage.get('includeSubfolders', function (error, includeSubfolders) {
-                    if (error) throw error;
+function getPathAndCheckSubfolder() {
+    return new Promise(function (resolve, reject) {
+        storage.get('path', function (error, path) {
+            if (error) throw error;
+            storage.get('includeSubfolders', function (error, includeSubfolders) {
+                if (error) reject(error);
+                else {
                     readFileNamesInFolder(path, includeSubfolders);
-                });
-            })
-        );
-    }));
-   /* promise.then(function () {
-        window.location.href = 'conclusion.html';
-    });*/
+                    resolve(includeSubfolders);
+                }
+            });
+        });
+    });
 }
 
+/**
+ * Starts the cleaning process.
+ */
 function cleanFiles() {
-    cleanFiles1()
-        .then(function (result) {
+    getPathAndCheckSubfolder()
+        .then(function () {
             window.location.href = 'conclusion.html';
-            // Do something with the result
         })
         .catch(function (error) {
-            alert("an error occured")
+            throw error;
         });
 }
 
