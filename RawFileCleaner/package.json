@@ -9,6 +9,7 @@
   "author": "Hannes Gerstmayr, Michael Helcig, Christian Strassmayr",
   "license": "MIT",
   "dependencies": {
+    "disable-scroll": "^0.4.0",
     "electron": "^1.8.2",
     "electron-json-storage": "^4.0.2",
     "local-storage": "^1.4.2",
