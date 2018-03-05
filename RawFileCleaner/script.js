@@ -18,8 +18,7 @@ function includeSubfolder() {
         document.getElementById("imgIncludeSubfolders").src = "img/notIncludeSubfolders.svg";
         document.getElementById("textIncludeSubfolders").innerHTML = "Subfolders not included";
         includeSubfolders = false;
-    }
-    else {
+    } else {
         document.getElementById("imgIncludeSubfolders").src = "img/includeSubfolders.svg";
         document.getElementById("textIncludeSubfolders").innerHTML = "Subfolders included";
         includeSubfolders = true;
@@ -83,7 +82,7 @@ function hasSameName(filename1, filename2) {
 
 
 /**
- * Reads all filenames from the folder.
+ * Reads all filenames from the folder and deletes RAW files without matching compressed files
  */
 function readFileNamesInFolder() {
     var foundMatch = false;
