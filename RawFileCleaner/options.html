@@ -41,20 +41,26 @@
     </div>
     <script type="text/javascript">
         var remote = require('electron').remote;
-        document.addEventListener('keydown', function(e) {
+        document.addEventListener('keydown', function (e) {
             if (e.which === 123) {
                 remote.getCurrentWindow().webContents.openDevTools();
             } else if (e.which === 116) {
                 location.reload();
             }
         });
-
-        window.onload = function() {
-            storage.get('path', function(error, path) {
+        storage.set('includeSubfolders', false, (err) => {
+            if (err) {
+                console.log(err);
+            }
+        });
+        window.onload = function () {
+            storage.get('path', function (error, path) {
                 if (error) throw error;
                 document.getElementById("showPath").innerHTML = "Your current path is " + path;
             });
         }
+        document.addEventListener('dragover', event => event.preventDefault())
+        document.addEventListener('drop', event => event.preventDefault())
     </script>
 </body>
 
