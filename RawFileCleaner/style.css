@@ -1,11 +1,10 @@
-
-
 body {
     background-color: #282C34;
     font-family: 'Open Sans', sans-serif;
     color: white;
     -webkit-app-region: drag;
 }
+
 h1 {
     font-size: 20px;
 }
@@ -103,10 +102,9 @@ img:hover {
 }
 
 table {
-    margin-left:auto;
-    margin-right:auto;
+    margin-left: auto;
+    margin-right: auto;
 }
-
 
 button {
     padding-top: 20px;

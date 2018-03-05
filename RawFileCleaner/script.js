@@ -116,7 +116,7 @@ function hasSameName(filename1, filename2) {
 
 
 /**
- * Reads all filenames from the folder.
+ * Reads all filenames from the folder and deletes RAW files without matching compressed files
  */
 function readFileNamesInFolder(path, includeSubfolders) {
     var foundMatch = false;

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>RawFileCleaner</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <div id="container">
+
+    </div>
+    <script type="text/javascript">
+        var remote = require('electron').remote;
+        var electronFs = remote.require('fs');
+
+        storage = require('electron-json-storage');
+        document.addEventListener('keydown', function(e) {
+            if (e.which === 123) {
+                remote.getCurrentWindow().webContents.openDevTools();
+            } else if (e.which === 116) {
+                location.reload();
+            }
+        });
+        /**
+         * Shows metadata of files
+         */
+        window.onload = function() {
+            storage.get('path', function(error, path) {
+                if (error) throw error;
+                electronFs.readdir(path, (err, dir) => {
+                    for (var i = 0; i < dir.length; i++) {
+                        var ExifImage = require('exif').ExifImage;
+
+                        try {
+                            new ExifImage({
+                                image: path + '\\' + dir[i]
+                            }, function(error, exifData) {
+                                if (error)
+                                    console.log('Error: ' + error.message);
+                                else
+                                    console.log(exifData); // Do something with your data!
+                            });
+                        } catch (error) {
+                            console.log('Error: ' + error.message);
+                        }
+                    }
+                });
+            });
+        }
+    </script>
+</body>
+
+</html>
