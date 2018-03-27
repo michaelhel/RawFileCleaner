@@ -11,8 +11,14 @@
 
 <body>
     <div id="container">
+        <div>
+            <a href="conclusion.html">
+                <img id="imgBack" src="img/back.svg" />
+            </a>
+        </div>
         <div id="tableData"></div>
     </div>
+
     <script type="text/javascript">
         window.onload = view;
 
@@ -26,7 +32,7 @@
 
                 var row = document.createElement('tr');
                 var head = document.createElement('th');
-                head.textContent = "Bezeichnung";
+                head.textContent = "Filename";
                 row.appendChild(head);
                 tbody.appendChild(row);
 
@@ -46,7 +52,6 @@
                 container.appendChild(table);
             });
         }
-
 
         var remote = require('electron').remote;
         var electronFs = remote.require('fs');
