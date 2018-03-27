@@ -113,6 +113,12 @@ table {
     margin-right: auto;
 }
 
+td,
+th {
+    width: 200px;
+    text-align: center;
+}
+
 button {
     padding-top: 20px;
     background-color: darkgray;
