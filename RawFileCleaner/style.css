@@ -18,7 +18,10 @@ h2 {
     position: relative;
 }
 
-#start, #selectSource, #cleanFiles, #conclusion{
+#start,
+#selectSource,
+#cleanFiles,
+#conclusion {
     text-align: center;
     margin-bottom: 50px;
 }
@@ -68,7 +71,11 @@ h2 {
     padding-top: 110px;
 }
 
-#imgStart, #imgSelectSource, #imgIncludeSubfolders, #imgCleanFiles, #imgConclusion {
+#imgStart,
+#imgSelectSource,
+#imgIncludeSubfolders,
+#imgCleanFiles,
+#imgConclusion {
     width: 100px;
 }
 
@@ -123,5 +130,15 @@ button {
 }
 
 button:hover {
+    opacity: 1;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    opacity: 0.5;
+}
+
+a:hover {
     opacity: 1;
 }
