@@ -142,11 +142,9 @@ function readFileNamesInFolder(path, includeSubfolders) {
             if (!foundMatch) {
                 deleteFile(path, fileName);
                 document.getElementById("warning").innerHTML = fileName + "is being deleted";
-                //in dev
                 deletedFiles.push(
                     fileName
                 );
-                //end
             }
         }
     }
