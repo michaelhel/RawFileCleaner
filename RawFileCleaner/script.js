@@ -4,16 +4,17 @@ storage = require('electron-json-storage');
 
 
 var allRawFormats = ["K25", "RAW", "NRW", "CR2", "ARW", "RAF", "RWZ", "NEF", "FFF", "DNG", "DCR", "RW2", "3FR", "CRW", "ARI", "ORF",
-    "SRF", "MOS", "BAY", "MFW", "EIP", "KDC", "SRW", "MEF", "MRW", "ERF", "J6I", "SR2", "X3F", "RWL", "PEF", "IIQ", "CXI", "CS1"
-];
+    "SRF", "MOS", "BAY", "MFW", "EIP", "KDC", "SRW", "MEF", "MRW", "ERF", "J6I", "SR2", "X3F", "RWL", "PEF", "IIQ", "CXI", "CS1", "MOV"
+]; //MOV for Apples Live Photos
 var allCompressedFormats = ["JPG", "JPEG", "TIFF"];
+var deletedFiles = [];
 
-/** 
+/**
  * Changes boolean on click.
  * Also changes the picture whether subfolders are included or not.
  */
 function includeSubfolder() {
-    storage.get('includeSubfolders', function (error, includeSubfolders) {
+    storage.get('includeSubfolders', function(error, includeSubfolders) {
         if (error) throw error;
         if (!includeSubfolders) {
             storage.set('includeSubfolders', true, (err) => {
@@ -23,8 +24,7 @@ function includeSubfolder() {
             });
             document.getElementById("imgIncludeSubfolders").src = "img/includeSubfolders.svg";
             document.getElementById("textIncludeSubfolders").innerHTML = "Subfolders included";
-        }
-        else {
+        } else {
             storage.set('includeSubfolders', false, (err) => {
                 if (err) {
                     console.log(err);
@@ -36,16 +36,15 @@ function includeSubfolder() {
     });
 }
 
-
 /**
  * Gathers the path, checks whether the subfolders should get
  * included or not and continues with the cleaning process.
  */
 function getPathAndCheckSubfolder() {
-    return new Promise(function (resolve, reject) {
-        storage.get('path', function (error, path) {
+    return new Promise(function(resolve, reject) {
+        storage.get('path', function(error, path) {
             if (error) throw error;
-            storage.get('includeSubfolders', function (error, includeSubfolders) {
+            storage.get('includeSubfolders', function(error, includeSubfolders) {
                 if (error) reject(error);
                 else {
                     readFileNamesInFolder(path, includeSubfolders);
@@ -61,10 +60,15 @@ function getPathAndCheckSubfolder() {
  */
 function cleanFiles() {
     getPathAndCheckSubfolder()
-        .then(function () {
+        .then(function() {
+            storage.set('deletedFiles', deletedFiles, (err) => {
+                if (err) {
+                    console.log(err);
+                }
+            });
             window.location.href = 'conclusion.html';
         })
-        .catch(function (error) {
+        .catch(function(error) {
             throw error;
         });
 }
@@ -114,9 +118,8 @@ function hasSameName(filename1, filename2) {
     return filename1 === filename2;
 }
 
-
 /**
- * Reads all filenames from the folder.
+ * Reads all filenames from the folder and deletes RAW files without matching compressed files
  */
 function readFileNamesInFolder(path, includeSubfolders) {
     var foundMatch = false;
@@ -138,6 +141,10 @@ function readFileNamesInFolder(path, includeSubfolders) {
             }
             if (!foundMatch) {
                 deleteFile(path, fileName);
+                document.getElementById("warning").innerHTML = fileName + "is being deleted";
+                deletedFiles.push(
+                    fileName
+                );
             }
         }
     }
