@@ -10,8 +10,7 @@ var allCompressedFormats = ["JPG", "JPEG", "TIFF"];
 var deletedFiles = [];
 
 /**
- * Changes boolean on click.
- * Also changes the picture whether subfolders are included or not.
+ * Changes boolean and the picture whether subfolders are included or not on click.
  */
 function includeSubfolder() {
     storage.get('includeSubfolders', function(error, includeSubfolders) {
@@ -142,9 +141,10 @@ function readFileNamesInFolder(path, includeSubfolders) {
             if (!foundMatch) {
                 deleteFile(path, fileName);
                 document.getElementById("warning").innerHTML = fileName + "is being deleted";
-                deletedFiles.push(
-                    fileName
-                );
+                deletedFiles.push({
+                    fileName: fileName,
+                    path: path
+                });
             }
         }
     }
