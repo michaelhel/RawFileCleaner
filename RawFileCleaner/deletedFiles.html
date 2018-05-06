@@ -33,6 +33,11 @@
                 var row = document.createElement('tr');
                 var head = document.createElement('th');
                 head.textContent = "Filename";
+                head.style.textAlign = "left";
+                row.appendChild(head);
+                var head = document.createElement('th');
+                head.textContent = "Path";
+                head.style.textAlign = "left";
                 row.appendChild(head);
                 tbody.appendChild(row);
 
@@ -44,11 +49,18 @@
                 for (var i = 0; i < data.length; i++) {
                     var row = document.createElement('tr');
                     var cell = document.createElement('td');
-                    cell.textContent = data[i];
+                    cell.textContent = data[i].fileName;
+                    cell.style.textAlign = "left";
+                    row.appendChild(cell);
+                    var cell = document.createElement('td');
+                    cell.textContent = data[i].path;
+                    cell.style.textAlign = "left";
                     row.appendChild(cell);
                     tbody.appendChild(row);
                 }
                 table.appendChild(tbody);
+                table.style.width = "80%";
+                table.style.alignContent = "left";
                 container.appendChild(table);
             });
         }
