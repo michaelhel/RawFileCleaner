@@ -3,6 +3,7 @@ var electronFs = remote.require('fs');
 storage = require('electron-json-storage');
 
 
+//All raw fromats, easy to expand in the future
 var allRawFormats = ["K25", "RAW", "NRW", "CR2", "ARW", "RAF", "RWZ", "NEF", "FFF", "DNG", "DCR", "RW2", "3FR", "CRW", "ARI", "ORF",
     "SRF", "MOS", "BAY", "MFW", "EIP", "KDC", "SRW", "MEF", "MRW", "ERF", "J6I", "SR2", "X3F", "RWL", "PEF", "IIQ", "CXI", "CS1", "MOV"
 ]; //MOV for Apples Live Photos
