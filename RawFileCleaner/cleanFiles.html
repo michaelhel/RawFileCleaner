@@ -9,7 +9,7 @@
     <script src="script.js"></script>
 </head>
 
-<body>
+<body onload="setProgress(1)"> 
     <div id="container">
         <div>
             <a href="options.html">
@@ -23,6 +23,7 @@
             <p>Clean files</p>
             <p id="warning"></p>
         </div>
+        <div id="progressbar"></div>
     </div>
     <script type="text/javascript">
         var remote = require('electron').remote;

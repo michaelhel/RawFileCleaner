@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 </head>
 
-<body>
+<body onload="setProgress(0.0)" >
     <div id="container">
         <div id="info">
             <a href="information.html">
@@ -24,6 +24,7 @@
         <div id="title">
             <h1>RawFileCleaner</h1>
         </div>
+        <div id="progressbar"></div>
     </div>
     <script type="text/javascript">
         var remote = require('electron').remote;

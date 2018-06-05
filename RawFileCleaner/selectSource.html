@@ -9,7 +9,7 @@
     <script src="script.js"></script>
 </head>
 
-<body>
+<body onload="setProgress(0.33)">
     <div id="container">
         <div>
             <a href="index.html">
@@ -21,6 +21,7 @@
                 <p id="dropYourDirectoryHere">Drop your directory here</p>
             </a>
         </div>
+        <div id="progressbar"></div>
     </div>
     <script type="text/javascript">
         var remote = require('electron').remote;

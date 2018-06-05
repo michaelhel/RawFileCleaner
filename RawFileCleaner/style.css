@@ -148,3 +148,10 @@ a {
 a:hover {
     opacity: 1;
 }
+
+#progressbar {
+    margin-left: 375px;
+    margin-right: 375px;
+    width: 50px;
+    height: 1px;
+  }
