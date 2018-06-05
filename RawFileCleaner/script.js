@@ -1,6 +1,7 @@
 var remote = require('electron').remote;
 var electronFs = remote.require('fs');
 storage = require('electron-json-storage');
+var sumSize;
 
 
 //All raw formats, easy to expand in the future
@@ -14,7 +15,7 @@ var deletedFiles = [];
  * Changes boolean and the picture whether subfolders are included or not on click.
  */
 function includeSubfolder() {
-    storage.get('includeSubfolders', function(error, includeSubfolders) {
+    storage.get('includeSubfolders', function (error, includeSubfolders) {
         if (error) throw error;
         if (!includeSubfolders) {
             storage.set('includeSubfolders', true, (err) => {
@@ -41,10 +42,10 @@ function includeSubfolder() {
  * included or not and continues with the cleaning process.
  */
 function getPathAndCheckSubfolder() {
-    return new Promise(function(resolve, reject) {
-        storage.get('path', function(error, path) {
+    return new Promise(function (resolve, reject) {
+        storage.get('path', function (error, path) {
             if (error) throw error;
-            storage.get('includeSubfolders', function(error, includeSubfolders) {
+            storage.get('includeSubfolders', function (error, includeSubfolders) {
                 if (error) reject(error);
                 else {
                     readFileNamesInFolder(path, includeSubfolders);
@@ -60,15 +61,16 @@ function getPathAndCheckSubfolder() {
  */
 function cleanFiles() {
     getPathAndCheckSubfolder()
-        .then(function() {
+        .then(function () {
             storage.set('deletedFiles', deletedFiles, (err) => {
                 if (err) {
                     console.log(err);
                 }
             });
-            window.location.href = 'conclusion.html';
+            
+            //window.location.href = 'conclusion.html';
         })
-        .catch(function(error) {
+        .catch(function (error) {
             throw error;
         });
 }
@@ -122,6 +124,8 @@ function hasSameName(filename1, filename2) {
  * Reads all filenames from the folder and deletes RAW files without matching compressed files
  */
 function readFileNamesInFolder(path, includeSubfolders) {
+    var stats = -1;
+    var fileSizeInMB = -1;
     var foundMatch = false;
     const files = electronFs.readdirSync(path);
     var fileName;
@@ -140,6 +144,11 @@ function readFileNamesInFolder(path, includeSubfolders) {
                 }
             }
             if (!foundMatch) {
+
+                stats = electronFs.statSync(path + "/" + fileName);
+                fileSizeInMB = stats.size / 1000000.0;
+                console.log(fileSizeInMB + "MB");
+                sumSize+=fileSizeInMB;
                 deleteFile(path, fileName);
                 document.getElementById("warning").innerHTML = fileName + "is being deleted";
                 deletedFiles.push({
