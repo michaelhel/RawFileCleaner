@@ -173,7 +173,7 @@ function setProgress(progress) {
     var bar = new ProgressBar.Line('#progressbar', {
         strokeWidth: 4,
         easing: 'easeInOut',
-        duration: 1400,
+        duration: 300,
         color: 'white',
         trailColor: '#eee',
         trailWidth: 1,
