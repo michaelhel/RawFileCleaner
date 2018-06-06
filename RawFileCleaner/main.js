@@ -14,7 +14,8 @@ app.on('ready', function() {
         resizable: false,
         fullscreen: false,
         titleBarStyle: 'hiddenInset',
-        title: 'RawFileCleaner'
+        title: 'RawFileCleaner',
+        backgroundColor: '#282C34'
     });
 
     mainWindow.loadURL(url.format({
