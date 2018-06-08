@@ -9,13 +9,11 @@
   "author": "Hannes Gerstmayr, Michael Helcig, Christian Strassmayr",
   "license": "MIT",
   "dependencies": {
-    "disable-scroll": "^0.4.0",
-    "electron": "^1.8.2",
-    "electron-json-storage": "^4.0.2",
-    "exif": "^0.6.0",
-    "exif-parser": "^0.1.12",
-    "local-storage": "^1.4.2",
-    "localstorage": "^0.1.0",
+    "electron": "^1.8.7",
+    "electron-json-storage": "^4.1.0",
+    "is-online": "^7.0.0",
+    "npm": "^6.1.0",
+    "progressbar.js": "^1.0.1",
     "trash": "^4.3.0"
   }
 }
