@@ -5,97 +5,38 @@ body {
     -webkit-app-region: drag;
 }
 
-h1 {
-    font-size: 20px;
+
+/* Electron */
+::-webkit-scrollbar {
+    display: none;
 }
 
-h2 {
-    text-align: center;
-}
-
+/* General */
 #container {
-    height: 100%;
     position: relative;
 }
 
-#start,
-#selectSource,
-#cleanFiles,
-#conclusion {
+#content {
     text-align: center;
-    margin-bottom: 50px;
-}
-
-#options {
-    text-align: center;
-}
-
-#title {
-    padding-top: 10px;
-    text-align: center;
-}
-
-#start {
-    padding-top: 110px;
-}
-
-#selectSource {
-    margin-top: 80px;
-    font-size: 40px;
-}
-
-#options {
-    padding-top: 20px;
-}
-
-#cleanFiles {
-    margin-top: 50px;
-}
-
-#info {
-    float: right;
-}
-
-#imgInfo {
-    width: 20px;
-    padding-right: 10px;
-    padding-top: 10px;
-}
-
-#imgBack {
-    width: 40px;
-    padding-top: 30px;
-}
-
-#conclusion {
-    padding-top: 110px;
-}
-
-#imgStart,
-#imgSelectSource,
-#imgIncludeSubfolders,
-#imgCleanFiles,
-#imgConclusion {
-    width: 100px;
+    padding-top: 80px;
 }
 
 #information {
-    margin-left: 100px;
-    margin-right: 100px;
+    margin-left: 50px;
+    margin-right: 50px;
 }
 
-#showPath {
-    margin-top: 20px;
-    font-size: 10px;
-    color: grey;
+/* Text */
+
+h1 {
+    font-size: 25px;
 }
 
-#warning {
-    margin-top: 20px;
-    font-size: 13px;
-    color: #FF1744;
+h2 {
+    font-size: 20px;
 }
 
+/* Graphics */
 img {
     opacity: 0.5;
 }
@@ -104,52 +45,26 @@ img:hover {
     opacity: 1.0;
 }
 
-::-webkit-scrollbar {
-    display: none;
+#info {
+    float: right;
 }
 
-table {
-    margin-left: auto;
-    margin-right: auto;
+#imgInfo {
+    width: 20px;
+    padding-top: 10px;
+    padding-right: 10px;
 }
 
-td,
-th {
-    width: 200px;
-    text-align: center;
+#imgBack {
+    width: 40px;
+    padding-top: 30px;
 }
 
-button {
-    padding-top: 20px;
-    background-color: darkgray;
-    border: none;
-    color: white;
-    padding: 5px 10px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 12px;
-    border-radius: 3px;
-    opacity: 0.5;
-    transition-duration: 0.4s;
-    padding: 5px 10px;
-}
 
-button:hover {
-    opacity: 1;
-}
-
-a {
-    text-decoration: none;
-    color: inherit;
-    opacity: 0.5;
-}
-
-a:hover {
-    opacity: 1;
-}
-
+/* Progressbar */
 #progressbar {
+    position: fixed;
+    margin-bottom: 10px;
     margin-left: 375px;
     margin-right: 375px;
     width: 50px;

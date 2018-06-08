@@ -18,8 +18,9 @@ app.on('ready', function() {
         backgroundColor: '#282C34'
     });
 
+
     mainWindow.loadURL(url.format({
-        pathname: path.join(__dirname, 'index.html'),
+        pathname: path.join(__dirname, 'selectSource.html'),
         protocol: 'file:',
         slashes: true
     }));
