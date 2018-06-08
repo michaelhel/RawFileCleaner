@@ -1,6 +1,7 @@
 var remote = require('electron').remote;
 var electronFs = remote.require('fs');
 storage = require('electron-json-storage');
+var sumSize;
 
 //All raw formats, easy to expand in the future
 var allRawFormats = ["K25", "RAW", "NRW", "CR2", "ARW", "RAF", "RWZ", "NEF", "FFF", "DNG", "DCR", "RW2", "3FR", "CRW", "ARI", "ORF",
@@ -43,12 +44,24 @@ function cleanFiles(confirmed) {
  * Changes boolean and the picture whether subfolders are included or not on click.
  */
 function includeSubfolder() {
-  storage.get('includeSubfolders', function(error, includeSubfolders) {
-    if (error) throw error;
-    if (!includeSubfolders) {
-      storage.set('includeSubfolders', true, (err) => {
-        if (err) {
-          console.log(err);
+    storage.get('includeSubfolders', function (error, includeSubfolders) {
+        if (error) throw error;
+        if (!includeSubfolders) {
+            storage.set('includeSubfolders', true, (err) => {
+                if (err) {
+                    console.log(err);
+                }
+            });
+            document.getElementById("imgIncludeSubfolders").src = "img/includeSubfolders.svg";
+            document.getElementById("textIncludeSubfolders").innerHTML = "Subfolders included";
+        } else {
+            storage.set('includeSubfolders', false, (err) => {
+                if (err) {
+                    console.log(err);
+                }
+            });
+            document.getElementById("imgIncludeSubfolders").src = "img/notIncludeSubfolders.svg";
+            document.getElementById("textIncludeSubfolders").innerHTML = "Subfolders not included";
         }
       });
       document.getElementById("imgIncludeSubfolders").src = "img/includeSubfolders.svg";
@@ -70,18 +83,37 @@ function includeSubfolder() {
  * included or not and continues with the cleaning process.
  */
 function getPathAndCheckSubfolder() {
-  return new Promise(function(resolve, reject) {
-    storage.get('path', function(error, path) {
-      if (error) throw error;
-      storage.get('includeSubfolders', function(error, includeSubfolders) {
-        if (error) reject(error);
-        else {
-          readFileNamesInFolder(path, includeSubfolders);
-          resolve();
-        }
-      });
+    return new Promise(function (resolve, reject) {
+        storage.get('path', function (error, path) {
+            if (error) throw error;
+            storage.get('includeSubfolders', function (error, includeSubfolders) {
+                if (error) reject(error);
+                else {
+                    readFileNamesInFolder(path, includeSubfolders);
+                    resolve(includeSubfolders);
+                }
+            });
+        });
     });
-  });
+}
+
+/**
+ * Starts the cleaning process.
+ */
+function cleanFiles() {
+    getPathAndCheckSubfolder()
+        .then(function () {
+            storage.set('deletedFiles', deletedFiles, (err) => {
+                if (err) {
+                    console.log(err);
+                }
+            });
+            
+            //window.location.href = 'conclusion.html';
+        })
+        .catch(function (error) {
+            throw error;
+        });
 }
 
 /**
@@ -133,21 +165,38 @@ function hasSameName(filename1, filename2) {
  * Reads all filenames from the folder and saves filename of RAW files without matching compressed files
  */
 function readFileNamesInFolder(path, includeSubfolders) {
-  var foundMatch = false;
-  const files = electronFs.readdirSync(path);
-  var fileName;
-  for (var i = 0; i < files.length; i++) {
-    fileName = files[i];
-    foundMatch = false;
-    if (includeSubfolders) {
-      if (electronFs.lstatSync(path + "/" + fileName).isDirectory()) {
-        readFileNamesInFolder(path + "/" + fileName, includeSubfolders);
-      }
-    }
-    if (endsWithRawFormat(fileName)) {
-      for (var j = 0; j < files.length && !foundMatch; j++) {
-        if (endsWithCompressedFormat(files[j]) && hasSameName(fileName, files[j])) {
-          foundMatch = true;
+    var stats = -1;
+    var fileSizeInMB = -1;
+    var foundMatch = false;
+    const files = electronFs.readdirSync(path);
+    var fileName;
+    for (var i = 0; i < files.length; i++) {
+        fileName = files[i];
+        foundMatch = false;
+        if (includeSubfolders) {
+            if (electronFs.lstatSync(path + "/" + fileName).isDirectory()) {
+                readFileNamesInFolder(path + "/" + fileName, includeSubfolders);
+            }
+        }
+        if (endsWithRawFormat(fileName)) {
+            for (var j = 0; j < files.length && !foundMatch; j++) {
+                if (endsWithCompressedFormat(files[j]) && hasSameName(fileName, files[j])) {
+                    foundMatch = true;
+                }
+            }
+            if (!foundMatch) {
+
+                stats = electronFs.statSync(path + "/" + fileName);
+                fileSizeInMB = stats.size / 1000000.0;
+                console.log(fileSizeInMB + "MB");
+                sumSize+=fileSizeInMB;
+                deleteFile(path, fileName);
+                document.getElementById("warning").innerHTML = fileName + "is being deleted";
+                deletedFiles.push({
+                    fileName: fileName,
+                    path: path
+                });
+            }
         }
       }
       if (!foundMatch) {
