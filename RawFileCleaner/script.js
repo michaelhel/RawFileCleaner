@@ -1,6 +1,7 @@
 var remote = require('electron').remote;
 var electronFs = remote.require('fs');
 storage = require('electron-json-storage');
+var ProgressBar = require('progressbar.js');
 
 //All raw formats, easy to expand in the future
 var allRawFormats = ["K25", "RAW", "NRW", "CR2", "ARW", "RAF", "RWZ", "NEF", "FFF", "DNG", "DCR", "RW2", "3FR", "CRW", "ARI", "ORF",
@@ -187,7 +188,7 @@ function deleteFiles() {
 }
 
 /**
- * Deletes file.
+ * Deletes file
  * @param path
  * @param fileName
  */
@@ -196,7 +197,6 @@ function deleteFile(path, filename) {
    file = path + "/" + filename;
    const trash = require('trash');
    trash([file, null]).then(() => {
-      console.log("Path: " + path);
       console.log('deleted ' + filename);
    });
 }
@@ -206,11 +206,25 @@ function deleteFile(path, filename) {
  * @param path
  */
 function getDirectory(path) {
-   console.log(rootPath);
-   console.log(path);
    var dir = "";
    for (var i = rootPath.length; i < path.length; i++) {
       dir += path[i];
    }
    return dir;
+}
+
+function setProgress(progress) {
+    // progressbar.js@1.0.0 version is used
+    // Docs: http://progressbarjs.readthedocs.org/en/1.0.0/
+
+    var bar = new ProgressBar.Line('#progressbar', {
+        strokeWidth: 4,
+        easing: 'easeInOut',
+        duration: 300,
+        color: 'white',
+        trailColor: '#eee',
+        trailWidth: 1,
+        svgStyle: {width: '100%', height: '100%'}
+    });
+    bar.animate(progress);  // Number from 0.0 to 1.0
 }
