@@ -27,6 +27,7 @@
     <script type="text/javascript">
         window.onload = view;
 
+
         function view() {
             const storage = require('electron-json-storage');
             storage.get('deletedFiles', function (error, data) {
@@ -34,6 +35,18 @@
                 var container = document.getElementById("tableData");
                 var table = document.createElement('table');
                 var tbody = document.createElement('tbody');
+
+            var row = document.createElement('tr');
+            var head = document.createElement('th');
+            head.textContent = "Filename";
+            head.style.textAlign = "left";
+            row.appendChild(head);
+            var head = document.createElement('th');
+            head.textContent = "Directory";
+            head.style.textAlign = "left";
+            row.appendChild(head);
+            tbody.appendChild(row);
+
 
                 var sum = 0;
                 for (var i = 0; i < data.length; i++) {
@@ -52,6 +65,26 @@
                 cell.style.textAlign = "center";
                 row.appendChild(cell);
                 tbody.appendChild(row);
+
+
+            for (var i = 0; i < data.length; i++) {
+               var row = document.createElement('tr');
+               var cell = document.createElement('td');
+               cell.textContent = data[i].fileName;
+               cell.style.textAlign = "left";
+               row.appendChild(cell);
+               var cell = document.createElement('td');
+               cell.textContent = data[i].dir;
+               cell.style.textAlign = "left";
+               row.appendChild(cell);
+               tbody.appendChild(row);
+            }
+            table.appendChild(tbody);
+            table.style.width = "80%";
+            table.style.alignContent = "left";
+            container.appendChild(table);
+         });
+      }
 
 
                 var row = document.createElement('tr');
