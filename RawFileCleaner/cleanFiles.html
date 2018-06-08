@@ -2,11 +2,11 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>RawFileCleaner</title>
-    <link rel="stylesheet" type="text/css" href="style.css" />
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-    <script src="script.js"></script>
+   <meta charset="UTF-8">
+   <title>RawFileCleaner</title>
+   <link rel="stylesheet" type="text/css" href="style.css" />
+   <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+   <script src="script.js"></script>
 </head>
 
 <body onload="setProgress(1)"> 
@@ -35,16 +35,16 @@
             }
         });
 
-        function showWarning() {
-            document.getElementById("warning").innerHTML = "Warning: Files without matching partner will be moved to trash";
-        }
+      function showWarning() {
+         document.getElementById("warning").innerHTML = "Warning: Files without matching partner will be moved to trash";
+      }
 
-        function hideWarning() {
-            document.getElementById("warning").innerHTML = "";
-        }
-        document.addEventListener('dragover', event => event.preventDefault())
-        document.addEventListener('drop', event => event.preventDefault())
-    </script>
+      function hideWarning() {
+         document.getElementById("warning").innerHTML = "";
+      }
+      document.addEventListener('dragover', event => event.preventDefault())
+      document.addEventListener('drop', event => event.preventDefault())
+   </script>
 </body>
 
 </html>
