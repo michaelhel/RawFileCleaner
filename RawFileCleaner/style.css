@@ -1,10 +1,9 @@
 body {
-    background-color: #282C34;
-    font-family: 'Open Sans', sans-serif;
-    color: white;
-    -webkit-app-region: drag;
+   background-color: #282C34;
+   font-family: 'Open Sans', sans-serif;
+   color: white;
+   -webkit-app-region: drag;
 }
-
 
 /* Electron */
 ::-webkit-scrollbar {
@@ -46,7 +45,7 @@ img:hover {
 }
 
 #info {
-    float: right;
+   float: right;
 }
 
 #imgInfo {
@@ -56,10 +55,9 @@ img:hover {
 }
 
 #imgBack {
-    width: 40px;
-    padding-top: 30px;
+   width: 40px;
+   padding-top: 30px;
 }
-
 
 /* Progressbar */
 #progressbar {
