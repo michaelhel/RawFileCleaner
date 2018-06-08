@@ -79,7 +79,7 @@ Der Nutzer gibt den Ordner an in dem sich die RAW und die JPEG Dateien befinden 
 
 ##### Use Case Diagramm:
 <p align="center">
-  <img width="500" src="images/UseCase.png" >
+  <img width="500" src="images/UseCase.jpg" >
 </p>
 
 
