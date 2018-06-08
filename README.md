@@ -1,10 +1,15 @@
 # RawFileCleaner
 
-**RawFileCleaner** is still in progress.
+## Project Status
+RawFileCleaner is currently in progress.
 
-We are working on a tool which deletes all RAW files without an existing JPEG file.
+## What can it do?
+The tool can be used to delete all RAW files without a matching JPEG file so you don't have to manually delete them after you have sorted out the JPEG files.
 
-**RawFileCleaner** is the perfect tool to manage your photo archive.
+It supports all common RAW image formats such as CR2, CRW, NEF, ARW, ORF, DNG and so on.
 
+## Installing
+1. At first, clone the repo.
+
+### Authors
 Hannes Gerstmayr, Michael Helcig, Christian Straßmayr
-
