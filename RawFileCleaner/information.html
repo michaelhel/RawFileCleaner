@@ -21,13 +21,22 @@
         <div>
             <h2>Information</h2>
         </div>
-        <div id="information">
-            <zero-md file="https://raw.githubusercontent.com/michaelhel/RawFileCleaner/master/README.md">
-                <div class="md-html"></div>
-            </zero-md>
-        </div>
+        <div id="information"></div>
     </div>
     <script type="text/javascript">
+        const isOnline = require('is-online');
+        isOnline({ timeout: 1000 }).then(online => {
+            if (online) {
+                document.getElementById('information').innerHTML =
+                    '<zero-md file="https://raw.githubusercontent.com/michaelhel/RawFileCleaner/master/README.md">' +
+                    '<div class="md-html"></div>' +
+                    '</zero-md>';
+            }
+            else {
+                document.getElementById('information').innerHTML = "Please ensure you have an active internet connection in order to see the information about the project.";
+            }
+        });
+
         var remote = require('electron').remote;
         document.addEventListener('keydown', function (e) {
             if (e.which === 123) {
