@@ -11,31 +11,15 @@
 
 <body>
     <div id="container">
-        <div id="info">
-            <a href="information.html">
-                <img id="imgInfo" src="img/info.svg" />
+        <div>
+            <a href="index.html">
+                <img id="imgBack" src="img/back.svg" />
             </a>
         </div>
-        <div id="content">
+        <div id="selectSource">
             <a>
-                <h2 id="dropYourDirectoryHere">Drop your directory here</h2>
+                <p id="dropYourDirectoryHere">Drop your directory here</p>
             </a>
-            <div id="progressbar">
-                <ol class="progress">
-                    <li class="is-active" data-step="1">
-                        Choose directory
-                    </li>
-                    <li class="2" data-step="2">
-                        Options
-                    </li>
-                    <li class="3" data-step="3">
-                        Confirmation
-                    </li>
-                    <li data-step="4" class="progress__last">
-                        Finish
-                    </li>
-                </ol>
-            </div>
         </div>
     </div>
     <script type="text/javascript">
@@ -54,7 +38,7 @@
             ev.preventDefault();
         }
 
-        document.ondrop = (ev) => {
+        document.body.ondrop = (ev) => {
             storage.set('path', ev.dataTransfer.files[0].path, (err) => {
                 if (err) {
                     console.log(err);
