@@ -8,20 +8,18 @@ The tool can be used to delete all RAW files without a matching JPEG file so you
 
 It supports all common RAW image formats such as CR2, CRW, NEF, ARW, ORF, DNG and so on.
 
-## Installing
-* 1 Clone the repo
-* 2 Install electron
-* 3 Install required dependencies
-  * npm install electron
-  * npm install electron-json-storage
-  * npm install exif
-  * npm install exif-parser
-  * npm install is-online
-  * npm install trash
-  * npm install electron
-
-### Authors
+## Authors
 Hannes Gerstmayr, Michael Helcig, Christian Straßmayr
 
-### Licence
+## Licence
 The project is licensed under the MIT license.
+
+## Licence/Credits
+Framework: Electron <br>
+
+Node Modules: <br>
+electron-json-storage by jviotti <br>
+is-online by silverwind <br>
+trash by sindresorhus <br>
+
+Progressbar: IE8+ Responsive Progressbar by Captain Anonymous from CodePen <br>
