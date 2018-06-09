@@ -213,18 +213,3 @@ function getDirectory(path) {
     return dir;
 }
 
-function setProgress(progress) {
-    // progressbar.js@1.0.0 version is used
-    // Docs: http://progressbarjs.readthedocs.org/en/1.0.0/
-
-    var bar = new ProgressBar.Line('#progressbar', {
-        strokeWidth: 4,
-        easing: 'easeInOut',
-        duration: 300,
-        color: 'white',
-        trailColor: '#eee',
-        trailWidth: 1,
-        svgStyle: { width: '100%', height: '100%' }
-    });
-    bar.animate(progress); // Number from 0.0 to 1.0
-}
