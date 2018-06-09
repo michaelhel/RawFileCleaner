@@ -2,7 +2,7 @@ body {
     background-color: #282C34;
     font-family: 'Open Sans', sans-serif;
     color: #DFE3E4;
-    -webkit-app-region: drag;
+    -webkit-user-select: none;
  }
  
  /* Electron */
@@ -12,16 +12,16 @@ body {
  
  /* General */
  #container {
-     position: fixed;
-     width: 784px;
-     height: 384px;
- }
- 
- #content {
-     text-align: center;
-     margin-top: 150px;
- }
- 
+  position: fixed;
+  width: 784px;
+  height: 384px;
+}
+
+#content {
+  text-align: center;
+  margin-top: 150px;
+}
+
  #information {
      margin-left: 50px;
      margin-right: 50px;
