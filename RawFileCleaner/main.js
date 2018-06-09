@@ -15,7 +15,6 @@ app.on('ready', function() {
     mainWindow = new BrowserWindow({
         width: 800,
         height: 400,
-        //frame: false,
         resizable: false,
         fullscreen: false,
         titleBarStyle: 'hiddenInset',
