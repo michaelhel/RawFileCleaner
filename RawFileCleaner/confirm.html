@@ -34,117 +34,87 @@
             var container = document.getElementById("tableData");
             var table = document.createElement('table');
             var tbody = document.createElement('tbody');
+           
+                var sum = 0;
+                for (var i = 0; i < data.length; i++) {
+                    stats = electronFs.statSync(data[i].path + "/" + data[i].fileName);
+                    fileSizeInMB = stats.size / 1000000.0;
+                    var cell = document.createElement('td');
+                    sum += fileSizeInMB;
+                }
+                var row = document.createElement('tr');
+                var cell = document.createElement('td');
+                cell.textContent = "Sum of Space which will be freed up:";
+                cell.style.textAlign = "center";
+                row.appendChild(cell);
+                var cell = document.createElement('td');
+                cell.textContent = sum.toFixed(2) + "MB";
+                cell.style.textAlign = "center";
+                row.appendChild(cell);
+                tbody.appendChild(row);
 
-            var row = document.createElement('tr');
-            var head = document.createElement('th');
-            head.textContent = "Filename";
-            head.style.textAlign = "left";
-            row.appendChild(head);
-            var head = document.createElement('th');
-            head.textContent = "Directory";
-            head.style.textAlign = "left";
-            row.appendChild(head);
-            tbody.appendChild(row);
 
-            var sum = 0;
-            for (var i = 0; i < data.length; i++) {
-               stats = electronFs.statSync(data[i].path + "/" + data[i].fileName);
-               fileSizeInMB = stats.size / 1000000.0;
-               var cell = document.createElement('td');
-               sum += fileSizeInMB;
+                var row = document.createElement('tr');
+                var head = document.createElement('th');
+                head.textContent = "Filename";
+                head.style.textAlign = "left";
+                row.appendChild(head);
+                var head = document.createElement('th');
+                head.textContent = "Path";
+                head.style.textAlign = "left";
+                row.appendChild(head);
+                var head = document.createElement('th');
+                head.textContent = "Size";
+                head.style.textAlign = "left";
+                row.appendChild(head);
+                tbody.appendChild(row);
+                var Parent = document.getElementById("tableData");
+                while (Parent.hasChildNodes()) {
+                    Parent.removeChild(Parent.firstChild);
+                }
+                //0,150mb für katzenbild
+                var stats = -1;
+                var fileSizeInMB = -1;
+
+
+                for (var i = 0; i < data.length; i++) {
+                    var row = document.createElement('tr');
+                    var cell = document.createElement('td');
+                    cell.textContent = data[i].fileName;
+                    cell.style.textAlign = "left";
+                    row.appendChild(cell);
+                    var cell = document.createElement('td');
+                    cell.textContent = data[i].path;
+                    cell.style.textAlign = "left";
+                    row.appendChild(cell);
+                    stats = electronFs.statSync(data[i].path + "/" + data[i].fileName);
+                    fileSizeInMB = stats.size / 1000000.0;
+                    var cell = document.createElement('td');
+                    cell.textContent = fileSizeInMB.toFixed(2) + "MB";
+                    cell.style.textAlign = "left";
+                    row.appendChild(cell);
+                    tbody.appendChild(row);
+                }
+                table.appendChild(tbody);
+                table.style.width = "80%";
+                table.style.alignContent = "left";
+                container.appendChild(table);
+            });
+        }
+
+
+        var remote = require('electron').remote;
+        var electronFs = remote.require('fs');
+
+        storage = require('electron-json-storage');
+        document.addEventListener('keydown', function (e) {
+            if (e.which === 123) {
+                remote.getCurrentWindow().webContents.openDevTools();
+            } else if (e.which === 116) {
+                location.reload();
             }
-            var row = document.createElement('tr');
-            var cell = document.createElement('td');
-            cell.textContent = "Sum of Space which will be freed up:";
-            cell.style.textAlign = "center";
-            row.appendChild(cell);
-            var cell = document.createElement('td');
-            cell.textContent = sum.toFixed(2) + "MB";
-            cell.style.textAlign = "center";
-            row.appendChild(cell);
-            tbody.appendChild(row);
-
-
-            for (var i = 0; i < data.length; i++) {
-               var row = document.createElement('tr');
-               var cell = document.createElement('td');
-               cell.textContent = data[i].fileName;
-               cell.style.textAlign = "left";
-               row.appendChild(cell);
-               var cell = document.createElement('td');
-               cell.textContent = data[i].dir;
-               cell.style.textAlign = "left";
-               row.appendChild(cell);
-               tbody.appendChild(row);
-            }
-            table.appendChild(tbody);
-            table.style.width = "80%";
-            table.style.alignContent = "left";
-            container.appendChild(table);
-         });
-      }
-
-
-      var row = document.createElement('tr');
-      var head = document.createElement('th');
-      head.textContent = "Filename";
-      head.style.textAlign = "left";
-      row.appendChild(head);
-      var head = document.createElement('th');
-      head.textContent = "Path";
-      head.style.textAlign = "left";
-      row.appendChild(head);
-      var head = document.createElement('th');
-      head.textContent = "Size";
-      head.style.textAlign = "left";
-      row.appendChild(head);
-      tbody.appendChild(row);
-      var Parent = document.getElementById("tableData");
-      while (Parent.hasChildNodes()) {
-         Parent.removeChild(Parent.firstChild);
-      }
-      //0,150mb für katzenbild
-      var stats = -1;
-      var fileSizeInMB = -1;
-
-
-      for (var i = 0; i < data.length; i++) {
-         var row = document.createElement('tr');
-         var cell = document.createElement('td');
-         cell.textContent = data[i].fileName;
-         cell.style.textAlign = "left";
-         row.appendChild(cell);
-         var cell = document.createElement('td');
-         cell.textContent = data[i].path;
-         cell.style.textAlign = "left";
-         row.appendChild(cell);
-         stats = electronFs.statSync(data[i].path + "/" + data[i].fileName);
-         fileSizeInMB = stats.size / 1000000.0;
-         var cell = document.createElement('td');
-         cell.textContent = fileSizeInMB.toFixed(2) + "MB";
-         cell.style.textAlign = "left";
-         row.appendChild(cell);
-         tbody.appendChild(row);
-      }
-      table.appendChild(tbody);
-      table.style.width = "80%";
-      table.style.alignContent = "left";
-      container.appendChild(table);
-      });
-      }
-
-      var remote = require('electron').remote;
-      var electronFs = remote.require('fs');
-
-      storage = require('electron-json-storage');
-      document.addEventListener('keydown', function(e) {
-         if (e.which === 123) {
-            remote.getCurrentWindow().webContents.openDevTools();
-         } else if (e.which === 116) {
-            location.reload();
-         }
-      });
-   </script>
+        });
+    </script>
 </body>
 
 </html>
