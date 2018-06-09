@@ -1,3 +1,9 @@
+/*
+  Colors:
+    normal text: #DFE3E4
+    "special" text: #00e676
+*/
+
 body {
     background-color: #282C34;
     font-family: 'Open Sans', sans-serif;
@@ -5,6 +11,10 @@ body {
     -webkit-user-select: none;
  }
  
+ html {
+    -webkit-app-region: drag;
+ }
+
  /* Electron */
  ::-webkit-scrollbar {
      display: none;
@@ -12,7 +22,8 @@ body {
  
  /* General */
  #container {
-  position: fixed;
+  -webkit-app-region: drag;
+  position: fixed; 
   width: 784px;
   height: 384px;
 }
@@ -27,16 +38,29 @@ body {
      margin-right: 50px;
  }
  
+ a {
+  text-decoration: none;
+  color: inherit;
+  opacity: 0.5;
+}
+
+a:hover {
+  opacity: 1;
+}
+
+ #options {
+   text-align: center;
+ }
  /* Text */
  
  h1 {
-     font-size: 25px;
+     font-size: 30px;
  }
  
  h2 {
      font-size: 20px;
  }
- 
+
  /* Graphics */
  img {
      opacity: 0.5;
