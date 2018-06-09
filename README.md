@@ -26,5 +26,5 @@ Progressbar: IE8+ Responsive Progressbar by Captain Anonymous from CodePen <br>
 
 Table: fixed-header-table by Colorlib <br>
 The table template is licensed under the Creative Commons
-3.0 License. To view a copy of this license, visit
+3.0 License. <br> To view a copy of this license, visit
 https://creativecommons.org/licenses/by/3.0/at/deed.en.
