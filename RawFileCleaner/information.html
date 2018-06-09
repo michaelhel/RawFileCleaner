@@ -2,52 +2,53 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Information</title>
-    <link rel="stylesheet" type="text/css" href="style.css" />
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-    <script src="https://cdn.rawgit.com/webcomponents/webcomponentsjs/v0.7.15/webcomponents-lite.min.js"></script>
-    <link rel="import" href="https://cdn.rawgit.com/zerodevx/zero-md/v0.2.0/build/zero-md.html">
+   <meta charset="UTF-8">
+   <title>Information</title>
+   <link rel="stylesheet" type="text/css" href="style.css" />
+   <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+   <script src="https://cdn.rawgit.com/webcomponents/webcomponentsjs/v0.7.15/webcomponents-lite.min.js"></script>
+   <link rel="import" href="https://cdn.rawgit.com/zerodevx/zero-md/v0.2.0/build/zero-md.html">
 
 </head>
 
 <body>
    <div id="container">
-        <div>
-            <a href="index.html">
-                <img id="imgBack" src="img/back.svg" />
-            </a>
-        </div>
-        <div>
-            <h2>Information</h2>
-        </div>
-        <div id="information"></div>
-    </div>
-    <script type="text/javascript">
-        const isOnline = require('is-online');
-        isOnline({ timeout: 1000 }).then(online => {
-            if (online) {
-                document.getElementById('information').innerHTML =
-                    '<zero-md file="https://raw.githubusercontent.com/michaelhel/RawFileCleaner/master/README.md">' +
-                    '<div class="md-html"></div>' +
-                    '</zero-md>';
-            }
-            else {
-                document.getElementById('information').innerHTML = "Please ensure you have an active internet connection in order to see the information about the project.";
-            }
-        });
+      <div>
+         <a href="selectSource.html">
+            <img id="imgBack" src="img/back.svg" />
+         </a>
+      </div>
+      <div>
+         <h2>Information</h2>
+      </div>
+      <div id="information"></div>
+   </div>
+   <script type="text/javascript">
+      const isOnline = require('is-online');
+      isOnline({
+         timeout: 1000
+      }).then(online => {
+         if (online) {
+            document.getElementById('information').innerHTML =
+               '<zero-md file="https://raw.githubusercontent.com/michaelhel/RawFileCleaner/master/README.md">' +
+               '<div class="md-html"></div>' +
+               '</zero-md>';
+         } else {
+            document.getElementById('information').innerHTML = "Please ensure you have an active internet connection in order to see the information about the project.";
+         }
+      });
 
-        var remote = require('electron').remote;
-        document.addEventListener('keydown', function (e) {
-            if (e.which === 123) {
-                remote.getCurrentWindow().webContents.openDevTools();
-            } else if (e.which === 116) {
-                location.reload();
-            }
-        });
-        document.addEventListener('dragover', event => event.preventDefault())
-        document.addEventListener('drop', event => event.preventDefault())
-    </script>
+      var remote = require('electron').remote;
+      document.addEventListener('keydown', function(e) {
+         if (e.which === 123) {
+            remote.getCurrentWindow().webContents.openDevTools();
+         } else if (e.which === 116) {
+            location.reload();
+         }
+      });
+      document.addEventListener('dragover', event => event.preventDefault())
+      document.addEventListener('drop', event => event.preventDefault())
+   </script>
 </body>
 
 </html>
