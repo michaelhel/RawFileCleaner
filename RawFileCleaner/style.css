@@ -5,166 +5,181 @@
 */
 
 body {
-    background-color: #282C34;
-    font-family: 'Open Sans', sans-serif;
-    color: #DFE3E4;
-    -webkit-user-select: none;
- }
- 
- html {
-    -webkit-app-region: drag;
- }
+   background-color: #282C34;
+   font-family: 'Open Sans', sans-serif;
+   color: #DFE3E4;
+   -webkit-user-select: none;
+}
 
- /* Electron */
- ::-webkit-scrollbar {
-     display: none;
- }
- 
- /* General */
- #container {
-  -webkit-app-region: drag;
-  position: fixed; 
-  width: 784px;
-  height: 384px;
+html {
+   -webkit-app-region: drag;
+}
+
+/* Electron */
+
+::-webkit-scrollbar {
+   display: none;
+}
+
+/* General */
+
+#container {
+   -webkit-app-region: drag;
+   position: fixed;
+   width: 784px;
+   height: 384px;
 }
 
 #content {
-  text-align: center;
-  margin-top: 150px;
+   text-align: center;
+   margin-top: 150px;
 }
 
- #information {
-     margin-left: 50px;
-     margin-right: 50px;
- }
- 
- a {
-  text-decoration: none;
-  color: inherit;
-  opacity: 0.5;
+#information {
+   margin-left: 50px;
+   margin-right: 50px;
+}
+
+a {
+   text-decoration: none;
+   color: inherit;
+   opacity: 0.5;
 }
 
 a:hover {
-  opacity: 1;
+   opacity: 1;
 }
 
- #options {
+#options {
    text-align: center;
- }
- /* Text */
- 
- h1 {
-     font-size: 30px;
- }
- 
- h2 {
-     font-size: 20px;
- }
+}
 
- /* Graphics */
- img {
-     opacity: 0.5;
- }
- 
- img:hover {
-     opacity: 1.0;
- }
- 
- #info {
-    float: right;
- }
- 
- #imgInfo {
-     width: 20px;
-     padding-top: 10px;
-     padding-right: 10px;
- }
- 
- #imgBack {
-    width: 40px;
-    padding-top: 30px;
- }
+/* Text */
 
- /* Progressbar */
+h1 {
+   font-size: 30px;
+}
+
+h2 {
+   font-size: 20px;
+}
+
+/* Graphics */
+
+img {
+   opacity: 0.5;
+}
+
+img:hover {
+   opacity: 1.0;
+}
+
+#info {
+   float: right;
+}
+
+#imgInfo {
+   width: 20px;
+   padding-top: 10px;
+   padding-right: 10px;
+}
+
+#imgBack {
+   width: 40px;
+   padding-top: 30px;
+}
+
+/* Progressbar */
+
 #progressbar {
-    margin: auto;
-    width: 100%;
+   margin: auto;
+   width: 100%;
 }
 
 .progress {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: table;
-    table-layout: fixed;
-    width: 30%;
-    color: #DFE3E4;
-  }
-  .progress > li {
-    position: relative;
-    display: table-cell;
-    text-align: center;
-    font-size: 6px;
-  }
-  .progress > li:before {
-    content: attr(data-step);
-    display: block;
-    margin: 0 auto;
-    color: #282C34;
-    background: #DFE3E4;
-    width: 3em;
-    height: 3em;
-    text-align: center;
-    margin-bottom: 0.25em;
-    line-height: 3em;
-    border-radius: 100%;
-    position: relative;
-    z-index: 1000;
-  }
-  .progress > li:after {
-    content: '';
-    position: absolute;
-    display: block;
-    background: #DFE3E4;
-    width: 100%;
-    height: 0.5em;
-    top: 1.25em;
-    left: 50%;
-    margin-left: 1.5em\9;
-    z-index: -1;
-  }
-  .progress > li:last-child:after {
-    display: none;
-  }
-  .progress > li.is-complete {
-    color: #00e676;
-  }
-  .progress > li.is-complete:before, .progress > li.is-complete:after {
-    color: #282C34;
-    background: #00e676;
-  }
-  .progress > li.is-active {
-    color: #DFE3E4;
-  }
-  .progress > li.is-active:before {
-    color: #282C34;
-    background: #DFE3E4;
-  }
-  
-  /**
+   list-style: none;
+   margin: 0;
+   padding: 0;
+   display: table;
+   table-layout: fixed;
+   width: 30%;
+   color: #DFE3E4;
+}
+
+.progress>li {
+   position: relative;
+   display: table-cell;
+   text-align: center;
+   font-size: 6px;
+}
+
+.progress>li:before {
+   content: attr(data-step);
+   display: block;
+   margin: 0 auto;
+   color: #282C34;
+   background: #DFE3E4;
+   width: 3em;
+   height: 3em;
+   text-align: center;
+   margin-bottom: 0.25em;
+   line-height: 3em;
+   border-radius: 100%;
+   position: relative;
+   z-index: 1000;
+}
+
+.progress>li:after {
+   content: '';
+   position: absolute;
+   display: block;
+   background: #DFE3E4;
+   width: 100%;
+   height: 0.5em;
+   top: 1.25em;
+   left: 50%;
+   margin-left: 1.5em\9;
+   z-index: -1;
+}
+
+.progress>li:last-child:after {
+   display: none;
+}
+
+.progress>li.is-complete {
+   color: #00e676;
+}
+
+.progress>li.is-complete:before, .progress>li.is-complete:after {
+   color: #282C34;
+   background: #00e676;
+}
+
+.progress>li.is-active {
+   color: #DFE3E4;
+}
+
+.progress>li.is-active:before {
+   color: #282C34;
+   background: #DFE3E4;
+}
+
+/**
    * Needed for IE8
    */
-  .progress__last:after {
-    display: none !important;
-  }
-  
-  /**
+
+.progress__last:after {
+   display: none !important;
+}
+
+/**
    * Size Extensions
    */
-  .progress--medium {
-    font-size: 6px;
-  }
-  
-  .progress--large {
-    font-size: 10px;
-  }
+
+.progress--medium {
+   font-size: 6px;
+}
+
+.progress--large {
+   font-size: 10px;
+}
