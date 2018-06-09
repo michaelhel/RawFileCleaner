@@ -1,200 +1,79 @@
 body {
     background-color: #282C34;
     font-family: 'Open Sans', sans-serif;
-    color: white;
+    color: #DFE3E4;
     -webkit-app-region: drag;
-}
-
-
-/* Electron */
-
-::-webkit-scrollbar {
-    display: none;
-}
-
-
-/* General */
-
-#container {
-    position: relative;
-}
-
-#content {
-    text-align: center;
-    padding-top: 80px;
-}
-
-#information {
-    margin-left: 50px;
-    margin-right: 50px;
-}
-
-
-/* Text */
-
-h1 {
-    font-size: 25px;
-}
-
-h2 {
-    font-size: 20px;
-}
-
-
-/* Graphics */
-
-img {
-    opacity: 0.5;
-}
-
-img:hover {
-    opacity: 1.0;
-}
-
-#info {
+ }
+ 
+ /* Electron */
+ ::-webkit-scrollbar {
+     display: none;
+ }
+ 
+ /* General */
+ #container {
+     position: fixed;
+     width: 784px;
+     height: 384px;
+ }
+ 
+ #content {
+     text-align: center;
+     margin-top: 150px;
+ }
+ 
+ #information {
+     margin-left: 50px;
+     margin-right: 50px;
+ }
+ 
+ /* Text */
+ 
+ h1 {
+     font-size: 25px;
+ }
+ 
+ h2 {
+     font-size: 20px;
+ }
+ 
+ /* Graphics */
+ img {
+     opacity: 0.5;
+ }
+ 
+ img:hover {
+     opacity: 1.0;
+ }
+ 
+ #info {
     float: right;
-}
-
-#imgInfo {
-    width: 20px;
-    padding-top: 10px;
-    padding-right: 10px;
-}
-
-#imgBack {
+ }
+ 
+ #imgInfo {
+     width: 20px;
+     padding-top: 10px;
+     padding-right: 10px;
+ }
+ 
+ #imgBack {
     width: 40px;
     padding-top: 30px;
+ }
+
+ /* Progressbar */
+#progressbar {
+    margin: auto;
+    width: 100%;
 }
 
-button {
-    padding-top: 20px;
-    background-color: darkgray;
-    border: none;
-    color: white;
-    padding: 5px 10px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 12px;
-    border-radius: 3px;
-    opacity: 0.5;
-    transition-duration: 0.4s;
-    padding: 5px 10px;
-}
-
-button:hover {
-    opacity: 1;
-}
-
-a {
-    text-decoration: none;
-    color: inherit;
-    opacity: 0.5;
-}
-
-a:hover {
-    opacity: 1;
-}
-
-#start,
-#selectSource,
-#cleanFiles,
-#conclusion {
-    text-align: center;
-    margin-bottom: 50px;
-}
-
-#options {
-    text-align: center;
-}
-
-#title {
-    padding-top: 10px;
-    text-align: center;
-}
-
-#start {
-    padding-top: 110px;
-}
-
-#selectSource {
-    margin-top: 80px;
-    font-size: 40px;
-}
-
-#options {
-    padding-top: 20px;
-}
-
-#cleanFiles {
-    margin-top: 50px;
-}
-
-#info {
-    float: right;
-}
-
-#imgInfo {
-    width: 20px;
-    padding-right: 10px;
-    padding-top: 10px;
-}
-
-#imgBack {
-    width: 40px;
-    padding-top: 30px;
-}
-
-#conclusion {
-    padding-top: 110px;
-}
-
-#imgStart,
-#imgSelectSource,
-#imgIncludeSubfolders,
-#imgCleanFiles,
-#imgConclusion {
-    width: 100px;
-}
-
-#information {
-    margin-left: 100px;
-    margin-right: 100px;
-}
-
-#showPath {
-    margin-top: 20px;
-    font-size: 10px;
-    color: grey;
-}
-
-#warning {
-    margin-top: 20px;
-    font-size: 13px;
-    color: #00e676;
-}
-
-table {
-    margin-left: auto;
-    margin-right: auto;
-}
-
-td,
-th {
-    width: 200px;
-    text-align: center;
-}
-
-/* Progressbar */
-
-
-progress {
+.progress {
     list-style: none;
     margin: 0;
     padding: 0;
     display: table;
     table-layout: fixed;
-    width: 100%;
+    width: 30%;
     color: #DFE3E4;
   }
   .progress > li {
@@ -265,3 +144,6 @@ progress {
   .progress--large {
     font-size: 10px;
   }
+  
+ 
+  
