@@ -29,13 +29,14 @@
 <body>
    <div id="container">
       Are you sure you want to delete these files?
+      <p id="sum" onmouseover="cuteCats()" onmouseout="removeCats()"></p>
       <div>
          <a href="selectSource.html">
                 <img id="imgUndo" src="img/undo.svg" />
-            </a>
+         </a>
          <a>
-                <img id="imgConfirm" src="img/confirm.svg" onclick="cleanFiles(true)" />
-            </a>
+            <img id="imgConfirm" src="img/confirm.svg" onclick="cleanFiles(true)" />
+         </a>
       </div>
       <div class="table100 ver3 m-b-110">
          <div class="table100-head">
@@ -51,122 +52,7 @@
          </div>
          <div class="table100-body js-pscroll">
             <table>
-               <tbody>
-                  <tr class="row100 body">
-                     <td class="cell100 column1">File1.cr2</td>
-                     <td class="cell100 column2">Testfotos</td>
-                     <td class="cell100 column3">100 MB</td>
-                  </tr>
-
-                  <tr class="row100 body">
-                     <td class="cell100 column1">File2.cr2</td>
-                     <td class="cell100 column2">Testfotos</td>
-                     <td class="cell100 column3">100 MB</td>
-                  </tr>
-
-                  <tr class="row100 body">
-                     <td class="cell100 column1">File3.cr2</td>
-                     <td class="cell100 column2">Testfotos</td>
-                     <td class="cell100 column3">100 MB</td>
-                  </tr>
-
-                  <tr class="row100 body">
-                     <td class="cell100 column1">File4.cr2</td>
-                     <td class="cell100 column2">Testfotos</td>
-                     <td class="cell100 column3">100 MB</td>
-                  </tr>
-                  <tr class="row100 body">
-                     <td class="cell100 column1">File1.cr2</td>
-                     <td class="cell100 column2">Testfotos</td>
-                     <td class="cell100 column3">100 MB</td>
-                  </tr>
-
-                  <tr class="row100 body">
-                     <td class="cell100 column1">File2.cr2</td>
-                     <td class="cell100 column2">Testfotos</td>
-                     <td class="cell100 column3">100 MB</td>
-                  </tr>
-
-                  <tr class="row100 body">
-                     <td class="cell100 column1">File3.cr2</td>
-                     <td class="cell100 column2">Testfotos</td>
-                     <td class="cell100 column3">100 MB</td>
-                  </tr>
-
-                  <tr class="row100 body">
-                     <td class="cell100 column1">File4.cr2</td>
-                     <td class="cell100 column2">Testfotos</td>
-                     <td class="cell100 column3">100 MB</td>
-                  </tr>
-                  <tr class="row100 body">
-                     <td class="cell100 column1">File1.cr2</td>
-                     <td class="cell100 column2">Testfotos</td>
-                     <td class="cell100 column3">100 MB</td>
-                  </tr>
-
-                  <tr class="row100 body">
-                     <td class="cell100 column1">File2.cr2</td>
-                     <td class="cell100 column2">Testfotos</td>
-                     <td class="cell100 column3">100 MB</td>
-                  </tr>
-
-                  <tr class="row100 body">
-                     <td class="cell100 column1">File3.cr2</td>
-                     <td class="cell100 column2">Testfotos</td>
-                     <td class="cell100 column3">100 MB</td>
-                  </tr>
-
-                  <tr class="row100 body">
-                     <td class="cell100 column1">File4.cr2</td>
-                     <td class="cell100 column2">Testfotos</td>
-                     <td class="cell100 column3">100 MB</td>
-                  </tr>
-                  <tr class="row100 body">
-                     <td class="cell100 column1">File1.cr2</td>
-                     <td class="cell100 column2">Testfotos</td>
-                     <td class="cell100 column3">100 MB</td>
-                  </tr>
-
-                  <tr class="row100 body">
-                     <td class="cell100 column1">File2.cr2</td>
-                     <td class="cell100 column2">Testfotos</td>
-                     <td class="cell100 column3">100 MB</td>
-                  </tr>
-
-                  <tr class="row100 body">
-                     <td class="cell100 column1">File3.cr2</td>
-                     <td class="cell100 column2">Testfotos</td>
-                     <td class="cell100 column3">100 MB</td>
-                  </tr>
-
-                  <tr class="row100 body">
-                     <td class="cell100 column1">File4.cr2</td>
-                     <td class="cell100 column2">Testfotos</td>
-                     <td class="cell100 column3">100 MB</td>
-                  </tr>
-                  <tr class="row100 body">
-                     <td class="cell100 column1">File1.cr2</td>
-                     <td class="cell100 column2">Testfotos</td>
-                     <td class="cell100 column3">100 MB</td>
-                  </tr>
-
-                  <tr class="row100 body">
-                     <td class="cell100 column1">File2.cr2</td>
-                     <td class="cell100 column2">Testfotos</td>
-                     <td class="cell100 column3">100 MB</td>
-                  </tr>
-
-                  <tr class="row100 body">
-                     <td class="cell100 column1">File3.cr2</td>
-                     <td class="cell100 column2">Testfotos</td>
-                     <td class="cell100 column3">100 MB</td>
-                  </tr>
-
-                  <tr class="row100 body">
-                     <td class="cell100 column1">File4.cr2</td>
-                     <td class="cell100 column2">Testfotos</td>
-                     <td class="cell100 column3">100 MB</td>
-                  </tr>
+               <tbody id="tbody">
                </tbody>
             </table>
          </div>
@@ -174,87 +60,11 @@
    </div>
    <script type="text/javascript">
       window.onload = view;
-
-      function view() {
-         const storage = require('electron-json-storage');
-         storage.get('deletedFiles', function(error, data) {
-            if (error) throw error;
-            var container = document.getElementById("tableData");
-            var table = document.createElement('table');
-            var tbody = document.createElement('tbody');
-
-            var sum = 0;
-            for (var i = 0; i < data.length; i++) {
-               stats = electronFs.statSync(data[i].path + "/" + data[i].fileName);
-               fileSizeInMB = stats.size / 1000000.0;
-               var cell = document.createElement('td');
-               sum += fileSizeInMB;
-            }
-            var row = document.createElement('tr');
-            var cell = document.createElement('td');
-            cell.textContent = "Sum of Space which will be freed up:";
-            cell.style.textAlign = "center";
-            row.appendChild(cell);
-            var cell = document.createElement('td');
-            cell.textContent = sum.toFixed(2) + "MB";
-            cell.style.textAlign = "center";
-            row.appendChild(cell);
-            tbody.appendChild(row);
-
-
-            var row = document.createElement('tr');
-            var head = document.createElement('th');
-            head.textContent = "Filename";
-            head.style.textAlign = "left";
-            row.appendChild(head);
-            var head = document.createElement('th');
-            head.textContent = "Path";
-            head.style.textAlign = "left";
-            row.appendChild(head);
-            var head = document.createElement('th');
-            head.textContent = "Size";
-            head.style.textAlign = "left";
-            row.appendChild(head);
-            tbody.appendChild(row);
-            var Parent = document.getElementById("tableData");
-            while (Parent.hasChildNodes()) {
-               Parent.removeChild(Parent.firstChild);
-            }
-            //0,150mb für katzenbild
-            var stats = -1;
-            var fileSizeInMB = -1;
-
-
-            for (var i = 0; i < data.length; i++) {
-               var row = document.createElement('tr');
-               var cell = document.createElement('td');
-               cell.textContent = data[i].fileName;
-               cell.style.textAlign = "left";
-               row.appendChild(cell);
-               var cell = document.createElement('td');
-               cell.textContent = data[i].path;
-               cell.style.textAlign = "left";
-               row.appendChild(cell);
-               stats = electronFs.statSync(data[i].path + "/" + data[i].fileName);
-               fileSizeInMB = stats.size / 1000000.0;
-               var cell = document.createElement('td');
-               cell.textContent = fileSizeInMB.toFixed(2) + "MB";
-               cell.style.textAlign = "left";
-               row.appendChild(cell);
-               tbody.appendChild(row);
-            }
-            table.appendChild(tbody);
-            table.style.width = "80%";
-            table.style.alignContent = "left";
-            container.appendChild(table);
-         });
-      }
-
-
       var remote = require('electron').remote;
       var electronFs = remote.require('fs');
-
-      storage = require('electron-json-storage');
+      const storage = require('electron-json-storage');
+      var sum;
+      var cats;
       document.addEventListener('keydown', function(e) {
          if (e.which === 123) {
             remote.getCurrentWindow().webContents.openDevTools();
@@ -262,16 +72,51 @@
             location.reload();
          }
       });
+
+      function view() {
+         storage.get('deletedFiles', function(error, data) {
+            if (error) throw error;
+
+            var body = "";
+            sum = 0;
+            for (var i = 0; i < data.length; i++) {
+               stats = electronFs.statSync(data[i].path + "/" + data[i].fileName);
+               sum += stats.size / 1000000.0;
+            }
+            sum = Math.round(sum * 100) / 100;
+            document.getElementById("sum").innerHTML = "By deleting you will free " + sum + "MB";
+            cats = Math.round(sum / 1.5) * 10; //0.15 MB is the size of an average cat pic
+
+            for (var i = 0; i < data.length; i++) {
+               body += "<tr class=\"row100 body\">";
+               body += "<td class=\"cell100 column1\">";
+               body += data[i].fileName + "</td>";
+               body += "<td class=\"cell100 column2\">";
+               body += data[i].dir + "</td>";
+               stats = electronFs.statSync(data[i].path + "/" + data[i].fileName);
+               fileSizeInMB = stats.size / 1000000.0;
+               body += "<td class=\"cell100 column3\">";
+               body += fileSizeInMB.toFixed(2) + " MB</td>";
+               body += "</tr>";
+            }
+            document.getElementById('tbody').innerHTML = body;
+         });
+      }
+
+      function cuteCats() {
+         document.getElementById("sum").innerHTML = "That's enough storage for about " + cats + " cute cat pics";
+      }
+
+      function removeCats() {
+         document.getElementById("sum").innerHTML = "By deleting you will free " + sum + "MB";
+      }
    </script>
-   <!--===============================================================================================-->
    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-   <!--===============================================================================================-->
    <script src="vendor/bootstrap/js/popper.js"></script>
    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-   <!--===============================================================================================-->
    <script src="vendor/select2/select2.min.js"></script>
-   <!--===============================================================================================-->
    <script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+   <script src="js/main.js"></script>
    <script>
       $('.js-pscroll').each(function() {
          var ps = new PerfectScrollbar(this);
@@ -281,8 +126,6 @@
          })
       });
    </script>
-   <!--===============================================================================================-->
-   <script src="js/main.js"></script>
 </body>
 
 </html>

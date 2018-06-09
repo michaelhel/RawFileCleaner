@@ -21,6 +21,7 @@
 }
 
 body, html {
+   padding-top: 5px;
    font-family: sans-serif;
    text-align: center;
 }
@@ -101,7 +102,7 @@ iframe {
 
 .table100 .ps__rail-y {
    width: 9px;
-   background-color: transparent;
+   background-color: #ebebeb;
    opacity: 1 !important;
    right: 5px;
 }
@@ -167,10 +168,6 @@ iframe {
 /*//////////////////////////////////////////////////////////////////
 [ Table ]*/
 
-.table100 {
-   background-color: #fff;
-}
-
 table {
    width: 100%;
    text-align: left;
@@ -183,16 +180,16 @@ th, td {
 }
 
 .column1 {
-   width: 3%;
-   padding-left: 40px;
+   width: 30%;
+   padding-left: 5%;
 }
 
 .column2 {
-   width: 3%;
+   width: 30%;
 }
 
 .column3 {
-   width: 3%;
+   width: 10%;
 }
 
 .table100-head th {
@@ -201,8 +198,8 @@ th, td {
 }
 
 .table100-body td {
-   padding-top: 16px;
-   padding-bottom: 16px;
+   padding-top: 5px;
+   padding-bottom: 5px;
 }
 
 /*==================================================================
@@ -221,7 +218,7 @@ th, td {
 }
 
 .table100-body {
-   max-height: 585px;
+   max-height: 200px;
    overflow: auto;
 }
 
@@ -252,8 +249,8 @@ th, td {
 /*---------------------------------------------*/
 
 .table100.ver3 {
-   border-radius: 0px;
-   overflow: hidden;
+   border-radius: 5px;
+   overflow: visible;
    box-shadow: 0 0px 40px 0px rgba(0, 0, 0, 0.15);
    -moz-box-shadow: 0 0px 40px 0px rgba(0, 0, 0, 0.15);
    -webkit-box-shadow: 0 0px 40px 0px rgba(0, 0, 0, 0.15);
@@ -262,7 +259,7 @@ th, td {
 }
 
 .table100.ver3 .ps__rail-y {
-   right: 5px;
+   right: 100px;
 }
 
 .table100.ver3 .ps__rail-y::before {
