@@ -1,185 +1,198 @@
 body {
-   background-color: #282C34;
-   font-family: 'Open Sans', sans-serif;
-   color: white;
-   -webkit-app-region: drag;
+    background-color: #282C34;
+    font-family: 'Open Sans', sans-serif;
+    color: white;
+    -webkit-app-region: drag;
 }
+
 
 /* Electron */
 
 ::-webkit-scrollbar {
-   display: none;
+    display: none;
 }
+
 
 /* General */
 
 #container {
-   position: relative;
+    position: relative;
 }
 
 #content {
-   text-align: center;
-   padding-top: 80px;
+    text-align: center;
+    padding-top: 80px;
 }
 
 #information {
-   margin-left: 50px;
-   margin-right: 50px;
+    margin-left: 50px;
+    margin-right: 50px;
 }
+
 
 /* Text */
 
 h1 {
-   font-size: 25px;
+    font-size: 25px;
 }
 
 h2 {
-   font-size: 20px;
+    font-size: 20px;
 }
+
 
 /* Graphics */
 
 img {
-   opacity: 0.5;
+    opacity: 0.5;
 }
 
 img:hover {
-   opacity: 1.0;
+    opacity: 1.0;
 }
 
 #info {
-   float: right;
+    float: right;
 }
 
 #imgInfo {
-   width: 20px;
-   padding-top: 10px;
-   padding-right: 10px;
+    width: 20px;
+    padding-top: 10px;
+    padding-right: 10px;
 }
 
 #imgBack {
-   width: 40px;
-   padding-top: 30px;
+    width: 40px;
+    padding-top: 30px;
 }
+
 
 /* Progressbar */
 
 #progressbar {
-   position: fixed;
-   margin-bottom: 10px;
-   margin-left: 375px;
-   margin-right: 375px;
-   width: 50px;
-   height: 1px;
+    position: fixed;
+    margin-bottom: 10px;
+    margin-left: 375px;
+    margin-right: 375px;
+    width: 50px;
+    height: 1px;
 }
 
 button {
-   padding-top: 20px;
-   background-color: darkgray;
-   border: none;
-   color: white;
-   padding: 5px 10px;
-   text-align: center;
-   text-decoration: none;
-   display: inline-block;
-   font-size: 12px;
-   border-radius: 3px;
-   opacity: 0.5;
-   transition-duration: 0.4s;
-   padding: 5px 10px;
+    padding-top: 20px;
+    background-color: darkgray;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    border-radius: 3px;
+    opacity: 0.5;
+    transition-duration: 0.4s;
+    padding: 5px 10px;
 }
 
 button:hover {
-   opacity: 1;
+    opacity: 1;
 }
 
 a {
-   text-decoration: none;
-   color: inherit;
-   opacity: 0.5;
+    text-decoration: none;
+    color: inherit;
+    opacity: 0.5;
 }
 
 a:hover {
-   opacity: 1;
+    opacity: 1;
 }
 
-#start, #selectSource, #cleanFiles, #conclusion {
-   text-align: center;
-   margin-bottom: 50px;
+#start,
+#selectSource,
+#cleanFiles,
+#conclusion {
+    text-align: center;
+    margin-bottom: 50px;
 }
 
 #options {
-   text-align: center;
+    text-align: center;
 }
 
 #title {
-   padding-top: 10px;
-   text-align: center;
+    padding-top: 10px;
+    text-align: center;
 }
 
 #start {
-   padding-top: 110px;
+    padding-top: 110px;
 }
 
 #selectSource {
-   margin-top: 80px;
-   font-size: 40px;
+    margin-top: 80px;
+    font-size: 40px;
 }
 
 #options {
-   padding-top: 20px;
+    padding-top: 20px;
 }
 
 #cleanFiles {
-   margin-top: 50px;
+    margin-top: 50px;
 }
 
 #info {
-   float: right;
+    float: right;
 }
 
 #imgInfo {
-   width: 20px;
-   padding-right: 10px;
-   padding-top: 10px;
+    width: 20px;
+    padding-right: 10px;
+    padding-top: 10px;
 }
 
 #imgBack {
-   width: 40px;
-   padding-top: 30px;
+    width: 40px;
+    padding-top: 30px;
 }
 
 #conclusion {
-   padding-top: 110px;
+    padding-top: 110px;
 }
 
-#imgStart, #imgSelectSource, #imgIncludeSubfolders, #imgCleanFiles, #imgConclusion {
-   width: 100px;
+#imgStart,
+#imgSelectSource,
+#imgIncludeSubfolders,
+#imgCleanFiles,
+#imgConclusion {
+    width: 100px;
 }
 
 #information {
-   margin-left: 100px;
-   margin-right: 100px;
+    margin-left: 100px;
+    margin-right: 100px;
 }
 
 #showPath {
-   margin-top: 20px;
-   font-size: 10px;
-   color: grey;
+    margin-top: 20px;
+    font-size: 10px;
+    color: grey;
 }
 
 #warning {
-   margin-top: 20px;
-   font-size: 13px;
-   color: #FF1744;
+    margin-top: 20px;
+    font-size: 13px;
+    color: #FF1744;
 }
 
 table {
-   margin-left: auto;
-   margin-right: auto;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-td, th {
-   width: 200px;
-   text-align: center;
+td,
+th {
+    width: 200px;
+    text-align: center;
 }

@@ -39,7 +39,7 @@
             ev.preventDefault();
         }
 
-        document.body.ondrop = (ev) => {
+        document.ondrop = (ev) => {
             storage.set('path', ev.dataTransfer.files[0].path, (err) => {
                 if (err) {
                     console.log(err);
