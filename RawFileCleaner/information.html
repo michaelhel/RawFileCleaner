@@ -34,14 +34,14 @@
                 document.getElementById('information').innerHTML = "Please ensure you have an active internet connection in order to see the information about the project.";
             }
         });
-        var remote = require('electron').remote;
-        document.addEventListener('keydown', function(e) {
-            if (e.which === 123) {
-                remote.getCurrentWindow().webContents.openDevTools();
-            } else if (e.which === 116) {
-                location.reload();
+        const { shell } = require('electron');
+        document.addEventListener('click', function (e) {
+            var path = e.target.href;
+            if (path !== undefined && path.startsWith("http")) {
+                shell.openExternal(path);
+                e.preventDefault();
             }
-        });
+        }, true);
         document.addEventListener('dragover', event => event.preventDefault())
         document.addEventListener('drop', event => event.preventDefault())
     </script>
