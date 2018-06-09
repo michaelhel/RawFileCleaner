@@ -4,7 +4,7 @@
 RawFileCleaner is currently in progress.
 
 ## What can it do?
-The tool can be used to delete all RAW files without a matching JPEG file so you don't have to manually delete them after you have sorted out the JPEG files.
+The tool can be used to delete all RAW files without a matching compressed file so you don't have to manually delete them after you have sorted out the compressed files.
 
 It supports all common RAW image formats such as CR2, CRW, NEF, ARW, ORF, DNG and so on.
 
