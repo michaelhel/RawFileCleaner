@@ -14,7 +14,7 @@ Hannes Gerstmayr, Michael Helcig, Christian Straßmayr
 ## Licence
 The project is licensed under the MIT license.
 
-## Licence/Credits
+## Credits
 Framework: Electron <br>
 
 Node Modules: <br>
@@ -23,3 +23,5 @@ is-online by silverwind <br>
 trash by sindresorhus <br>
 
 Progressbar: IE8+ Responsive Progressbar by Captain Anonymous from CodePen <br>
+
+Table: fixed-header-table by Colorlib
