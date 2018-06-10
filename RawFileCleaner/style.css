@@ -1,8 +1,7 @@
 /*
   Colors:
-    normal elements: #DFE3E4
-    darker elements: #b6b9ba
-    "special" elements: #00e676
+    normal text: #DFE3E4
+    "special" text: #00e676
     backround: #282C34
 */
 
@@ -39,23 +38,6 @@ html {
    text-align: center;
 }
 
-/* General */
-table {
-    margin-left: auto;
-    margin-right: auto;
-}
-
-td,
-th {
-    width: 200px;
-    text-align: center;
-}
-
-a {
-    text-decoration: none;
-    color: inherit;
-    opacity: 0.5;
-}
 /* Text */
 
 h1 {
@@ -71,22 +53,7 @@ h2 {
    margin-right: 100px;
 }
 
-#showPath {
-    margin-top: 20px;
-    font-size: 10px;
-    color: #b6b9ba;
-}
-
 /* Graphics */
-
-img {
-    opacity: 0.8;
-}
-
-img:hover {
-    opacity: 1.0;
-}
-
 
 #info {
    float: right;
