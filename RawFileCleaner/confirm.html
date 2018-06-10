@@ -60,14 +60,11 @@
                 location.reload();
             }
         });
-
         var sum;
         var cats;
-
         function view() {
             storage.get('deletedFiles', function (error, deletedFiles) {
                 if (error) throw error;
-
                 var body = "";
                 sum = 0;
                 for (var i = 0; i < deletedFiles.length; i++) {
@@ -77,7 +74,6 @@
                 sum = Math.round(sum * 100) / 100;
                 document.getElementById("sum").innerHTML = "By deleting you will free " + sum + "MB";
                 cats = Math.round(sum / 1.5) * 10; //0.15 MB is the size of an average cat pic
-
                 for (var i = 0; i < deletedFiles.length; i++) {
                     body += "<tr>";
                     body += "<td>";
@@ -93,7 +89,6 @@
                 document.getElementById('fileTableBody').innerHTML = body;
             });
         }
-
         function cuteCats() {
             if (cats == 0) {
                 document.getElementById("sum").innerHTML = "There's nothing to delete, so you wont get any storage for cute cat pics! 😿";
@@ -102,11 +97,9 @@
                 document.getElementById("sum").innerHTML = "That's enough storage for about " + cats + " cute cat pics! 😸";
             }
         }
-
         function removeCats() {
             document.getElementById("sum").innerHTML = "By deleting you will free " + sum + "MB";
         }
-
         // Delete Button
         // Design / Dribbble by:
         // Adam Whitcroft
@@ -121,7 +114,6 @@
                 $("span").text("Are you sure?");
             }
         });
-
         // Reset
         $("button").on('mouseout', function () {
             if ($(this).hasClass("confirm") || $(this).hasClass("done")) {
