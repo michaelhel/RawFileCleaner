@@ -17,11 +17,15 @@ The project is licensed under the MIT license.
 ## Credits
 Framework: Electron <br>
 
-Node Modules: <br>
+### Node Modules: <br>
 electron-json-storage by jviotti <br>
 is-online by silverwind <br>
 trash by sindresorhus <br>
 progressbar.js by kimmobrunfeldt <br>
 
-Terminal Animation at begin: <br>
+### Terminal Animation at begin: <br>
 "Terminal Text Effect" by Captain Anonymous from CodePen
+
+### Delete Button: <br>
+"Delete Button (Incl. Confirmation)" by Danny Iovane from CodePen
+
