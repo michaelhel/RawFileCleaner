@@ -86,6 +86,31 @@ img:hover {
     padding-top: 30px;
 }
 
+#imgInfo {
+    width: 20px;
+    padding-right: 10px;
+    padding-top: 10px;
+}
+
+#imgBack {
+    width: 40px;
+    padding-top: 30px;
+}
+
+#imgConfirm {
+    padding-top: 1px;
+    padding-left: 40%;
+}
+
+#imgConclusion {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+#conclusion {
+    padding-top: 110px;
+}
+
 #start,
 #selectSource,
 #cleanFiles,
@@ -123,30 +148,7 @@ img:hover {
     float: right;
 }
 
-#imgInfo {
-    width: 20px;
-    padding-right: 10px;
-    padding-top: 10px;
-}
 
-#imgBack {
-    width: 40px;
-    padding-top: 30px;
-}
-
-#imgConfirm {
-    padding-top: 1px;
-    padding-left: 40%;
-}
-
-#imgUndo {
-    padding-top: 1px;
-    padding-right: 40%;
-}
-
-#conclusion {
-    padding-top: 110px;
-}
 
 #imgStart,
 #imgSelectSource,
