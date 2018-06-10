@@ -42,9 +42,9 @@ html {
 /* General */
 
 a {
-   text-decoration: none;
-   color: inherit;
-   opacity: 0.5;
+    text-decoration: none;
+    color: inherit;
+    opacity: 0.5;
 }
 
 /* Text */
@@ -63,19 +63,19 @@ h2 {
 }
 
 #showPath {
-   margin-top: 20px;
-   font-size: 10px;
-   color: #b6b9ba;
+    margin-top: 20px;
+    font-size: 10px;
+    color: #b6b9ba;
 }
 
 /* Graphics */
 
 img {
-   opacity: 0.8;
+    opacity: 0.8;
 }
 
 img:hover {
-   opacity: 1.0;
+    opacity: 1.0;
 }
 
 #info {
@@ -262,40 +262,42 @@ a:hover {
 /* Table */
 
 #fileTable {
-   border-collapse: collapse;
+    border-collapse: collapse;
 }
 
-#fileTable thead, #fileTable tbody {
-   display: block;
-   width: 100%;
+#fileTable thead,
+#fileTable tbody {
+    display: block;
+    width: 100%;
 }
 
 #fileTable tbody {
-   height: 180px;
-   overflow-y: auto;
-   overflow-x: hidden;
+    height: 180px;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
-#fileTable td, #fileTable th {
-   padding: 8px;
-   text-align: left;
+#fileTable td,
+#fileTable th {
+    padding: 8px;
+    text-align: left;
 }
 
 #fileTable tr {
-   background-color: #282C34;
+    background-color: #282C34;
 }
 
 #fileTable tr:hover {
-   background-color: #00e676;
-   color: #282C34;
+    background-color: #00e676;
+    color: #282C34;
 }
 
 #fileTable th {
-   padding-top: 12px;
-   padding-bottom: 12px;
-   text-align: left;
-   background-color: #2c313a;
-   color: #00e676;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #2c313a;
+    color: #00e676;
 }
 
 /* Delete Button */
@@ -361,7 +363,7 @@ button .text {
     width: 0;
     height: 30px;
     overflow: hidden;
-    font-family: "Roboto", sans-serif;
+    font-family: 'Open Sans', sans-serif;
     background: #F34541;
     text-align: center;
     line-height: 30px;
@@ -479,7 +481,4 @@ button.done .text span {
         -webkit-transform: scale(1);
         transform: scale(1);
     }
-   background-color: #00e676;
-   color: #282C34;
 }
-

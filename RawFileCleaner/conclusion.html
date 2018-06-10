@@ -9,11 +9,8 @@
     <script src="script.js"></script>
 </head>
 
-<body>
+<body onload="setProgressbar(1)">
     <div id="container">
-        <div id="info">
-            <a href="deletedFiles.html">show deleted files</a>
-        </div>
         <div id="conclusion">
             <a>
                 <img id="imgConclusion" src="img/conclusion.svg" />
@@ -21,6 +18,7 @@
             <p>Thank you for using RawFileCleaner</p>
         </div>
     </div>
+    <div id=progressbar></div>
     <script type="text/javascript">
         var remote = require('electron').remote;
         document.addEventListener('keydown', function(e) {
