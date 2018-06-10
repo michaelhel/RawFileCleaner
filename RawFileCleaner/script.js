@@ -249,7 +249,6 @@ function setProgressbar(startPosition, progress) {
         duration: 1400,
         color: '#00e676',
         trailColor: '#1D242B',
-
         trailWidth: 0,
         svgStyle: {
             width: '100%',

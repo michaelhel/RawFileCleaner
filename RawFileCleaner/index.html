@@ -29,20 +29,17 @@
     <div id="progressbar"></div>
     <script type="text/javascript">
         var remote = require('electron').remote;
-        document.addEventListener('keydown', function(e) {
+        document.addEventListener('keydown', function (e) {
             if (e.which === 123) {
                 remote.getCurrentWindow().webContents.openDevTools();
             } else if (e.which === 116) {
                 location.reload();
             }
         });
-
         const storage = require('electron-json-storage');
-
         document.ondragover = document.ondrop = (ev) => {
             ev.preventDefault();
         }
-
         document.body.ondrop = (ev) => {
             storage.set('path', ev.dataTransfer.files[0].path, (err) => {
                 if (err) {
@@ -52,7 +49,6 @@
             window.location = "options.html";
             ev.preventDefault();
         }
-
         // function([string1, string2],target id,[color1,color2])
         consoleText(['RawFileCleaner', 'Optimize your photo archive.'], 'text', ['#00e676', '#DFE3E4']);
 
@@ -65,11 +61,11 @@
             var waiting = false;
             var target = document.getElementById(id)
             target.setAttribute('style', 'color:' + colors[0])
-            window.setInterval(function() {
+            window.setInterval(function () {
                 if (letterCount === 0 && waiting === false) {
                     waiting = true;
                     target.innerHTML = words[0].substring(0, letterCount)
-                    window.setTimeout(function() {
+                    window.setTimeout(function () {
                         var usedColor = colors.shift();
                         colors.push(usedColor);
                         var usedWord = words.shift();
@@ -81,7 +77,7 @@
                     }, 1000)
                 } else if (letterCount === words[0].length + 1 && waiting === false) {
                     waiting = true;
-                    window.setTimeout(function() {
+                    window.setTimeout(function () {
                         x = -1;
                         letterCount += x;
                         waiting = false;
@@ -91,7 +87,7 @@
                     letterCount += x;
                 }
             }, 120)
-            window.setInterval(function() {
+            window.setInterval(function () {
                 if (visible === true) {
                     con.className = 'console-underscore hidden'
                     visible = false;
