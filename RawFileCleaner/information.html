@@ -12,33 +12,39 @@
 </head>
 
 <body>
-    <div id="container">
+    <div id="container" style="position: relative">
         <div>
             <a href="index.html">
                 <img id="imgBack" src="img/back.svg" />
             </a>
         </div>
-        <div>
-            <h2>Information</h2>
-        </div>
-        <div id="information">
-            <zero-md file="https://raw.githubusercontent.com/michaelhel/RawFileCleaner/master/README.md">
-                <div class="md-html"></div>
-            </zero-md>
-        </div>
+        <div id="information"></div>
+        <p><br></p>
     </div>
     <script type="text/javascript">
-        var remote = require('electron').remote;
-        document.addEventListener('keydown', function (e) {
-            if (e.which === 123) {
-                remote.getCurrentWindow().webContents.openDevTools();
-            } else if (e.which === 116) {
-                location.reload();
+        const isOnline = require('is-online');
+        isOnline({
+            timeout: 1000
+        }).then(online => {
+            if (online) {
+                document.getElementById('information').innerHTML =
+                    '<zero-md file="https://raw.githubusercontent.com/michaelhel/RawFileCleaner/master/README.md">' +
+                    '<div class="md-html"></div>' +
+                    '</zero-md>';
+            } else {
+                document.getElementById('information').innerHTML = "Please ensure you have an active internet connection in order to see the information about the project.";
             }
         });
+        const { shell } = require('electron');
+        document.addEventListener('click', function (e) {
+            var path = e.target.href;
+            if (path !== undefined && path.startsWith("http")) {
+                shell.openExternal(path);
+                e.preventDefault();
+            }
+        }, true);
         document.addEventListener('dragover', event => event.preventDefault())
         document.addEventListener('drop', event => event.preventDefault())
     </script>
 </body>
-
 </html>
