@@ -1,21 +1,65 @@
+/*
+  Colors:
+    normal text: #DFE3E4
+    "special" text: #00e676
+    backround: #282C34
+*/
+
 body {
     background-color: #282C34;
     font-family: 'Open Sans', sans-serif;
-    color: white;
+    color: #DFE3E4;
+    -webkit-app-region: drag;
+    -webkit-user-select: none;
+}
+
+html {
     -webkit-app-region: drag;
 }
 
-h1 {
-    font-size: 20px;
-}
+/* Electron */
 
-h2 {
-    text-align: center;
+::-webkit-scrollbar {
+    display: none;
 }
 
 #container {
-    height: 100%;
-    position: relative;
+    -webkit-app-region: drag;
+    position: fixed;
+    width: 784px;
+    height: 382px;
+}
+
+/* Text */
+
+h1 {
+    font-size: 25px;
+}
+
+h2 {
+    font-size: 20px;
+}
+
+#information {
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+/* Graphics */
+
+#info {
+    float: right;
+}
+
+#imgInfo {
+    width: 20px;
+    padding-right: 10px;
+    padding-top: 10px;
+}
+
+#imgBack {
+    width: 40px;
+    padding-top: 30px;
 }
 
 #start,
@@ -23,7 +67,6 @@ h2 {
 #cleanFiles,
 #conclusion {
     text-align: center;
-    margin-bottom: 50px;
 }
 
 #options {
@@ -40,7 +83,7 @@ h2 {
 }
 
 #selectSource {
-    margin-top: 80px;
+    margin-top: 18%;
     font-size: 40px;
 }
 
@@ -79,10 +122,6 @@ h2 {
     width: 100px;
 }
 
-#information {
-    margin-left: 100px;
-    margin-right: 100px;
-}
 
 #showPath {
     margin-top: 20px;
@@ -148,3 +187,29 @@ a {
 a:hover {
     opacity: 1;
 }
+
+/* Terminal Animation */
+.hidden {
+    opacity:0;
+  }
+  .console-container {
+    font-family:'Open Sans';
+    font-size:16px;
+    text-align:center;
+    height:200px;
+    width:600px;
+    display:block;
+    position:absolute;
+    color:#DFE3E4;
+    top:450px;
+    bottom:0;
+    left:0;
+    right:0;
+    margin:auto;
+  }
+  .console-underscore {
+    display:inline-block;
+    position:relative;
+    top:-0.14em;
+    left:10px;
+  }
