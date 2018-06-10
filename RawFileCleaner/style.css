@@ -1,8 +1,7 @@
 /*
   Colors:
-    normal elements: #DFE3E4
-    darker elements: #b6b9ba
-    "special" elements: #00e676
+    normal text: #DFE3E4
+    "special" text: #00e676
     backround: #282C34
 */
 
@@ -62,12 +61,6 @@ h2 {
    margin-right: 100px;
 }
 
-#showPath {
-   margin-top: 20px;
-   font-size: 10px;
-   color: #b6b9ba;
-}
-
 /* Graphics */
 
 img {
@@ -93,8 +86,36 @@ img:hover {
    padding-top: 30px;
 }
 
-#start, #selectSource, #cleanFiles, #conclusion {
-   text-align: center;
+#imgInfo {
+    width: 20px;
+    padding-right: 10px;
+    padding-top: 10px;
+}
+
+#imgBack {
+    width: 40px;
+    padding-top: 30px;
+}
+
+#imgConfirm {
+    padding-top: 1px;
+    padding-left: 40%;
+}
+
+#imgConclusion {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+#conclusion {
+    padding-top: 110px;
+}
+
+#start,
+#selectSource,
+#cleanFiles,
+#conclusion {
+    text-align: center;
 }
 
 #options {
@@ -122,31 +143,6 @@ img:hover {
 
 #info {
    float: right;
-}
-
-#imgInfo {
-   width: 20px;
-   padding-right: 10px;
-   padding-top: 10px;
-}
-
-#imgBack {
-   width: 40px;
-   padding-top: 30px;
-}
-
-#imgConfirm {
-   padding-top: 1px;
-   padding-left: 40%;
-}
-
-#imgUndo {
-   padding-top: 1px;
-   padding-right: 40%;
-}
-
-#conclusion {
-   padding-top: 110px;
 }
 
 #imgStart, #imgSelectSource, #imgIncludeSubfolders, #imgCleanFiles, #imgConclusion {
@@ -239,13 +235,14 @@ a:hover {
 /* Progressbar */
 
 #progressbar {
-   position: fixed;
-   padding-bottom: 13px;
-   left: 0;
-   bottom: 0;
-   right: 0;
-   width: 800px;
-   height: 4px;
+    -webkit-app-region: drag;
+    position: fixed;
+    padding-bottom: 13px;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 800px;
+    height: 4px;
 }
 
 /* Table */

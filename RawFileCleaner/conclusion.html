@@ -9,28 +9,36 @@
    <script src="script.js"></script>
 </head>
 
-<body onload="setProgressbar(1)">
-   <div id="container">
-      <div id="conclusion">
-         <a>
-                <img id="imgConclusion" src="img/conclusion.svg"/>
+<body onload="setProgressbar(0.75, 1)">
+    <div id="container">
+        <div id="conclusion">
+            <a onclick="closeCurrentWindow()">
+                <img id="imgConclusion" src="img/conclusion.svg" />
             </a>
-         <p>Thank you for using RawFileCleaner</p>
-      </div>
-   </div>
-   <div id=progressbar></div>
-   <script type="text/javascript">
-      var remote = require('electron').remote;
-      document.addEventListener('keydown', function(e) {
-         if (e.which === 123) {
-            remote.getCurrentWindow().webContents.openDevTools();
-         } else if (e.which === 116) {
-            location.reload();
-         }
-      });
-      document.addEventListener('dragover', event => event.preventDefault());
-      document.addEventListener('drop', event => event.preventDefault());
-   </script>
+            <a href="index.html">
+                    <img id="imgConclusion" src="img/repeat.svg" />
+                </a>
+            <p>Thank you for using RawFileCleaner</p>
+        </div>
+    </div>
+    <div id=progressbar></div>
+    <script type="text/javascript">
+        var remote = require('electron').remote;
+        document.addEventListener('keydown', function (e) {
+            if (e.which === 123) {
+                remote.getCurrentWindow().webContents.openDevTools();
+            } else if (e.which === 116) {
+                location.reload();
+            }
+        });
+        document.addEventListener('dragover', event => event.preventDefault())
+        document.addEventListener('drop', event => event.preventDefault())
+
+        function closeCurrentWindow() {
+            var window = remote.getCurrentWindow();
+            window.close();
+        }
+    </script>
 </body>
 
 </html>

@@ -2,25 +2,23 @@
 <html lang="en">
 
 <head>
-   <meta charset="UTF-8">
-   <title>RawFileCleaner</title>
-   <meta name="viewport" content="width=device-width, initial-scale=1">
-   <link rel="stylesheet" type="text/css" href="style.css" />
-   <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-   <script>
-      window.$ = window.jQuery = require('jquery');
-   </script>
-   <script src="script.js"></script>
+    <meta charset="UTF-8">
+    <title>RawFileCleaner</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <script>window.$ = window.jQuery = require('jquery');</script>
+    <script src="script.js"></script>
 </head>
 
-<body onload="setProgressbar(0.75)">
-   <div id="container">
-      <div>
-         <a href="options.html">
+<body>
+        <div id="container">
+        <div>
+            <a href="options.html">
                 <img id="imgBack" src="img/back.svg" />
             </a>
-         <button class='centerMe'>
+            <button class='centerMe'>
                     <div class='icon'>
                         <i class='fa fa-trash-o'></i>
                         <i class='fa fa-question'></i>
@@ -30,109 +28,103 @@
                         <span>Delete</span>
                     </div>
                 </button>
-      </div>
-
-      <div>
-         <table id="fileTable">
-            <thead>
-               <tr>
-                  <th>Filename</th>
-                  <th>Directory</th>
-                  <th>Size</th>
-               </tr>
-            </thead>
-            <tbody id="fileTableBody">
-            </tbody>
-         </table>
-      </div>
-      <div>
-         <p id="sum" onmouseover="cuteCats()" onmouseout="removeCats()" style="text-align: center"></p>
-      </div>
-   </div>
-   <div id="progressbar"></div>
-   <script type="text/javascript">
-      window.onload = view;
-      var remote = require('electron').remote;
-      var electronFs = remote.require('fs');
-      const storage = require('electron-json-storage');
-      document.addEventListener('keydown', function(e) {
-         if (e.which === 123) {
-            remote.getCurrentWindow().webContents.openDevTools();
-         } else if (e.which === 116) {
-            location.reload();
-         }
-      });
-
-      var sum;
-      var cats;
-
-      function view() {
-         storage.get('deletedFiles', function(error, deletedFiles) {
-            if (error) throw error;
-
-            var body = "";
-            sum = 0;
-            for (var i = 0; i < deletedFiles.length; i++) {
-               stats = electronFs.statSync(deletedFiles[i].path + "/" + deletedFiles[i].fileName);
-               sum += stats.size / 1000000.0;
+        </div>
+       
+        <div>
+            <table id="fileTable">
+                <thead>
+                    <tr>
+                        <th>Filename</th>
+                        <th>Directory</th>
+                        <th>Size</th>
+                    </tr>
+                </thead>
+                <tbody id="fileTableBody">
+                </tbody>
+            </table>
+        </div>
+        <div>
+                <p id="sum" onclick="cuteCats()" onmouseout="removeCats()" style="text-align: center"></p>
+            </div>
+    </div>
+    <div id="progressbar"></div>
+    <script type="text/javascript">
+        window.onload = view;
+        var remote = require('electron').remote;
+        var electronFs = remote.require('fs');
+        const storage = require('electron-json-storage');
+        document.addEventListener('keydown', function (e) {
+            if (e.which === 123) {
+                remote.getCurrentWindow().webContents.openDevTools();
+            } else if (e.which === 116) {
+                location.reload();
             }
-            sum = Math.round(sum * 100) / 100;
+        });
+        var sum;
+        var cats;
+        function view() {
+            storage.get('deletedFiles', function (error, deletedFiles) {
+                if (error) throw error;
+                var body = "";
+                sum = 0;
+                for (var i = 0; i < deletedFiles.length; i++) {
+                    stats = electronFs.statSync(deletedFiles[i].path + "/" + deletedFiles[i].fileName);
+                    sum += stats.size / 1000000.0;
+                }
+                sum = Math.round(sum * 100) / 100;
+                document.getElementById("sum").innerHTML = "By deleting you will free " + sum + "MB";
+                cats = Math.round(sum / 1.5) * 10; //0.15 MB is the size of an average cat pic
+                for (var i = 0; i < deletedFiles.length; i++) {
+                    body += "<tr>";
+                    body += "<td>";
+                    body += deletedFiles[i].fileName + "</td>";
+                    body += "<td>";
+                    body += deletedFiles[i].dir + "</td>";
+                    stats = electronFs.statSync(deletedFiles[i].path + "/" + deletedFiles[i].fileName);
+                    fileSizeInMB = stats.size / 1000000.0;
+                    body += "<td>";
+                    body += fileSizeInMB.toFixed(2) + " MB</td>";
+                    body += "</tr>";
+                }
+                document.getElementById('fileTableBody').innerHTML = body;
+            });
+        }
+        function cuteCats() {
+            if (cats == 0) {
+                document.getElementById("sum").innerHTML = "There's nothing to delete, so you wont get any storage for cute cat pics! 😿";
+            }
+            else {
+                document.getElementById("sum").innerHTML = "That's enough storage for about " + cats + " cute cat pics! 😸";
+            }
+        }
+        function removeCats() {
             document.getElementById("sum").innerHTML = "By deleting you will free " + sum + "MB";
-            cats = Math.round(sum / 1.5) * 10; //0.15 MB is the size of an average cat pic
-
-            for (var i = 0; i < deletedFiles.length; i++) {
-               body += "<tr>";
-               body += "<td>";
-               body += deletedFiles[i].fileName + "</td>";
-               body += "<td>";
-               body += deletedFiles[i].dir + "</td>";
-               stats = electronFs.statSync(deletedFiles[i].path + "/" + deletedFiles[i].fileName);
-               fileSizeInMB = stats.size / 1000000.0;
-               body += "<td>";
-               body += fileSizeInMB.toFixed(2) + " MB</td>";
-               body += "</tr>";
+        }
+        // Delete Button
+        // Design / Dribbble by:
+        // Adam Whitcroft
+        // URL: https://dribbble.com/shots/969445-The-Double-Delete
+        $("button").click(function () {
+            if ($(this).hasClass("confirm")) {
+                $(this).addClass("done");
+                $("span").text("Deleted");
+                cleanFiles(true);
+            } else {
+                $(this).addClass("confirm");
+                $("span").text("Are you sure?");
             }
-            document.getElementById('fileTableBody').innerHTML = body;
-         });
-      }
-
-      function cuteCats() {
-         if (cats == 0) {
-            document.getElementById("sum").innerHTML = "That's enough storage for about " + cats + " cute cat pics! 😿";
-         } else {
-            document.getElementById("sum").innerHTML = "That's enough storage for about " + cats + " cute cat pics! 😸";
-         }
-      }
-
-      function removeCats() {
-         document.getElementById("sum").innerHTML = "By deleting you will free " + sum + "MB";
-      }
-
-      // Delete Button
-      // Design / Dribbble by:
-      // Adam Whitcroft
-      // URL: https://dribbble.com/shots/969445-The-Double-Delete
-      $("button").click(function() {
-         if ($(this).hasClass("confirm")) {
-            $(this).addClass("done");
-            $("span").text("Deleted");
-            cleanFiles(true);
-         } else {
-            $(this).addClass("confirm");
-            $("span").text("Are you sure?");
-         }
-      });
-
-      // Reset
-      $("button").on('mouseout', function() {
-         if ($(this).hasClass("confirm") || $(this).hasClass("done")) {
-            setTimeout(function() {
-               $("button").removeClass("confirm").removeClass("done");
-               $("span").text("Delete");
-            }, 3000);
-         }
-      });
-   </script>
+        });
+        // Reset
+        $("button").on('mouseout', function () {
+            if ($(this).hasClass("confirm") || $(this).hasClass("done")) {
+                setTimeout(function () {
+                    $("button").removeClass("confirm").removeClass("done");
+                    $("span").text("Delete");
+                }, 3000);
+            }
+        });
+        setProgressbar(0.5, 0.75);
+    </script>
 </body>
 
 </html>
