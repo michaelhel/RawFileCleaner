@@ -9,7 +9,7 @@
    <script src="script.js"></script>
 </head>
 
-<body onload="setProgressbar(0.3)">
+<body onload="setProgressbar(0.25)">
    <div id="container">
       <div id="info">
          <a href="information.html">
@@ -66,7 +66,6 @@
          var target = document.getElementById(id)
          target.setAttribute('style', 'color:' + colors[0])
          window.setInterval(function() {
-
             if (letterCount === 0 && waiting === false) {
                waiting = true;
                target.innerHTML = words[0].substring(0, letterCount)
@@ -99,7 +98,6 @@
 
             } else {
                con.className = 'console-underscore'
-
                visible = true;
             }
          }, 400)
