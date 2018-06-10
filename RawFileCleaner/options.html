@@ -9,7 +9,7 @@
     <script src="script.js"></script>
 </head>
 
-<body>
+<body onload="setProgressbar(0.5)">
     <div id="container">
         <div>
             <a href="index.html">
@@ -41,7 +41,7 @@
     <div id="progressbar"></div>
     <script type="text/javascript">
         var remote = require('electron').remote;
-        document.addEventListener('keydown', function (e) {
+        document.addEventListener('keydown', function(e) {
             if (e.which === 123) {
                 remote.getCurrentWindow().webContents.openDevTools();
             } else if (e.which === 116) {
@@ -53,8 +53,8 @@
                 console.log(err);
             }
         });
-        window.onload = function () {
-            storage.get('path', function (error, path) {
+        window.onload = function() {
+            storage.get('path', function(error, path) {
                 if (error) throw error;
                 document.getElementById("showPath").innerHTML = "Your current path is " + path;
             });

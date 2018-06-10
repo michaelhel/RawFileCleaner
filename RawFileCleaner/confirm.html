@@ -8,7 +8,9 @@
     <link rel="stylesheet" type="text/css" href="style.css" />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-    <script>window.$ = window.jQuery = require('jquery');</script>
+    <script>
+        window.$ = window.jQuery = require('jquery');
+    </script>
     <script src="script.js"></script>
 </head>
 
@@ -52,21 +54,19 @@
         var remote = require('electron').remote;
         var electronFs = remote.require('fs');
         const storage = require('electron-json-storage');
-        document.addEventListener('keydown', function (e) {
+        document.addEventListener('keydown', function(e) {
             if (e.which === 123) {
                 remote.getCurrentWindow().webContents.openDevTools();
             } else if (e.which === 116) {
                 location.reload();
             }
         });
-
         var sum;
         var cats;
 
         function view() {
-            storage.get('deletedFiles', function (error, deletedFiles) {
+            storage.get('deletedFiles', function(error, deletedFiles) {
                 if (error) throw error;
-
                 var body = "";
                 sum = 0;
                 for (var i = 0; i < deletedFiles.length; i++) {
@@ -76,7 +76,6 @@
                 sum = Math.round(sum * 100) / 100;
                 document.getElementById("sum").innerHTML = "By deleting you will free " + sum + "MB";
                 cats = Math.round(sum / 1.5) * 10; //0.15 MB is the size of an average cat pic
-
                 for (var i = 0; i < deletedFiles.length; i++) {
                     body += "<tr>";
                     body += "<td>";
@@ -96,8 +95,7 @@
         function cuteCats() {
             if (cats == 0) {
                 document.getElementById("sum").innerHTML = "There's nothing to delete, so you wont get any storage for cute cat pics! 😿";
-            }
-            else {
+            } else {
                 document.getElementById("sum").innerHTML = "That's enough storage for about " + cats + " cute cat pics! 😸";
             }
         }
@@ -105,12 +103,11 @@
         function removeCats() {
             document.getElementById("sum").innerHTML = "By deleting you will free " + sum + "MB";
         }
-
         // Delete Button
         // Design / Dribbble by:
         // Adam Whitcroft
         // URL: https://dribbble.com/shots/969445-The-Double-Delete
-        $("button").click(function () {
+        $("button").click(function() {
             if ($(this).hasClass("confirm")) {
                 $(this).addClass("done");
                 $("span").text("Deleted");
@@ -120,11 +117,10 @@
                 $("span").text("Are you sure?");
             }
         });
-
         // Reset
-        $("button").on('mouseout', function () {
+        $("button").on('mouseout', function() {
             if ($(this).hasClass("confirm") || $(this).hasClass("done")) {
-                setTimeout(function () {
+                setTimeout(function() {
                     $("button").removeClass("confirm").removeClass("done");
                     $("span").text("Delete");
                 }, 3000);
