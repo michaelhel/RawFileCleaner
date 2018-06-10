@@ -9,11 +9,14 @@
     <script src="script.js"></script>
 </head>
 
-<body>
+<body onload="setProgressbar(0.5)">
     <div id="container">
         <div>
             <a href="index.html">
                 <img id="imgBack" src="img/back.svg" />
+            </a>
+            <a onclick="cleanFiles(false)">
+                <img id="imgForth" src="img/back.svg" />
             </a>
         </div>
         <div id="options">
@@ -28,11 +31,6 @@
                 </tr>
                 <tr>
                     <td>
-                        <button type="button" onclick="cleanFiles(false)" onclick="window.location.href = 'confirm.html'">Next</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
                         <p id="showPath"></p>
                     </td>
                 </tr>
@@ -42,7 +40,7 @@
     <div id="progressbar"></div>
     <script type="text/javascript">
         var remote = require('electron').remote;
-        document.addEventListener('keydown', function (e) {
+        document.addEventListener('keydown', function(e) {
             if (e.which === 123) {
                 remote.getCurrentWindow().webContents.openDevTools();
             } else if (e.which === 116) {
@@ -54,8 +52,8 @@
                 console.log(err);
             }
         });
-        window.onload = function () {
-            storage.get('path', function (error, path) {
+        window.onload = function() {
+            storage.get('path', function(error, path) {
                 if (error) throw error;
                 document.getElementById("showPath").innerHTML = "Your current path is " + path;
             });

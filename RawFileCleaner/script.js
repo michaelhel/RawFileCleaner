@@ -18,23 +18,24 @@ var rootPath;
 function cleanFiles(confirmed) {
     if (confirmed) {
         deleteFiles()
-            .then(function () {
+            .then(function() {
                 window.location.href = 'conclusion.html';
             })
-            .catch(function (error) {
+            .catch(function(error) {
                 throw error;
             });
     } else {
         getPathAndCheckSubfolder()
-            .then(function () {
+            .then(function() {
                 storage.set('deletedFiles', deletedFiles, (err) => {
                     if (err) {
                         console.log(err);
                     }
                 });
-                window.location.href = 'confirm.html';
+                if (deletedFiles.length != 0) window.location.href = 'confirm.html';
+                else window.location.href = 'nothingToDo.html';
             })
-            .catch(function (error) {
+            .catch(function(error) {
                 throw error;
             });
     }
@@ -44,7 +45,7 @@ function cleanFiles(confirmed) {
  * Changes boolean and the picture whether subfolders are included or not on click.
  */
 function includeSubfolder() {
-    storage.get('includeSubfolders', function (error, includeSubfolders) {
+    storage.get('includeSubfolders', function(error, includeSubfolders) {
         if (error) throw error;
         if (!includeSubfolders) {
             storage.set('includeSubfolders', true, (err) => {
@@ -71,10 +72,10 @@ function includeSubfolder() {
  * included or not and continues with the cleaning process.
  */
 function getPathAndCheckSubfolder() {
-    return new Promise(function (resolve, reject) {
-        storage.get('path', function (error, path) {
+    return new Promise(function(resolve, reject) {
+        storage.get('path', function(error, path) {
             if (error) throw error;
-            storage.get('includeSubfolders', function (error, includeSubfolders) {
+            storage.get('includeSubfolders', function(error, includeSubfolders) {
                 if (error) reject(error);
                 else {
                     rootPath = "";
@@ -198,8 +199,8 @@ function readFileNamesInFolder(path, includeSubfolders) {
  * Deletes files from deletedFiles array
  */
 function deleteFiles() {
-    return new Promise(function (resolve, reject) {
-        storage.get('deletedFiles', function (error, deleteFiles) {
+    return new Promise(function(resolve, reject) {
+        storage.get('deletedFiles', function(error, deleteFiles) {
             if (error) reject(error);
             else {
                 for (var i = 0; i < deleteFiles.length; i++) {
@@ -207,6 +208,7 @@ function deleteFiles() {
                 }
                 resolve(deleteFiles);
             }
+            resolve(deleteFiles);
         })
     });
 }
@@ -247,9 +249,11 @@ function setProgressbar(startPosition, progress) {
         duration: 1400,
         color: '#00e676',
         trailColor: '#1D242B',
-
         trailWidth: 0,
-        svgStyle: { width: '100%', height: '100%' }
+        svgStyle: {
+            width: '100%',
+            height: '100%'
+        }
     });
     bar.set(startPosition);
     bar.animate(progress);
@@ -258,6 +262,5 @@ function setProgressbar(startPosition, progress) {
 function sleep(miliseconds) {
     var currentTime = new Date().getTime();
 
-    while (currentTime + miliseconds >= new Date().getTime()) {
-    }
+    while (currentTime + miliseconds >= new Date().getTime()) {}
 }

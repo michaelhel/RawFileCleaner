@@ -17,6 +17,7 @@ html {
     -webkit-app-region: drag;
 }
 
+
 /* Electron */
 
 ::-webkit-scrollbar {
@@ -27,7 +28,7 @@ html {
     -webkit-app-region: drag;
     position: fixed;
     width: 784px;
-    height: 382px;
+    height: 352px;
 }
 
 #confirmContainer {
@@ -38,6 +39,7 @@ html {
     text-align: center;
 }
 
+
 /* General */
 
 a {
@@ -45,6 +47,7 @@ a {
     color: inherit;
     opacity: 0.5;
 }
+
 
 /* Text */
 
@@ -60,6 +63,7 @@ h2 {
     margin-left: 100px;
     margin-right: 100px;
 }
+
 
 /* Graphics */
 
@@ -81,9 +85,12 @@ img:hover {
     padding-top: 10px;
 }
 
-#imgBack {
+#imgForth {
     width: 40px;
-    padding-top: 30px;
+    margin-top: 30px;
+    transform: rotate(180deg);
+    margin-right: 15px;
+    float:right;
 }
 
 #imgInfo {
@@ -95,6 +102,7 @@ img:hover {
 #imgBack {
     width: 40px;
     padding-top: 30px;
+    margin-left: 10px;
 }
 
 #imgConfirm {
@@ -120,6 +128,7 @@ img:hover {
 
 #options {
     text-align: center;
+    padding-top: 20px;
 }
 
 #title {
@@ -136,10 +145,6 @@ img:hover {
     font-size: 40px;
 }
 
-#options {
-    padding-top: 20px;
-}
-
 #cleanFiles {
     margin-top: 50px;
 }
@@ -147,8 +152,6 @@ img:hover {
 #info {
     float: right;
 }
-
-
 
 #imgStart,
 #imgSelectSource,
@@ -213,6 +216,7 @@ a:hover {
     opacity: 1;
 }
 
+
 /* Terminal Animation */
 
 .hidden {
@@ -242,6 +246,7 @@ a:hover {
     left: 10px;
 }
 
+
 /* Progressbar */
 
 #progressbar {
@@ -254,6 +259,7 @@ a:hover {
     width: 800px;
     height: 4px;
 }
+
 
 /* Table */
 
@@ -295,6 +301,7 @@ a:hover {
     background-color: #2c313a;
     color: #00e676;
 }
+
 
 /* Delete Button */
 
