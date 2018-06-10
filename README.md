@@ -23,7 +23,7 @@ is-online by silverwind <br>
 trash by sindresorhus <br>
 progressbar.js by kimmobrunfeldt <br>
 
-### Terminal Animation at begin: <br>
+### Terminal Animation at the beginning: <br>
 "Terminal Text Effect" by Captain Anonymous from CodePen
 
 ### Delete Button: <br>
