@@ -32,7 +32,8 @@ function cleanFiles(confirmed) {
                         console.log(err);
                     }
                 });
-                window.location.href = 'confirm.html';
+                if (deletedFiles.length != 0) window.location.href = 'confirm.html';
+                else window.location.href = 'nothingToDo.html';
             })
             .catch(function(error) {
                 throw error;
@@ -250,7 +251,10 @@ function setProgressbar(startPosition, progress) {
         trailColor: '#1D242B',
 
         trailWidth: 0,
-        svgStyle: { width: '100%', height: '100%' }
+        svgStyle: {
+            width: '100%',
+            height: '100%'
+        }
     });
     bar.set(startPosition);
     bar.animate(progress);
