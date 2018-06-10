@@ -81,9 +81,12 @@ img:hover {
     padding-top: 10px;
 }
 
-#imgBack {
+#imgForth {
     width: 40px;
-    padding-top: 30px;
+    margin-top: 30px;
+    transform: rotate(180deg);
+    margin-right: 15px;
+    float:right;
 }
 
 #imgInfo {
@@ -95,6 +98,7 @@ img:hover {
 #imgBack {
     width: 40px;
     padding-top: 30px;
+    margin-left: 10px;
 }
 
 #imgConfirm {
