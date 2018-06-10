@@ -22,9 +22,5 @@ electron-json-storage by jviotti <br>
 is-online by silverwind <br>
 trash by sindresorhus <br>
 
-Progressbar: IE8+ Responsive Progressbar by Captain Anonymous from CodePen <br>
-
-Table: fixed-header-table by Colorlib <br>
-The table template is licensed under the Creative Commons
-3.0 License. <br> To view a copy of this license, visit
-https://creativecommons.org/licenses/by/3.0/at/deed.en.
+Terminal Animation at begin: <br>
+"Terminal Text Effect" by Captain Anonymous from CodePen
