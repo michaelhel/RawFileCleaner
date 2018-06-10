@@ -45,7 +45,7 @@ function cleanFiles(confirmed) {
  * Changes boolean and the picture whether subfolders are included or not on click.
  */
 function includeSubfolder() {
-    storage.get('includeSubfolders', function(error, includeSubfolders) {
+    storage.get('includeSubfolders', function (error, includeSubfolders) {
         if (error) throw error;
         if (!includeSubfolders) {
             storage.set('includeSubfolders', true, (err) => {
@@ -72,10 +72,10 @@ function includeSubfolder() {
  * included or not and continues with the cleaning process.
  */
 function getPathAndCheckSubfolder() {
-    return new Promise(function(resolve, reject) {
-        storage.get('path', function(error, path) {
+    return new Promise(function (resolve, reject) {
+        storage.get('path', function (error, path) {
             if (error) throw error;
-            storage.get('includeSubfolders', function(error, includeSubfolders) {
+            storage.get('includeSubfolders', function (error, includeSubfolders) {
                 if (error) reject(error);
                 else {
                     rootPath = "";
@@ -236,4 +236,20 @@ function getDirectory(path) {
         dir += path[i];
     }
     return dir;
+}
+
+/* Progressbar */
+// progressbar.js@1.0.0 version is used
+// Docs: http://progressbarjs.readthedocs.org/en/1.0.0/
+function setProgressbar(progress) {
+    var bar = new ProgressBar.Line(progressbar, {
+        strokeWidth: 4,
+        easing: 'easeInOut',
+        duration: 1400,
+        color: '#00e676',
+        trailColor: '#303030',
+        trailWidth: 0,
+        svgStyle: { width: '100%', height: '100%' }
+    });
+    bar.animate(progress);
 }
