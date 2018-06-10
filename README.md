@@ -24,5 +24,3 @@ trash by sindresorhus <br>
 
 Terminal Animation at begin: <br>
 "Terminal Text Effect" by Captain Anonymous from CodePen
-
-
