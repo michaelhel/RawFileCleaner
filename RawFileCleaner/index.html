@@ -9,7 +9,7 @@
     <script src="script.js"></script>
 </head>
 
-<body>
+<body onload="setProgressbar(0.3)">
     <div id="container">
         <div id="info">
             <a href="information.html">
@@ -26,6 +26,7 @@
                 <div class='console-underscore' id='console'>&#95;</div>
         </div>
     </div>
+    <div id="progressbar"></div>
     <script type="text/javascript">
         var remote = require('electron').remote;
         document.addEventListener('keydown', function(e) {

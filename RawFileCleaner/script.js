@@ -1,7 +1,7 @@
 var remote = require('electron').remote;
 var electronFs = remote.require('fs');
 storage = require('electron-json-storage');
-
+var ProgressBar = require('progressbar.js');
 
 //All raw formats, easy to expand in the future
 var allRawFormats = ["K25", "RAW", "NRW", "CR2", "ARW", "RAF", "RWZ", "NEF", "FFF", "DNG", "DCR", "RW2", "3FR", "CRW", "ARI", "ORF",
@@ -14,7 +14,7 @@ var deletedFiles = [];
  * Changes boolean and the picture whether subfolders are included or not on click.
  */
 function includeSubfolder() {
-    storage.get('includeSubfolders', function(error, includeSubfolders) {
+    storage.get('includeSubfolders', function (error, includeSubfolders) {
         if (error) throw error;
         if (!includeSubfolders) {
             storage.set('includeSubfolders', true, (err) => {
@@ -41,10 +41,10 @@ function includeSubfolder() {
  * included or not and continues with the cleaning process.
  */
 function getPathAndCheckSubfolder() {
-    return new Promise(function(resolve, reject) {
-        storage.get('path', function(error, path) {
+    return new Promise(function (resolve, reject) {
+        storage.get('path', function (error, path) {
             if (error) throw error;
-            storage.get('includeSubfolders', function(error, includeSubfolders) {
+            storage.get('includeSubfolders', function (error, includeSubfolders) {
                 if (error) reject(error);
                 else {
                     readFileNamesInFolder(path, includeSubfolders);
@@ -60,7 +60,7 @@ function getPathAndCheckSubfolder() {
  */
 function cleanFiles() {
     getPathAndCheckSubfolder()
-        .then(function() {
+        .then(function () {
             storage.set('deletedFiles', deletedFiles, (err) => {
                 if (err) {
                     console.log(err);
@@ -68,7 +68,7 @@ function cleanFiles() {
             });
             window.location.href = 'conclusion.html';
         })
-        .catch(function(error) {
+        .catch(function (error) {
             throw error;
         });
 }
@@ -163,4 +163,21 @@ function deleteFile(path, filename) {
     trash([file, null]).then(() => {
         console.log('deleted ' + filename);
     });
+}
+
+/* Progressbar */
+// progressbar.js@1.0.0 version is used
+// Docs: http://progressbarjs.readthedocs.org/en/1.0.0/
+
+function setProgressbar(progress) {
+    var bar = new ProgressBar.Line(progressbar, {
+        strokeWidth: 4,
+        easing: 'easeInOut',
+        duration: 1400,
+        color: '#00e676',
+        trailColor: '#303030',
+        trailWidth: 0,
+        svgStyle: { width: '100%', height: '100%' }
+    });
+    bar.animate(progress);
 }
