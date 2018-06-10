@@ -1,8 +1,7 @@
 /*
   Colors:
-    normal elements: #DFE3E4
-    darker elements: #b6b9ba
-    "special" elements: #00e676
+    normal text: #DFE3E4
+    "special" text: #00e676
     backround: #282C34
 */
 
@@ -60,12 +59,6 @@ h2 {
 #information {
     margin-left: 100px;
     margin-right: 100px;
-}
-
-#showPath {
-    margin-top: 20px;
-    font-size: 10px;
-    color: #b6b9ba;
 }
 
 /* Graphics */
