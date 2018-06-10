@@ -28,3 +28,4 @@ progressbar.js by kimmobrunfeldt <br>
 
 ### Delete Button: <br>
 "Delete Button (Incl. Confirmation)" by Danny Iovane from CodePen
+
