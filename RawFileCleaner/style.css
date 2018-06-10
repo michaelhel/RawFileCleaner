@@ -243,6 +243,7 @@ a:hover {
 /* Progressbar */
 
 #progressbar {
+    -webkit-app-region: drag;
     position: fixed;
     padding-bottom: 13px;
     left: 0;
