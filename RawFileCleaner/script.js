@@ -1,7 +1,7 @@
 var remote = require('electron').remote;
 var electronFs = remote.require('fs');
 storage = require('electron-json-storage');
-
+var ProgressBar = require('progressbar.js');
 
 //All raw formats, easy to expand in the future
 var allRawFormats = ["K25", "RAW", "NRW", "CR2", "ARW", "RAF", "RWZ", "NEF", "FFF", "DNG", "DCR", "RW2", "3FR", "CRW", "ARI", "ORF",
@@ -9,6 +9,37 @@ var allRawFormats = ["K25", "RAW", "NRW", "CR2", "ARW", "RAF", "RWZ", "NEF", "FF
 ]; //MOV for Apples Live Photos
 var allCompressedFormats = ["JPG", "JPEG", "TIFF"];
 var deletedFiles = [];
+var rootPath;
+
+/**
+ * Starts the cleaning process.
+ * @param confirmed
+ */
+function cleanFiles(confirmed) {
+    if (confirmed) {
+        deleteFiles()
+            .then(function() {
+                window.location.href = 'conclusion.html';
+            })
+            .catch(function(error) {
+                throw error;
+            });
+    } else {
+        getPathAndCheckSubfolder()
+            .then(function() {
+                storage.set('deletedFiles', deletedFiles, (err) => {
+                    if (err) {
+                        console.log(err);
+                    }
+                });
+                if (deletedFiles.length != 0) window.location.href = 'confirm.html';
+                else window.location.href = 'nothingToDo.html';
+            })
+            .catch(function(error) {
+                throw error;
+            });
+    }
+}
 
 /**
  * Changes boolean and the picture whether subfolders are included or not on click.
@@ -47,6 +78,16 @@ function getPathAndCheckSubfolder() {
             storage.get('includeSubfolders', function(error, includeSubfolders) {
                 if (error) reject(error);
                 else {
+                    rootPath = "";
+                    var pos = 0;
+                    if (getOS() == 'Mac OS' || getOS() == 'Linux') {
+                        var pos = path.lastIndexOf("/");
+                    } else {
+                        var pos = path.lastIndexOf("\\");
+                    }
+                    for (var i = 0; i < pos + 1; i++) {
+                        rootPath += path[i];
+                    }
                     readFileNamesInFolder(path, includeSubfolders);
                     resolve(includeSubfolders);
                 }
@@ -56,21 +97,23 @@ function getPathAndCheckSubfolder() {
 }
 
 /**
- * Starts the cleaning process.
+ * Returns the OS of the computer
  */
-function cleanFiles() {
-    getPathAndCheckSubfolder()
-        .then(function() {
-            storage.set('deletedFiles', deletedFiles, (err) => {
-                if (err) {
-                    console.log(err);
-                }
-            });
-            window.location.href = 'conclusion.html';
-        })
-        .catch(function(error) {
-            throw error;
-        });
+function getOS() {
+    var userAgent = window.navigator.userAgent,
+        platform = window.navigator.platform,
+        macosPlatforms = ['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K'],
+        windowsPlatforms = ['Win32', 'Win64', 'Windows', 'WinCE'],
+        os = null;
+
+    if (macosPlatforms.indexOf(platform) !== -1) {
+        os = 'Mac OS';
+    } else if (windowsPlatforms.indexOf(platform) !== -1) {
+        os = 'Windows';
+    } else if (!os && /Linux/.test(platform)) {
+        os = 'Linux';
+    }
+    return os;
 }
 
 /**
@@ -119,7 +162,7 @@ function hasSameName(filename1, filename2) {
 }
 
 /**
- * Reads all filenames from the folder and deletes RAW files without matching compressed files
+ * Reads all filenames from the folder and saves filename of RAW files without matching compressed files
  */
 function readFileNamesInFolder(path, includeSubfolders) {
     var foundMatch = false;
@@ -140,11 +183,12 @@ function readFileNamesInFolder(path, includeSubfolders) {
                 }
             }
             if (!foundMatch) {
-                deleteFile(path, fileName);
-                document.getElementById("warning").innerHTML = fileName + "is being deleted";
+                var dir = getDirectory(path);
+                console.log(dir);
                 deletedFiles.push({
                     fileName: fileName,
-                    path: path
+                    path: path,
+                    dir: dir
                 });
             }
         }
@@ -152,7 +196,25 @@ function readFileNamesInFolder(path, includeSubfolders) {
 }
 
 /**
- * Deletes file.
+ * Deletes files from deletedFiles array
+ */
+function deleteFiles() {
+    return new Promise(function(resolve, reject) {
+        storage.get('deletedFiles', function(error, deleteFiles) {
+            if (error) reject(error);
+            else {
+                for (var i = 0; i < deleteFiles.length; i++) {
+                    deleteFile(deleteFiles[i].path, deleteFiles[i].fileName);
+                }
+                resolve(deleteFiles);
+            }
+            resolve(deleteFiles);
+        })
+    });
+}
+
+/**
+ * Deletes file
  * @param path
  * @param fileName
  */
@@ -163,4 +225,42 @@ function deleteFile(path, filename) {
     trash([file, null]).then(() => {
         console.log('deleted ' + filename);
     });
+}
+
+/**
+ * Returns parent directory of file
+ * @param path
+ */
+function getDirectory(path) {
+    var dir = "";
+    for (var i = rootPath.length; i < path.length; i++) {
+        dir += path[i];
+    }
+    return dir;
+}
+
+/* Progressbar */
+// progressbar.js@1.0.0 version is used
+// Docs: http://progressbarjs.readthedocs.org/en/1.0.0/
+function setProgressbar(startPosition, progress) {
+    var bar = new ProgressBar.Line('#progressbar', {
+        strokeWidth: 4,
+        easing: 'easeInOut',
+        duration: 1400,
+        color: '#00e676',
+        trailColor: '#1D242B',
+        trailWidth: 0,
+        svgStyle: {
+            width: '100%',
+            height: '100%'
+        }
+    });
+    bar.set(startPosition);
+    bar.animate(progress);
+}
+
+function sleep(miliseconds) {
+    var currentTime = new Date().getTime();
+
+    while (currentTime + miliseconds >= new Date().getTime()) {}
 }

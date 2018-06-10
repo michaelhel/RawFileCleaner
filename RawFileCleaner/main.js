@@ -2,7 +2,11 @@ const electron = require('electron');
 const path = require('path');
 const url = require('url');
 
-const { app, BrowserWindow, Menu } = electron;
+const {
+    app,
+    BrowserWindow,
+    Menu
+} = electron;
 
 let mainWindow;
 
@@ -14,6 +18,7 @@ app.on('ready', function() {
         resizable: false,
         fullscreen: false,
         titleBarStyle: 'hiddenInset',
+        backgroundColor: '#282C34',
         title: 'RawFileCleaner'
     });
 
