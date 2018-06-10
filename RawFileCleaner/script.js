@@ -245,9 +245,9 @@ function setProgressbar(progress) {
     var bar = new ProgressBar.Line(progressbar, {
         strokeWidth: 4,
         easing: 'easeInOut',
-        duration: 1400,
+        duration: 1000,
         color: '#00e676',
-        trailColor: '#303030',
+        trailColor: '#DFE3E4',
         trailWidth: 0,
         svgStyle: { width: '100%', height: '100%' }
     });

@@ -1,7 +1,8 @@
 /*
   Colors:
-    normal text: #DFE3E4
-    "special" text: #00e676
+    normal elements: #DFE3E4
+    darker elements: #b6b9ba
+    "special" elements: #00e676
     backround: #282C34
 */
 
@@ -30,6 +31,23 @@ html {
     height: 382px;
 }
 
+/* General */
+table {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+td,
+th {
+    width: 200px;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    opacity: 0.5;
+}
 /* Text */
 
 h1 {
@@ -45,7 +63,22 @@ h2 {
     margin-right: 100px;
 }
 
+#showPath {
+    margin-top: 20px;
+    font-size: 10px;
+    color: #b6b9ba;
+}
+
 /* Graphics */
+
+img {
+    opacity: 0.8;
+}
+
+img:hover {
+    opacity: 1.0;
+}
+
 
 #info {
     float: right;
@@ -60,6 +93,10 @@ h2 {
 #imgBack {
     width: 40px;
     padding-top: 30px;
+}
+
+#imgIncludeSubfolders {
+    width: 100px;
 }
 
 #start,
@@ -99,85 +136,11 @@ h2 {
     float: right;
 }
 
-#imgInfo {
-    width: 20px;
-    padding-right: 10px;
-    padding-top: 10px;
-}
-
-#imgBack {
-    width: 40px;
-    padding-top: 30px;
-}
-
 #conclusion {
     padding-top: 110px;
 }
 
-#imgStart,
-#imgSelectSource,
-#imgIncludeSubfolders,
-#imgCleanFiles,
-#imgConclusion {
-    width: 100px;
-}
 
-#showPath {
-    margin-top: 20px;
-    font-size: 10px;
-    color: grey;
-}
-
-#warning {
-    margin-top: 20px;
-    font-size: 13px;
-    color: #FF1744;
-}
-
-img {
-    opacity: 0.5;
-}
-
-img:hover {
-    opacity: 1.0;
-}
-
-table {
-    margin-left: auto;
-    margin-right: auto;
-}
-
-td,
-th {
-    width: 200px;
-    text-align: center;
-}
-
-button {
-    padding-top: 20px;
-    background-color: darkgray;
-    border: none;
-    color: white;
-    padding: 5px 10px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 12px;
-    border-radius: 3px;
-    opacity: 0.5;
-    transition-duration: 0.4s;
-    padding: 5px 10px;
-}
-
-button:hover {
-    opacity: 1;
-}
-
-a {
-    text-decoration: none;
-    color: inherit;
-    opacity: 0.5;
-}
 
 a:hover {
     opacity: 1;
@@ -215,6 +178,7 @@ a:hover {
 /* Progressbar */
 
 #progressbar {
+    -webkit-app-region: drag;
     position: fixed;
     padding-bottom: 13px;
     left: 0;
