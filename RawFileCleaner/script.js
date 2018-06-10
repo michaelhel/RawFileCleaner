@@ -45,7 +45,7 @@ function cleanFiles(confirmed) {
  * Changes boolean and the picture whether subfolders are included or not on click.
  */
 function includeSubfolder() {
-    storage.get('includeSubfolders', function(error, includeSubfolders) {
+    storage.get('includeSubfolders', function (error, includeSubfolders) {
         if (error) throw error;
         if (!includeSubfolders) {
             storage.set('includeSubfolders', true, (err) => {
@@ -72,14 +72,19 @@ function includeSubfolder() {
  * included or not and continues with the cleaning process.
  */
 function getPathAndCheckSubfolder() {
-    return new Promise(function(resolve, reject) {
-        storage.get('path', function(error, path) {
+    return new Promise(function (resolve, reject) {
+        storage.get('path', function (error, path) {
             if (error) throw error;
-            storage.get('includeSubfolders', function(error, includeSubfolders) {
+            storage.get('includeSubfolders', function (error, includeSubfolders) {
                 if (error) reject(error);
                 else {
                     rootPath = "";
-                    var pos = path.lastIndexOf("\\");
+                    var pos = 0;
+                    if (getOS() == 'Mac OS' || getOS() == 'Linux') {
+                        var pos = path.lastIndexOf("/");
+                    } else {
+                        var pos = path.lastIndexOf("\\");
+                    }
                     for (var i = 0; i < pos + 1; i++) {
                         rootPath += path[i];
                     }
@@ -89,6 +94,26 @@ function getPathAndCheckSubfolder() {
             });
         });
     });
+}
+
+/**
+ * Returns the OS of the computer
+ */
+function getOS() {
+    var userAgent = window.navigator.userAgent,
+        platform = window.navigator.platform,
+        macosPlatforms = ['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K'],
+        windowsPlatforms = ['Win32', 'Win64', 'Windows', 'WinCE'],
+        os = null;
+
+    if (macosPlatforms.indexOf(platform) !== -1) {
+        os = 'Mac OS';
+    } else if (windowsPlatforms.indexOf(platform) !== -1) {
+        os = 'Windows';
+    } else if (!os && /Linux/.test(platform)) {
+        os = 'Linux';
+    }
+    return os;
 }
 
 /**
@@ -213,3 +238,18 @@ function getDirectory(path) {
     return dir;
 }
 
+/* Progressbar */
+// progressbar.js@1.0.0 version is used
+// Docs: http://progressbarjs.readthedocs.org/en/1.0.0/
+function setProgressbar(progress) {
+    var bar = new ProgressBar.Line(progressbar, {
+        strokeWidth: 4,
+        easing: 'easeInOut',
+        duration: 1000,
+        color: '#00e676',
+        trailColor: '#DFE3E4',
+        trailWidth: 0,
+        svgStyle: { width: '100%', height: '100%' }
+    });
+    bar.animate(progress);
+}
