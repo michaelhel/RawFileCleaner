@@ -26,4 +26,5 @@ progressbar.js by kimmobrunfeldt <br>
 Terminal Animation at begin: <br>
 "Terminal Text Effect" by Captain Anonymous from CodePen
 
-
+Delete Button: <br>
+"Delete Button (Incl. Confirmation)" by Danny Iovane from CodePen
