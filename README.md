@@ -17,14 +17,15 @@ The project is licensed under the MIT license.
 ## Credits
 Framework: Electron <br>
 
-Node Modules: <br>
+### Node Modules: <br>
 electron-json-storage by jviotti <br>
 is-online by silverwind <br>
 trash by sindresorhus <br>
+progressbar.js by kimmobrunfeldt <br>
 
-Progressbar: IE8+ Responsive Progressbar by Captain Anonymous from CodePen <br>
+### Terminal Animation at begin: <br>
+"Terminal Text Effect" by Captain Anonymous from CodePen
 
-Table: fixed-header-table by Colorlib <br>
-The table template is licensed under the Creative Commons
-3.0 License. To view a copy of this license, visit
-https://creativecommons.org/licenses/by/3.0/at/deed.en.
+### Delete Button: <br>
+"Delete Button (Incl. Confirmation)" by Danny Iovane from CodePen
+
