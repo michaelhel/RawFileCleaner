@@ -18,15 +18,15 @@ var rootPath;
 function cleanFiles(confirmed) {
     if (confirmed) {
         deleteFiles()
-            .then(function() {
+            .then(function () {
                 window.location.href = 'conclusion.html';
             })
-            .catch(function(error) {
+            .catch(function (error) {
                 throw error;
             });
     } else {
         getPathAndCheckSubfolder()
-            .then(function() {
+            .then(function () {
                 storage.set('deletedFiles', deletedFiles, (err) => {
                     if (err) {
                         console.log(err);
@@ -34,7 +34,7 @@ function cleanFiles(confirmed) {
                 });
                 window.location.href = 'confirm.html';
             })
-            .catch(function(error) {
+            .catch(function (error) {
                 throw error;
             });
     }
@@ -198,8 +198,8 @@ function readFileNamesInFolder(path, includeSubfolders) {
  * Deletes files from deletedFiles array
  */
 function deleteFiles() {
-    return new Promise(function(resolve, reject) {
-        storage.get('deletedFiles', function(error, deleteFiles) {
+    return new Promise(function (resolve, reject) {
+        storage.get('deletedFiles', function (error, deleteFiles) {
             if (error) reject(error);
             else {
                 for (var i = 0; i < deleteFiles.length; i++) {
@@ -240,22 +240,24 @@ function getDirectory(path) {
 /* Progressbar */
 // progressbar.js@1.0.0 version is used
 // Docs: http://progressbarjs.readthedocs.org/en/1.0.0/
-function setProgressbar(progress) {
-    var bar = new ProgressBar.Line(progressbar, {
+function setProgressbar(startPosition, progress) {
+    var bar = new ProgressBar.Line('#progressbar', {
         strokeWidth: 4,
         easing: 'easeInOut',
-        duration: 1000,
+        duration: 1400,
         color: '#00e676',
         trailColor: '#1D242B',
+
         trailWidth: 0,
         svgStyle: { width: '100%', height: '100%' }
     });
+    bar.set(startPosition);
     bar.animate(progress);
 }
 
 function sleep(miliseconds) {
     var currentTime = new Date().getTime();
- 
+
     while (currentTime + miliseconds >= new Date().getTime()) {
     }
- }
+}
