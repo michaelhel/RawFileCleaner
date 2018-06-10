@@ -41,16 +41,6 @@ html {
 
 /* General */
 
-table {
-   margin-left: auto;
-   margin-right: auto;
-}
-
-td, th {
-   width: 200px;
-   text-align: center;
-}
-
 a {
    text-decoration: none;
    color: inherit;
@@ -265,18 +255,17 @@ a:hover {
 
 #fileTable {
    border-collapse: collapse;
-   width: 99%;
-   height: auto;
 }
 
-#fileTable head, body {
+#fileTable thead, #fileTable tbody {
    display: block;
+   width: 100%;
 }
 
-#fileTable body {
-   height: 50px;
-   display: block;
-   overflow: scroll
+#fileTable tbody {
+   height: 180px;
+   overflow-y: auto;
+   overflow-x: hidden;
 }
 
 #fileTable td, #fileTable th {
