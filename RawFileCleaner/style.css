@@ -7,285 +7,478 @@
 */
 
 body {
-   background-color: #282C34;
-   font-family: 'Open Sans', sans-serif;
-   color: #DFE3E4;
-   -webkit-app-region: drag;
-   -webkit-user-select: none;
+    background-color: #282C34;
+    font-family: 'Open Sans', sans-serif;
+    color: #DFE3E4;
+    -webkit-app-region: drag;
+    -webkit-user-select: none;
 }
 
 html {
-   -webkit-app-region: drag;
+    -webkit-app-region: drag;
 }
 
 /* Electron */
 
 ::-webkit-scrollbar {
-   display: none;
+    display: none;
 }
 
 #container {
-   -webkit-app-region: drag;
-   position: fixed;
-   width: 784px;
-   height: 382px;
+    -webkit-app-region: drag;
+    position: fixed;
+    width: 784px;
+    height: 382px;
 }
 
 #confirmContainer {
-   -webkit-app-region: drag;
-   position: fixed;
-   width: 784px;
-   height: 382px;
-   text-align: center;
+    -webkit-app-region: drag;
+    position: fixed;
+    width: 784px;
+    height: 382px;
+    text-align: center;
 }
 
 /* General */
 
 a {
-   text-decoration: none;
-   color: inherit;
-   opacity: 0.5;
+    text-decoration: none;
+    color: inherit;
+    opacity: 0.5;
 }
 
 /* Text */
 
 h1 {
-   font-size: 25px;
+    font-size: 25px;
 }
 
 h2 {
-   font-size: 20px;
+    font-size: 20px;
 }
 
 #information {
-   margin-left: 100px;
-   margin-right: 100px;
+    margin-left: 100px;
+    margin-right: 100px;
 }
 
 #showPath {
-   margin-top: 20px;
-   font-size: 10px;
-   color: #b6b9ba;
+    margin-top: 20px;
+    font-size: 10px;
+    color: #b6b9ba;
 }
 
 /* Graphics */
 
 img {
-   opacity: 0.8;
+    opacity: 0.8;
 }
 
 img:hover {
-   opacity: 1.0;
+    opacity: 1.0;
 }
 
 #info {
-   float: right;
+    float: right;
 }
 
 #imgInfo {
-   width: 20px;
-   padding-right: 10px;
-   padding-top: 10px;
+    width: 20px;
+    padding-right: 10px;
+    padding-top: 10px;
 }
 
 #imgBack {
-   width: 40px;
-   padding-top: 30px;
+    width: 40px;
+    padding-top: 30px;
 }
 
-#start, #selectSource, #cleanFiles, #conclusion {
-   text-align: center;
+#start,
+#selectSource,
+#cleanFiles,
+#conclusion {
+    text-align: center;
 }
 
 #options {
-   text-align: center;
+    text-align: center;
 }
 
 #title {
-   padding-top: 10px;
-   text-align: center;
+    padding-top: 10px;
+    text-align: center;
 }
 
 #start {
-   padding-top: 110px;
+    padding-top: 110px;
 }
 
 #selectSource {
-   margin-top: 18%;
-   font-size: 40px;
+    margin-top: 18%;
+    font-size: 40px;
 }
 
 #options {
-   padding-top: 20px;
+    padding-top: 20px;
 }
 
 #cleanFiles {
-   margin-top: 50px;
+    margin-top: 50px;
 }
 
 #info {
-   float: right;
+    float: right;
 }
 
 #imgInfo {
-   width: 20px;
-   padding-right: 10px;
-   padding-top: 10px;
+    width: 20px;
+    padding-right: 10px;
+    padding-top: 10px;
 }
 
 #imgBack {
-   width: 40px;
-   padding-top: 30px;
+    width: 40px;
+    padding-top: 30px;
 }
 
 #imgConfirm {
-   padding-top: 1px;
-   padding-left: 40%;
+    padding-top: 1px;
+    padding-left: 40%;
 }
 
 #imgUndo {
-   padding-top: 1px;
-   padding-right: 40%;
+    padding-top: 1px;
+    padding-right: 40%;
 }
 
 #conclusion {
-   padding-top: 110px;
+    padding-top: 110px;
 }
 
-#imgStart, #imgSelectSource, #imgIncludeSubfolders, #imgCleanFiles, #imgConclusion {
-   width: 100px;
+#imgStart,
+#imgSelectSource,
+#imgIncludeSubfolders,
+#imgCleanFiles,
+#imgConclusion {
+    width: 100px;
 }
 
 #showPath {
-   margin-top: 20px;
-   font-size: 10px;
-   color: grey;
+    margin-top: 20px;
+    font-size: 10px;
+    color: grey;
 }
 
 img {
-   opacity: 0.5;
+    opacity: 0.5;
 }
 
 img:hover {
-   opacity: 1.0;
+    opacity: 1.0;
 }
 
 table {
-   margin-left: auto;
-   margin-right: auto;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-td, th {
-   width: 200px;
-   text-align: center;
+td,
+th {
+    width: 200px;
+    text-align: center;
 }
 
 button {
-   padding-top: 20px;
-   background-color: darkgray;
-   border: none;
-   color: white;
-   padding: 5px 10px;
-   text-align: center;
-   text-decoration: none;
-   display: inline-block;
-   font-size: 12px;
-   border-radius: 3px;
-   opacity: 0.5;
-   transition-duration: 0.4s;
-   padding: 5px 10px;
+    padding-top: 20px;
+    background-color: darkgray;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    border-radius: 3px;
+    opacity: 0.5;
+    transition-duration: 0.4s;
+    padding: 5px 10px;
 }
 
 button:hover {
-   opacity: 1;
+    opacity: 1;
 }
 
 a {
-   text-decoration: none;
-   color: inherit;
-   opacity: 0.5;
+    text-decoration: none;
+    color: inherit;
+    opacity: 0.5;
 }
 
 a:hover {
-   opacity: 1;
+    opacity: 1;
 }
 
 /* Terminal Animation */
 
 .hidden {
-   opacity: 0;
+    opacity: 0;
 }
 
 .console-container {
-   font-family: 'Open Sans';
-   font-size: 16px;
-   text-align: center;
-   height: 200px;
-   width: 600px;
-   display: block;
-   position: absolute;
-   color: #DFE3E4;
-   top: 450px;
-   bottom: 0;
-   left: 0;
-   right: 0;
-   margin: auto;
+    font-family: 'Open Sans';
+    font-size: 16px;
+    text-align: center;
+    height: 200px;
+    width: 600px;
+    display: block;
+    position: absolute;
+    color: #DFE3E4;
+    top: 450px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
 }
 
 .console-underscore {
-   display: inline-block;
-   position: relative;
-   top: -0.14em;
-   left: 10px;
+    display: inline-block;
+    position: relative;
+    top: -0.14em;
+    left: 10px;
 }
 
 /* Progressbar */
 
 #progressbar {
-   position: fixed;
-   padding-bottom: 13px;
-   left: 0;
-   bottom: 0;
-   right: 0;
-   width: 800px;
-   height: 4px;
+    position: fixed;
+    padding-bottom: 13px;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 800px;
+    height: 4px;
 }
 
 /* Table */
 
 #fileTable {
-   border-collapse: collapse;
+    border-collapse: collapse;
 }
 
-#fileTable thead, #fileTable tbody {
-   display: block;
-   width: 100%;
+#fileTable thead,
+#fileTable tbody {
+    display: block;
+    width: 100%;
 }
 
 #fileTable tbody {
-   height: 180px;
-   overflow-y: auto;
-   overflow-x: hidden;
+    height: 180px;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
-#fileTable td, #fileTable th {
-   padding: 8px;
-   text-align: left;
+#fileTable td,
+#fileTable th {
+    padding: 8px;
+    text-align: left;
 }
 
 #fileTable tr {
-   background-color: #282C34;
+    background-color: #282C34;
 }
 
 #fileTable tr:hover {
-   background-color: #00e676;
-   color: #282C34;
+    background-color: #00e676;
+    color: #282C34;
 }
 
 #fileTable th {
-   padding-top: 12px;
-   padding-bottom: 12px;
-   text-align: left;
-   background-color: #2c313a;
-   color: #00e676;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #2c313a;
+    color: #00e676;
+}
+
+/* Delete Button */
+
+.centerMe {
+    position: relative;
+    float: right;
+    margin-top: 30px;
+}
+
+button {
+    display: flex;
+    cursor: pointer;
+    border: 0;
+    background: transparent;
+    outline: 0;
+    overflow: hidden;
+}
+
+button .icon {
+    position: relative;
+    background: #1D242B;
+    line-height: 30px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    color: #DFE3E4;
+    font-size: 18px;
+    transition: .2s color;
+    border-radius: 2px;
+}
+
+button .icon .fa {
+    width: 30px;
+    transition: .2s all;
+}
+
+button .icon .fa-check {
+    color: #00e676;
+}
+
+button .icon .fa-question {
+    color: #DFE3E4;
+}
+
+button .icon:after {
+    content: ' ';
+    display: block;
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    background: #1D242B;
+    top: 12.5px;
+    right: 1px;
+    transition: .2s right;
+    z-index: 1;
+}
+
+button .text {
+    position: relative;
+    width: 0;
+    height: 30px;
+    overflow: hidden;
+    font-family: 'Open Sans', sans-serif;
+    background: #F34541;
+    text-align: center;
+    line-height: 30px;
+    font-size: 16px;
+    color: #DFE3E4;
+    font-weight: 300;
+    transition: .2s all;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+}
+
+button .text span {
+    width: 100%;
+    opacity: 0;
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    transition: .3s all;
+}
+
+button:hover .icon {
+    color: #F34541;
+    border-radius: 0;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+}
+
+button:hover .icon:after {
+    right: -2px;
+}
+
+button:hover .text {
+    width: 120px;
+}
+
+button:hover .text span {
+    opacity: 1;
+    top: 0;
+}
+
+button.confirm .icon {
+    border-radius: 0;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+}
+
+button.confirm .icon .fa {
+    -webkit-transform: translateY(-30px);
+    transform: translateY(-30px);
+}
+
+button.confirm .icon:after {
+    right: -2px;
+}
+
+button.confirm .text {
+    background: #DFE3E4;
+    color: #282C34;
+    width: 120px;
+}
+
+button.confirm .text span {
+    opacity: 1;
+    top: 0;
+}
+
+button.done .icon {
+    border-radius: 0;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+}
+
+button.done .icon .fa {
+    -webkit-transform: translateY(-60px);
+    transform: translateY(-60px);
+}
+
+button.done .icon:after {
+    right: -2px;
+}
+
+button.done .text {
+    background: #00e676;
+    width: 120px;
+}
+
+button.done .text span {
+    opacity: 1;
+    top: 0;
+}
+
+@-webkit-keyframes fadeInZoom {
+    0% {
+        opacity: 0;
+        -webkit-transform: scale(0.7);
+        transform: scale(0.7);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeInZoom {
+    0% {
+        opacity: 0;
+        -webkit-transform: scale(0.7);
+        transform: scale(0.7);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
 }
