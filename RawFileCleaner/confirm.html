@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <div id="container">
+        <div id="container">
         <div>
             <a href="options.html">
                 <img id="imgBack" src="img/back.svg" />
@@ -44,9 +44,10 @@
             </table>
         </div>
         <div>
-                <p id="sum" onmouseover="cuteCats()" onmouseout="removeCats()" style="text-align: center"></p>
+                <p id="sum" onclick="cuteCats()" onmouseout="removeCats()" style="text-align: center"></p>
             </div>
     </div>
+    <div id="progressbar"></div>
     <script type="text/javascript">
         window.onload = view;
         var remote = require('electron').remote;
@@ -130,6 +131,7 @@
                 }, 3000);
             }
         });
+        setProgressbar(0.5, 0.75);
     </script>
 </body>
 
