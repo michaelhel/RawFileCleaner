@@ -21,6 +21,7 @@ Node Modules: <br>
 electron-json-storage by jviotti <br>
 is-online by silverwind <br>
 trash by sindresorhus <br>
+progressbar.js by kimmobrunfeldt <br>
 
 Terminal Animation at begin: <br>
 "Terminal Text Effect" by Captain Anonymous from CodePen
