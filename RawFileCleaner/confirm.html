@@ -94,7 +94,12 @@
         }
 
         function cuteCats() {
-            document.getElementById("sum").innerHTML = "That's enough storage for about " + cats + " cute cat pics! 😸";
+            if (cats == 0) {
+                document.getElementById("sum").innerHTML = "That's enough storage for about " + cats + " cute cat pics! 😿";
+            }
+            else {
+                document.getElementById("sum").innerHTML = "That's enough storage for about " + cats + " cute cat pics! 😸";
+            }
         }
 
         function removeCats() {
@@ -109,6 +114,7 @@
             if ($(this).hasClass("confirm")) {
                 $(this).addClass("done");
                 $("span").text("Deleted");
+                cleanFiles(true);
             } else {
                 $(this).addClass("confirm");
                 $("span").text("Are you sure?");

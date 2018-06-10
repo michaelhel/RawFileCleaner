@@ -17,7 +17,6 @@ var rootPath;
  */
 function cleanFiles(confirmed) {
     if (confirmed) {
-        //window.location.href = 'deletion.html';
         deleteFiles()
             .then(function() {
                 window.location.href = 'conclusion.html';
@@ -247,9 +246,16 @@ function setProgressbar(progress) {
         easing: 'easeInOut',
         duration: 1000,
         color: '#00e676',
-        trailColor: '#DFE3E4',
+        trailColor: '#1D242B',
         trailWidth: 0,
         svgStyle: { width: '100%', height: '100%' }
     });
     bar.animate(progress);
 }
+
+function sleep(miliseconds) {
+    var currentTime = new Date().getTime();
+ 
+    while (currentTime + miliseconds >= new Date().getTime()) {
+    }
+ }
