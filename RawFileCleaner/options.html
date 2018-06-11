@@ -26,7 +26,7 @@
                         <a>
                             <img id="imgIncludeSubfolders" src="img/notIncludeSubfolders.svg" onclick="includeSubfolder()" />
                         </a>
-                        <p id="textIncludeSubfolders">Subfolders not included</p>
+                        <p id="textIncludeSubfolders">Click on the icon to include Subfolders</p>
                     </th>
                 </tr>
                 <tr>
@@ -58,8 +58,8 @@
                 document.getElementById("showPath").innerHTML = "Your current path is " + path;
             });
         }
-        document.addEventListener('dragover', event => event.preventDefault())
-        document.addEventListener('drop', event => event.preventDefault())
+        document.addEventListener('dragover', event => event.preventDefault());
+        document.addEventListener('drop', event => event.preventDefault());
         setProgressbar(0.25, 0.5);
     </script>
 </body>

@@ -73,9 +73,9 @@
                     stats = electronFs.statSync(deletedFiles[i].path + "/" + deletedFiles[i].fileName);
                     sum += stats.size / 1000000.0;
                 }
+                cats = Math.round(sum / 0.15); //0.15 MB is the size of an average cat pic
                 sum = Math.round(sum * 100) / 100;
                 document.getElementById("sum").innerHTML = "By deleting you will free " + sum + "MB";
-                cats = Math.round(sum / 1.5) * 10; //0.15 MB is the size of an average cat pic
                 for (var i = 0; i < deletedFiles.length; i++) {
                     body += "<tr>";
                     body += "<td>";
