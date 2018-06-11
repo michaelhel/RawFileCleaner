@@ -1,26 +1,27 @@
 {
-  "name": "rawfilecleaner",
-  "version": "1.0.0",
-  "description": "A tool which deletes all RAW files without an existing JPEG file. ",
-  "main": "main.js",
-  "scripts": {
-    "start": "electron ."
-  },
-  "author": "Hannes Gerstmayr, Michael Helcig, Christian Strassmayr",
-  "license": "MIT",
-  "dependencies": {
-    "ajv": "^6.5.1",
-    "electron": "^1.8.2",
-    "electron-json-storage": "^4.0.2",
-    "is-online": "^7.0.0",
-    "jquery": "^3.3.1",
-    "progressbar.js": "^1.0.1",
-    "trash": "^4.3.0"
-  },
-  "devDependencies": {
-    "electron-builder": "^20.15.1"
-  },
-  "win": {
-    "target": "NSIS"
- }
+    "name": "rawfilecleaner",
+    "version": "1.0.0",
+    "description": "A tool which deletes all RAW files without an existing JPEG file. ",
+    "main": "main.js",
+    "scripts": {
+        "start": "electron ."
+    },
+    "author": "Hannes Gerstmayr, Michael Helcig, Christian Strassmayr",
+    "license": "MIT",
+    "dependencies": {
+        "ajv": "^6.5.1",
+        "dist": "^0.1.2",
+        "electron": "^1.8.2",
+        "electron-json-storage": "^4.0.2",
+        "is-online": "^7.0.0",
+        "jquery": "^3.3.1",
+        "progressbar.js": "^1.0.1",
+        "trash": "^4.3.0"
+    },
+    "devDependencies": {
+        "electron-builder": "^20.15.1"
+    },
+    "win": {
+        "target": "NSIS"
+    }
 }
