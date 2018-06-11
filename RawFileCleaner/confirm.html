@@ -27,7 +27,7 @@
                     <i class='fa fa-check'></i>
                 </div>
                 <div class='text'>
-                    <span>Delete</span>
+                    <span>Move to trash</span>
                 </div>
             </button>
         </div>
@@ -118,7 +118,7 @@
             if ($(this).hasClass("confirm") || $(this).hasClass("done")) {
                 setTimeout(function() {
                     $("button").removeClass("confirm").removeClass("done");
-                    $("span").text("Delete");
+                    $("span").text("Move to trash");
                 }, 3000);
             }
         });
