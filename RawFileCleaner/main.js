@@ -11,7 +11,7 @@ const {
 let mainWindow;
 
 //Starting App
-app.on('ready', function() {
+app.on('ready', function () {
     mainWindow = new BrowserWindow({
         width: 800,
         height: 400,
@@ -19,7 +19,8 @@ app.on('ready', function() {
         fullscreen: false,
         titleBarStyle: 'hiddenInset',
         backgroundColor: '#011627',
-        title: 'RawFileCleaner'
+        title: 'RawFileCleaner',
+        icon: path.join(__dirname, 'Icon.ico')
     });
 
     mainWindow.loadURL(url.format({
@@ -29,7 +30,7 @@ app.on('ready', function() {
     }));
 
     //Closing app
-    mainWindow.on('closed', function() {
+    mainWindow.on('closed', function () {
         app.quit();
     });
 
