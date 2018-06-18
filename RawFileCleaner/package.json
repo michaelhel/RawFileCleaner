@@ -4,14 +4,12 @@
     "description": "A tool which deletes all RAW files without an existing JPEG file. ",
     "main": "main.js",
     "scripts": {
-        "start": "electron ."
+        "start": "electron .",
+        "build": "electron-packager . RawFileCleaner"
     },
     "author": "Hannes Gerstmayr, Michael Helcig, Christian Strassmayr",
     "license": "MIT",
     "dependencies": {
-        "ajv": "^6.5.1",
-        "dist": "^0.1.2",
-        "electron": "^1.8.2",
         "electron-json-storage": "^4.0.2",
         "electron-packager": "^12.1.0",
         "is-online": "^7.0.0",
@@ -21,6 +19,7 @@
         "trash": "^4.3.0"
     },
     "devDependencies": {
+        "electron": "^1.8.2",
         "electron-builder": "^20.15.1"
     },
     "win": {
