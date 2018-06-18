@@ -13,6 +13,7 @@
         "dist": "^0.1.2",
         "electron": "^1.8.2",
         "electron-json-storage": "^4.0.2",
+        "electron-packager": "^12.1.0",
         "is-online": "^7.0.0",
         "jquery": "^3.3.1",
         "npm": "^6.1.0",

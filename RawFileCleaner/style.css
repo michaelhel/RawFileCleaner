@@ -21,7 +21,13 @@ html {
     -webkit-app-region: drag;
 }
 
-
+@font-face {
+    font-family: OpenSans;
+    src: url(Font/OpenSans-Regular.ttf);
+}
+span, div{
+    font-family: OpenSans;
+}
 /* Electron */
 
 ::-webkit-scrollbar {

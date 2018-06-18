@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <title>Information</title>
     <link rel="stylesheet" type="text/css" href="style.css" />
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <script src="https://cdn.rawgit.com/webcomponents/webcomponentsjs/v0.7.15/webcomponents-lite.min.js"></script>
     <link rel="import" href="https://cdn.rawgit.com/zerodevx/zero-md/v0.2.0/build/zero-md.html">
 
@@ -19,7 +18,9 @@
             </a>
         </div>
         <div id="information"></div>
-        <p><br></p>
+        <p>
+            <br>
+        </p>
     </div>
     <script type="text/javascript">
         const isOnline = require('is-online');
@@ -38,7 +39,7 @@
         const {
             shell
         } = require('electron');
-        document.addEventListener('click', function(e) {
+        document.addEventListener('click', function (e) {
             var path = e.target.href;
             if (path !== undefined && path.startsWith("http")) {
                 shell.openExternal(path);
