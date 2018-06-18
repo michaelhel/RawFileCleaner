@@ -1,12 +1,13 @@
 /*
   Colors:
-    normal text: #DFE3E4
-    "special" text: #00e676
-    backround: #282C34
+    normal elements: #DFE3E4
+    "special" elements: #2ec4b6
+    "special" elements (but darker): #063748
+    background: #011627
 */
 
 body {
-    background-color: #282C34;
+    background-color: #011627;
     font-family: 'Open Sans', sans-serif;
     color: #DFE3E4;
     -webkit-app-region: drag;
@@ -167,7 +168,8 @@ img:hover {
 #showPath {
     margin-top: 20px;
     font-size: 10px;
-    color: grey;
+    color: white;
+    opacity: 0.5;
 }
 
 img {
@@ -187,26 +189,6 @@ td,
 th {
     width: 200px;
     text-align: center;
-}
-
-button {
-    padding-top: 20px;
-    background-color: darkgray;
-    border: none;
-    color: white;
-    padding: 5px 10px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 12px;
-    border-radius: 3px;
-    opacity: 0.5;
-    transition-duration: 0.4s;
-    padding: 5px 10px;
-}
-
-button:hover {
-    opacity: 1;
 }
 
 a {
@@ -289,20 +271,20 @@ a:hover {
 }
 
 #fileTable tr {
-    background-color: #282C34;
+    background-color: #011627;
 }
 
 #fileTable tr:hover {
-    background-color: #00e676;
-    color: #282C34;
+    background-color: #2ec4b6;
+    color: #011627;
 }
 
 #fileTable th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
-    background-color: #2c313a;
-    color: #00e676;
+    background-color: #063748;
+    color: #2ec4b6;
 }
 
 
@@ -325,7 +307,7 @@ button {
 
 button .icon {
     position: relative;
-    background: #1D242B;
+    background: #063748;
     line-height: 30px;
     width: 30px;
     height: 30px;
@@ -342,7 +324,7 @@ button .icon .fa {
 }
 
 button .icon .fa-check {
-    color: #00e676;
+    color: #2ec4b6;
 }
 
 button .icon .fa-question {
@@ -357,7 +339,7 @@ button .icon:after {
     height: 5px;
     -webkit-transform: rotate(45deg);
     transform: rotate(45deg);
-    background: #1D242B;
+    background: #063748;
     top: 12.5px;
     right: 1px;
     transition: .2s right;
@@ -429,7 +411,7 @@ button.confirm .icon:after {
 
 button.confirm .text {
     background: #DFE3E4;
-    color: #282C34;
+    color: #011627;
     width: 120px;
 }
 
@@ -454,7 +436,7 @@ button.done .icon:after {
 }
 
 button.done .text {
-    background: #00e676;
+    background: #2ec4b6;
     width: 120px;
 }
 

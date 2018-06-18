@@ -247,8 +247,8 @@ function setProgressbar(startPosition, progress) {
         strokeWidth: 4,
         easing: 'easeInOut',
         duration: 1400,
-        color: '#00e676',
-        trailColor: '#1D242B',
+        color: '#2ec4b6',
+        trailColor: '#063748',
         trailWidth: 0,
         svgStyle: {
             width: '100%',
@@ -257,9 +257,4 @@ function setProgressbar(startPosition, progress) {
     });
     bar.set(startPosition);
     bar.animate(progress);
-}
-
-function sleep(miliseconds) {
-    var currentTime = new Date().getTime();
-    while (currentTime + miliseconds >= new Date().getTime()) {}
 }
