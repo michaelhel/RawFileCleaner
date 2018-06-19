@@ -5,7 +5,7 @@
     "main": "main.js",
     "scripts": {
         "start": "electron .",
-        "build": "electron-packager . RawFileCleaner"
+        "build": "electron-packager . RawFileCleaner --icon img/Icon.ico"
     },
     "author": "Hannes Gerstmayr, Michael Helcig, Christian Strassmayr",
     "license": "MIT",
