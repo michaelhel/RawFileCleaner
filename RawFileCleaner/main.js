@@ -19,7 +19,8 @@ app.on('ready', function () {
         fullscreen: false,
         titleBarStyle: 'hiddenInset',
         backgroundColor: '#011627',
-        title: 'RawFileCleaner'
+        title: 'RawFileCleaner',
+        icon: path.join(__dirname, 'img/Icon.ico')
     });
 
     mainWindow.loadURL(url.format({
