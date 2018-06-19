@@ -15,17 +15,21 @@ Hannes Gerstmayr, Michael Helcig, Christian Straßmayr
 The project is licensed under the MIT license.
 
 ## Credits
-Framework: Electron <br>
 
-### Node Modules: <br>
-electron-json-storage by jviotti <br>
+Framework: <br>
+*Electron*
+
+Node Modules: <br>
+*electron-json-storage by jviotti <br>
+electron-packager by malept <br>
 is-online by silverwind <br>
-trash by sindresorhus <br>
+jquery by JS Foundation <br>
+npm by iarna <br>
 progressbar.js by kimmobrunfeldt <br>
+trash by sindresorhus <br>*
 
-### Terminal Animation at the beginning: <br>
-"Terminal Text Effect" by Captain Anonymous from CodePen
+Terminal Animation at the beginning: <br>
+*"Terminal Text Effect" by Captain Anonymous from CodePen*
 
-### Delete Button: <br>
-"Delete Button (Incl. Confirmation)" by Danny Iovane from CodePen
-
+Delete Button: <br>
+*"Delete Button (Incl. Confirmation)" by Danny Iovane from CodePen*
