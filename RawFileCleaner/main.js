@@ -11,14 +11,14 @@ const {
 let mainWindow;
 
 //Starting App
-app.on('ready', function() {
+app.on('ready', function () {
     mainWindow = new BrowserWindow({
         width: 800,
         height: 400,
         resizable: false,
         fullscreen: false,
         titleBarStyle: 'hiddenInset',
-        backgroundColor: '#282C34',
+        backgroundColor: '#011627',
         title: 'RawFileCleaner'
     });
 
@@ -29,7 +29,7 @@ app.on('ready', function() {
     }));
 
     //Closing app
-    mainWindow.on('closed', function() {
+    mainWindow.on('closed', function () {
         app.quit();
     });
 

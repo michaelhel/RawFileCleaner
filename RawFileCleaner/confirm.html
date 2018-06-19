@@ -6,7 +6,6 @@
     <title>RawFileCleaner</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="style.css" />
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
     <script>
         window.$ = window.jQuery = require('jquery');
@@ -54,7 +53,7 @@
         var remote = require('electron').remote;
         var electronFs = remote.require('fs');
         const storage = require('electron-json-storage');
-        document.addEventListener('keydown', function(e) {
+        document.addEventListener('keydown', function (e) {
             if (e.which === 123) {
                 remote.getCurrentWindow().webContents.openDevTools();
             } else if (e.which === 116) {
@@ -65,7 +64,7 @@
         var cats;
 
         function view() {
-            storage.get('deletedFiles', function(error, deletedFiles) {
+            storage.get('deletedFiles', function (error, deletedFiles) {
                 if (error) throw error;
                 var body = "";
                 sum = 0;
@@ -103,7 +102,7 @@
         // Design / Dribbble by:
         // Adam Whitcroft
         // URL: https://dribbble.com/shots/969445-The-Double-Delete
-        $("button").click(function() {
+        $("button").click(function () {
             if ($(this).hasClass("confirm")) {
                 $(this).addClass("done");
                 $("span").text("Deleted");
@@ -114,9 +113,9 @@
             }
         });
         // Reset
-        $("button").on('mouseout', function() {
+        $("button").on('mouseout', function () {
             if ($(this).hasClass("confirm") || $(this).hasClass("done")) {
-                setTimeout(function() {
+                setTimeout(function () {
                     $("button").removeClass("confirm").removeClass("done");
                     $("span").text("Move to trash");
                 }, 3000);
