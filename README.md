@@ -8,6 +8,18 @@ The tool can be used to delete all RAW files without a matching compressed file 
 
 It supports all common RAW image formats such as CR2, CRW, NEF, ARW, ORF, DNG and so on.
 
+## Problems
+**No app icon in macOS?**
+Unfortunately there's a problem loading the icon on macOS.<br>
+In order to show the icon: 
+- right click on the app
+- "show package content"
+- navigate to "/Contents/Resources"
+- open the "electron.icns" in Preview
+- copy the app icon with CMD+C
+- return to the app and right click to show information
+- click on the wrong icon and press CMD+V to paste the correct icon
+
 ## Authors
 Hannes Gerstmayr, Michael Helcig, Christian Straßmayr
 
@@ -24,7 +36,6 @@ Node Modules: <br>
 electron-packager by malept <br>
 is-online by silverwind <br>
 jquery by JS Foundation <br>
-npm by iarna <br>
 progressbar.js by kimmobrunfeldt <br>
 trash by sindresorhus <br>*
 
