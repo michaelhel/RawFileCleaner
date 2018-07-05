@@ -9,7 +9,7 @@ The tool can be used to delete all RAW files without a matching compressed file 
 It supports all common RAW image formats such as CR2, CRW, NEF, ARW, ORF, DNG and so on.
 
 ## Problems
-**No app icon on macOS?**
+**No app icon on macOS?**<br>
 Unfortunately there's a problem loading the icon on macOS.<br>
 In order to show the icon: 
 - right click on the app
