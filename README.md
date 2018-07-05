@@ -9,7 +9,7 @@ The tool can be used to delete all RAW files without a matching compressed file 
 It supports all common RAW image formats such as CR2, CRW, NEF, ARW, ORF, DNG and so on.
 
 ## Problems
-**No app icon in macOS?**
+**No app icon on macOS?**
 Unfortunately there's a problem loading the icon on macOS.<br>
 In order to show the icon: 
 - right click on the app
@@ -19,6 +19,9 @@ In order to show the icon:
 - copy the app icon with CMD+C
 - return to the app and right click to show information
 - click on the wrong icon and press CMD+V to paste the correct icon
+
+**Can't extract files on Windows?**
+If nothing happens when you try to extract the zip file, please use a third party tool such as 7-Zip.
 
 ## Authors
 Hannes Gerstmayr, Michael Helcig, Christian Straßmayr
