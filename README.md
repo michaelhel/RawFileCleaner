@@ -20,7 +20,7 @@ In order to show the icon:
 - return to the app and right click to show information
 - click on the wrong icon and press CMD+V to paste the correct icon
 
-**Can't extract files on Windows?**
+**Can't extract files on Windows?**<br>
 If nothing happens when you try to extract the zip file, please use a third party tool such as 7-Zip.
 
 ## Authors
